@@ -1,0 +1,251 @@
+//-------------------------------------------------------------------------
+// $Workfile: Master_DSP-21161.ldf $
+// Part of      : ETL600
+// Language     : C
+// Created by   : Hans Peter Rytz
+// Remarks      :  
+// Purpose      : 
+// Copyright    : ABB Switzerland Ltd., 2004
+//-------------------------------------------------------------------------
+//
+//-------------------------------------------------------------------------
+// $Log: /Source/P4LT Prototype 2/Master_DSP/architecture/Master_DSP-21161.ldf $
+// 
+// 2     6.05.05 15:57 Chbrbus
+// Removed some old stuff, so CRC patcher is working 
+// 
+// 1     19.01.05 15:47 Chchlee
+// 
+// 21    17.01.05 13:05 Chharyt
+// segment seg_dma adjusted
+// 
+// 20    14.01.05 14:06 Chharyt
+// segment seg_dma adjusted
+// 
+// 19    12.01.05 16:23 Chharyt
+// segment seg_dma increased
+// 
+// 18    11.11.04 10:26 Maag01
+// segment seg_pmco increased
+// 
+// 17    27.10.04 17:56 Buhl01
+// segment seg_dma increased (0x40) for _spiRecvBuffer (0x20) &
+// _spiSendBuffer (0x20) 
+// 
+// 16    8.10.04 14:39 Buhl01
+// set_args.doj of library libc161.dlb now always in segment pmco
+// 
+// 15    30.09.04 11:03 Unp00632
+// Cleaned SEARCH_DIR()
+// 
+// 14    14.09.04 18:21 Buhl01
+// comment about seg_int_code added
+// 
+// 13    2.09.04 14:09 Rytz01
+// One Space removed and the parser runs correctly
+// 
+// 12    2.09.04 11:21 Rytz01
+// Segment seg_dma moved from Block0 to Block1 due to problems. The
+// problem began while moving SPORT13 Buffer and tcb to this segment.
+// 
+// 11    17.08.04 7:55 Leeb02
+// set_env.ob of library libc161.dlb now always in segment pmco
+// 
+// 10    3.08.04 17:56 Buhl01
+// 
+// 9     2.08.04 18:58 Buhl01
+// 
+// 8     28.07.04 10:26 Rytz01
+// 
+// 7     8.04.04 16:06 Rytz01
+// $OBJECTS = $COMMAND_LINE_OBJECTS;
+// changed
+// 
+// 6     7.04.04 14:52 Rytz01
+// Adjustment of the memory segments. More investigation is necessary.
+// 
+// 5     7.04.04 12:04 Rytz01
+// First adjustment of the memory segments. More investigation is
+// necessary.
+// 
+// 4     6.04.04 8:40 Rytz01
+// 
+// 3     6.04.04 8:40 Rytz01
+// 1     Initial version
+//-------------------------------------------------------------------------
+
+
+ARCHITECTURE(ADSP-21161)
+
+//
+// ADSP-21161 Memory Map:
+//   ------------------------------------------------
+//   Internal memory  0x0000 0000 to 0x000f ffff
+//   ------------------------------------------------
+//                    0x0000 0000 to 0x0001 ffff  IOP Regs
+//           Block 0  0x0002 0000 to 0x0002 1fff  Long Word (64) Addresses
+//                    0x0002 2000 to 0x0002 7fff  (reserved)
+//           Block 1  0x0002 8000 to 0x0002 9fff  Long Word (64) Addresses
+//                    0x0002 a000 to 0x0003 ffff  (reserved)
+//           Block 0  0x0004 0000 to 0x0004 3fff  Normal Word (32/48) Addresses
+//                    0x0004 4000 to 0x0004 ffff  (reserved)
+//           Block 1  0x0005 0000 to 0x0005 3fff  Normal Word (32/48) Addresses
+//                    0x0005 4000 to 0x0007 ffff  (reserved)
+//           Block 0  0x0008 0000 to 0x0008 7fff  Short Word (16) Addresses
+//                    0x0008 8000 to 0x0009 ffff  (reserved)
+//           Block 1  0x000a 0000 to 0x000a 7fff  Short Word (16) Addresses
+//                    0x000a 8000 to 0x000f ffff  (reserved)
+//   ------------------------------------------------
+//   Multiproc memory 0x0010 0000 to 0x007f ffff
+//   ------------------------------------------------
+//                    0x0010 0000 to 0x0011 ffff  2116x ID=001 Internal memory
+//                    0x0012 0000 to 0x0013 ffff  2116x ID=010 Internal memory
+//                    0x0014 0000 to 0x0015 ffff  2116x ID=011 Internal memory
+//                    0x0016 0000 to 0x0017 ffff  2116x ID=100 Internal memory
+//                    0x0018 0000 to 0x0019 ffff  2116x ID=101 Internal memory
+//                    0x001a 0000 to 0x001b ffff  2116x ID=110 Internal memory
+//                    0x001c 0000 to 0x001f ffff  2116x ID=all Internal memory
+//   ------------------------------------------------
+//   External memory  0x0020 0000 to 0xffff ffff
+//   ------------------------------------------------
+//
+// This architecture file allocates:
+//         Internal 256 words of run-time header in memory block 0
+//                  256 words of initialization code in memory block 0
+//                   6K words of C code space in memory block 0
+//                   3K words of C PM data space in memory block 0
+//					 2K words of DMA space in memory block 0
+//					
+//                   8K words of C DM data space in memory block 1
+//                   4K words of C heap space in memory block 1
+//                   4K words of C stack space in memory block 1
+
+// This line must be adjusted for each DSP!!!
+SEARCH_DIR( $ADI_DSP\211xx\lib)
+
+$LIBRARIES = libc161.dlb, libio160_32.dlb, libdsp160.dlb;
+
+// Libraries from the command line are included in COMMAND_LINE_OBJECTS.
+//$OBJECTS = 161_hdr.doj, $COMMAND_LINE_OBJECTS;
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+
+//AD Doku describes an anomaly with following workaround: "seg_int_code" This section must always be located in 
+//internal memory and contains library code that modifies the interrupt latch registers (IMASKP and IRPTL). 
+//A hardware anomaly on a number of SHARC DSPs means that it is unsafe for code located in external memory to modify 
+//these registers, and this section is used to locate the affected library code in internal memory without restricting 
+//the location of the rest of the library code.  
+//But no use of this section could be observed until now - therefore this section is removed BUH/14.09.2004
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!! CAUTION
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//
+// DO NEVER USE a "//" in the LDF file, to desactivate a segment or mark an old segment. This won't be detected 
+// by the CRC Patcher. Filepatcher might no longer work !!!!!!
+
+MEMORY
+{
+	// Block0
+	seg_rth  { TYPE(PM RAM) START(0x00040000) END(0x000400ff) WIDTH(48) }
+	seg_init { TYPE(PM RAM) START(0x00040100) END(0x000401ff) WIDTH(48) }
+	seg_pmco { TYPE(PM RAM) START(0x00040200) END(0x000427ff) WIDTH(48) }
+	seg_pmda { TYPE(PM RAM) START(0x00043c00) END(0x00043fff) WIDTH(32) }
+
+	// Block1
+	seg_dma	 { TYPE(DM RAM) START(0x00050000) END(0x000502af) WIDTH(32) }
+	seg_dmda { TYPE(DM RAM) START(0x000502b0) END(0x00051fff) WIDTH(32) }
+	seg_heap { TYPE(DM RAM) START(0x00052000) END(0x00052fff) WIDTH(32) }
+	seg_stak { TYPE(DM RAM) START(0x00053000) END(0x00053fff) WIDTH(32) }
+
+	// external SDRAM
+	ext_code		{ TYPE(PM RAM) START(0x00200000) END(0x0027ffff) WIDTH(48) }
+	ext_dmda		{ TYPE(DM RAM) START(0x00290000) END(0x002fffff) WIDTH(32) }
+	ext_slaveCode	{ TYPE(DM RAM) START(0x00300000) END(0x007fffff) WIDTH(32) }
+}
+
+// CAUTION ENDS HERE
+
+PROCESSOR p0
+{
+    KEEP( _main,___lib_end_of_heap_descriptions )
+    LINK_AGAINST( $COMMAND_LINE_LINK_AGAINST)
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    {
+		// .text output section
+		seg_rth
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_rth) $LIBRARIES(seg_rth))
+		} >seg_rth
+
+		seg_init
+		{
+			ldf_seginit_space = .;
+			INPUT_SECTIONS( $OBJECTS(seg_init) $LIBRARIES(seg_init))
+		} >seg_init
+
+//        seg_int_code
+//        {
+//            INPUT_SECTIONS( $OBJECTS(seg_int_code) $LIBRARIES(seg_int_code))
+//        } >seg_int_code
+
+		seg_pmco
+		{
+			INPUT_SECTIONS( libc161.dlb [ set_env.doj (seg_pmco) ] libc161.dlb [ set_args.doj (seg_pmco) ] $OBJECTS(seg_pmco) $LIBRARIES(seg_pmco))
+		} >seg_pmco
+
+
+//set_args.doj
+
+		seg_pmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_pmda) $LIBRARIES(seg_pmda))
+		} >seg_pmda
+
+		seg_dma
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dma) $LIBRARIES(seg_dma))
+		} >seg_dma
+
+		seg_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dmda) $LIBRARIES(seg_dmda))
+		} > seg_dmda
+
+
+		stackseg
+		{
+
+			// allocate a stack for the application
+			ldf_stack_space = .;
+			ldf_stack_length = MEMORY_SIZEOF(seg_stak);
+		} > seg_stak
+
+		heap
+		{
+			// allocate a heap for the application
+			ldf_heap_space = .;
+			ldf_heap_length = MEMORY_SIZEOF(seg_heap);
+			ldf_heap_end = ldf_heap_space + ldf_heap_length - 1;       
+		} > seg_heap
+
+		ext_code
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_code) $LIBRARIES(seg_pmco))
+		} > ext_code
+
+		ext_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_dmda) $LIBRARIES(ext_dmda) $LIBRARIES(seg_dmda))
+		} > ext_dmda
+
+		ext_slaveCode
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_slaveCode) $LIBRARIES(ext_slaveCode))
+		} > ext_slaveCode
+				
+    }
+}
+
+

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<visualdsp-project schema="16" name="161_spi32_SDRAM" file="D:\ADSP\$P4LT\DSP_Boot_Loader\SPI_Boot_SDRAM\161_spi_SDRAM_VDSP35.dpj" generated="Sun Jul 11 18:16:39 2004" expanded="yes">
+	<!-- Project build target -->
+	<target>
+		<processor>ADSP-21161</processor>
+		<extension>.dxe</extension>
+		<type>DSP executable file</type>
+	</target>
+	<!-- Configurations -->
+	<configurations active="Release">
+		<configuration name="Debug">
+			<intermediate-dir>.\Debug</intermediate-dir>
+			<output-dir>.\Debug</output-dir>
+			<tools>
+				<tool type="VCSE">
+					<option><![CDATA[|-Version>3.5|NOSWITCH>1]]></option>
+				</tool>
+				<tool type="Compiler">
+					<option><![CDATA[|-Version>3.5|-O1>0|-Ov>100|-g>1|-double-size-32>1]]></option>
+				</tool>
+				<tool type="Assembler">
+					<option><![CDATA[|-Version>3.5|-g>0]]></option>
+				</tool>
+				<tool type="Linker">
+					<option><![CDATA[|-Version>3.5|NOSWITCH>1]]></option>
+				</tool>
+				<tool type="Splitter">
+					<option><![CDATA[|-pm>1|-ram>1|-f s3>1|-r> 8 8 32|-u>0]]></option>
+				</tool>
+				<tool type="Loader">
+					<option><![CDATA[|-Version>3.5|-bPROM>1|-fHEX>1|-HostWidth 8>1|-p>0x0|-t>32765]]></option>
+				</tool>
+				<tool type="Archiver">
+					<option><![CDATA[]]></option>
+				</tool>
+				<tool type="VdkGen">
+					<option><![CDATA[]]></option>
+				</tool>
+			</tools>
+		</configuration>
+		<configuration name="Release">
+			<intermediate-dir>.\release</intermediate-dir>
+			<output-dir>.</output-dir>
+			<tools>
+				<tool type="VCSE">
+					<option><![CDATA[|-Version>3.5|NOSWITCH>1]]></option>
+				</tool>
+				<tool type="Compiler">
+					<option><![CDATA[|-Version>3.5|-O1>0|-Ov>100|-g>0|-double-size-32>1]]></option>
+				</tool>
+				<tool type="Assembler">
+					<option><![CDATA[|-Version>3.5|-g>0]]></option>
+				</tool>
+				<tool type="Linker">
+					<option><![CDATA[|-Version>3.5|NOSWITCH>1]]></option>
+				</tool>
+				<tool type="Splitter">
+					<option><![CDATA[|-pm>1|-ram>1|-f s3>1|-r> 8 8 32|-u>0]]></option>
+				</tool>
+				<tool type="Loader">
+					<option><![CDATA[|-Version>3.5|-bPROM>1|-fHEX>1|-HostWidth 8>1|-p>0x0|-t>32765|-id1exe=>1: |-id2exe=>2: |-id3exe=>3: |-id4exe=>4: |-id5exe=>5: |-id6exe=>6: ]]></option>
+				</tool>
+				<tool type="Archiver">
+					<option><![CDATA[]]></option>
+				</tool>
+				<tool type="VdkGen">
+					<option><![CDATA[]]></option>
+				</tool>
+			</tools>
+		</configuration>
+	</configurations>
+	<!-- Project folders -->
+	<folders>
+		<folder name="Header Files" ext="h,hpp,hxx" expanded="no">
+		</folder>
+		<folder name="Linker Files" ext="ldf,dlb" expanded="yes">
+			<files>
+				<file name=".\ADSP-21161asm.ldf">
+					<file-configurations>
+						<file-configuration name="Debug">
+							<excluded-flag value="no"/>
+							<build-with-flag value="project"/>
+							<intermediate-dir>.\debug</intermediate-dir>
+							<output-dir>.\Debug</output-dir>
+						</file-configuration>
+						<file-configuration name="Release">
+							<excluded-flag value="no"/>
+							<build-with-flag value="project"/>
+							<intermediate-dir>.\release</intermediate-dir>
+							<output-dir>.</output-dir>
+						</file-configuration>
+					</file-configurations>
+				</file>
+			</files>
+		</folder>
+		<folder name="Source Files" ext="c,cpp,cxx,asm,dsp,s" expanded="yes">
+			<files>
+				<file name=".\161_spi_SDRAM.asm">
+					<file-configurations>
+						<file-configuration name="Debug">
+							<excluded-flag value="no"/>
+							<build-with-flag value="project"/>
+							<intermediate-dir>.\Debug</intermediate-dir>
+							<output-dir>.\Debug</output-dir>
+						</file-configuration>
+						<file-configuration name="Release">
+							<excluded-flag value="no"/>
+							<build-with-flag value="project"/>
+							<intermediate-dir>.\Release</intermediate-dir>
+							<output-dir>.</output-dir>
+						</file-configuration>
+					</file-configurations>
+				</file>
+			</files>
+		</folder>
+	</folders>
+</visualdsp-project>
