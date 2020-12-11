@@ -1,0 +1,206 @@
+#include "../h/board.h"
+#if BOARD==1
+#define DRS7
+#else
+#undef DRS7
+#endif
+
+// OFDM Modem for ETL600
+//  Correct architecture file for external SDRAM memory configuration of 
+//      DRS7 and ADDS-21161-EZLITE boards
+//  2004, TL Consulting GmbH
+//  28.01.04 vgp
+//     04.05.04 seg_extn_init, vgp
+
+ARCHITECTURE(ADSP-21161)
+
+//
+// ADSP-21161 Memory Map:
+//   ------------------------------------------------
+//   Internal memory  0x0000 0000 to 0x000f ffff
+//   ------------------------------------------------
+//                    0x0000 0000 to 0x0001 ffff  IOP Regs
+//           Block 0  0x0002 0000 to 0x0002 1fff  Long Word (64) Addresses
+//                    0x0002 2000 to 0x0002 7fff  (reserved)
+//           Block 1  0x0002 8000 to 0x0002 9fff  Long Word (64) Addresses
+//                    0x0002 a000 to 0x0003 ffff  (reserved)
+//           Block 0  0x0004 0000 to 0x0004 3fff  Normal Word (32/48) Addresses
+//                    0x0004 4000 to 0x0004 ffff  (reserved)
+//           Block 1  0x0005 0000 to 0x0005 3fff  Normal Word (32/48) Addresses
+//                    0x0005 4000 to 0x0007 ffff  (reserved)
+//           Block 0  0x0008 0000 to 0x0008 7fff  Short Word (16) Addresses
+//                    0x0008 8000 to 0x0009 ffff  (reserved)
+//           Block 1  0x000a 0000 to 0x000a 7fff  Short Word (16) Addresses
+//                    0x000a 8000 to 0x000f ffff  (reserved)
+//   ------------------------------------------------
+//   External memory  0x0020 0000 to 0xffff ffff
+//   ------------------------------------------------
+//
+
+SEARCH_DIR( $ADI_DSP\211xx\lib;"..\..\Libraries")
+
+$LIBRARIES = libc160.dlb, libio160_32.dlb, libdsp160.dlb, libsdsp1.dlb, libsdsp2.dlb, libcpp.dlb, libcpprt.dlb;
+
+// Libraries from the command line are included in COMMAND_LINE_OBJECTS.
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+
+MEMORY
+	{
+// overall in bank 0 -  16384 32kW
+	mem_rth  	  { TYPE(PM RAM) START(0x00040000) END(0x000400ff) WIDTH(48) }		// 0x100  ( 256 48bW)
+	mem_init      { TYPE(PM RAM) START(0x00040100) END(0x0004011f) WIDTH(48) }      // 0x20   (  32 48bW)
+	mem_pmco      { TYPE(PM RAM) START(0x00040120) END(0x0004245d) WIDTH(48) }      // 0x233E (9022 48bW)
+	// start address of pmda is 0x40000+3*(end_address_of_pmco+1-0x40000)/2
+	mem_pmda      { TYPE(PM RAM) START(0x0004368e) END(0x000437df) WIDTH(32) }    	// 0x152  ( 338 32bW)
+    seg_VitMet    { TYPE(PM RAM) START(0x000437e0) END(0x000437ff) WIDTH(32) }      // 0x20   (  32 32bW)
+    seg_pmArray_I { TYPE(PM RAM) START(0x00043800) END(0x00043fff) WIDTH(32) }      // 0x800  (2048 32bW)  
+    
+// overall in bank 1 -  16384 32kW
+	seg_Cmplx     { TYPE(DM RAM) START(0x00050000) END(0x00050fff) WIDTH(32) }     	// 0x1000 (4096 32bW) 
+	seg_dmArray_R { TYPE(DM RAM) START(0x00051000) END(0x000520ff) WIDTH(32) }     	// 0x1100  (4352 32bW) 
+	seg_twid      { TYPE(DM RAM) START(0x00052100) END(0x000528ff) WIDTH(32) } 		// 0x800  (2048 32bW)
+	seg_InDistVit { TYPE(DM RAM) START(0x00052900) END(0x0005291f) WIDTH(32) }      // 0x20   (  32 32bW)
+	mem_dmda      { TYPE(DM RAM) START(0x00052920) END(0x00053ddf) WIDTH(32) }      // 0xBC0  (3008 32bW) ???? 
+	mem_heap      { TYPE(DM RAM) START(0x00053de0) END(0x00053dff) WIDTH(32) }      // 0x20   (  32 32bW)
+	mem_stak      { TYPE(DM RAM) START(0x00053e00) END(0x00053fff) WIDTH(32) }      // 0x200  ( 256 32bW)
+
+#ifndef DRS7
+
+// External Memory 48-bit SDRAM Mapped to Bank 0 for P4LT and 21161 EZ-Lite when JP1 Mem_X48 jumper is installed
+// start address of seg_extn is 0x200000+3*(end_address_of_ext_pmco+1-0x200000)/2
+    mem_ext_pmco  { TYPE(PM RAM) START(0x00200000) END(0x00215554) WIDTH(48) }
+	seg_extn_init { TYPE(DM RAM) START(0x00220000) END(0x0022ffff) WIDTH(32) }
+    seg_extn      { TYPE(DM RAM) START(0x00230000) END(0x002fffff) WIDTH(32) }
+
+#else
+
+// External Memory 32-bit SDRAM Mapped to Bank 0 for DRS7 board or 21161 EZ-lte when JP1 Mem_X48 is out
+// start address of seg_extn is 2*(end_address_of_ext_pmco+1)
+    mem_ext_pmco  { TYPE(PM RAM) START(0x00200000) END(0x0020ffff) WIDTH(32) }
+    seg_extn_init { TYPE(DM RAM) START(0x00220000) END(0x0022ffff) WIDTH(32) }
+    seg_extn      { TYPE(DM RAM) START(0x00230000) END(0x002fffff) WIDTH(32) }
+
+#endif
+
+	}
+
+
+
+PROCESSOR p0
+	{
+    LINK_AGAINST( $COMMAND_LINE_LINK_AGAINST)
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    	{
+// ===== internal bank 0
+		// .text output section
+		seg_rth
+			{
+			INPUT_SECTIONS( $OBJECTS(isr_tbl seg_rth) $LIBRARIES(isr_tbl seg_rth))
+			} >mem_rth
+
+		seg_init
+			{
+			ldf_seginit_space = . ;
+			INPUT_SECTIONS( $OBJECTS(seg_init) $LIBRARIES(seg_init))
+			} >mem_init
+
+		seg_pmco
+			{
+			INPUT_SECTIONS( $OBJECTS(pm_code seg_pmco) $LIBRARIES(pm_code seg_pmco))
+			} >mem_pmco
+
+		seg_int_code
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_int_code) $LIBRARIES(seg_int_code))
+			} >mem_pmco
+
+		seg_pmda
+			{
+			INPUT_SECTIONS( $OBJECTS(pm_data seg_pmda) $LIBRARIES(pm_data seg_pmda))
+			} >mem_pmda
+
+		seg_VitMet
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_VitMet) $LIBRARIES(seg_VitMet))
+			} >seg_VitMet
+
+        seg_pmArray_I
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_pmArray_I) $LIBRARIES(seg_pmArray_I))
+			} > seg_pmArray_I
+
+// ===== bank 1
+		seg_Cmplx
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_Cmplx) $LIBRARIES(seg_Cmplx))
+			} > seg_Cmplx
+
+        seg_dmArray_R
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_dmArray_R) $LIBRARIES(seg_dmArray_R))
+			} > seg_dmArray_R
+
+		seg_twid
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_twid) $LIBRARIES(seg_twid))
+			} > seg_twid
+
+        seg_InDistVit
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_InDistVit) $LIBRARIES(seg_InDistVit))
+			} > seg_InDistVit
+
+		seg_dmda
+			{
+			INPUT_SECTIONS( $OBJECTS(dm_data seg_dmda dm_codec) $LIBRARIES(seg_dmda dm_data))
+			} > mem_dmda
+
+		stackseg
+			{
+			// allocate a stack for the application
+			ldf_stack_space = .;
+			ldf_stack_length = MEMORY_SIZEOF(mem_stak);
+			} > mem_stak
+
+		heap
+			{
+			// allocate a heap for the application
+			ldf_heap_space = .;
+			ldf_heap_end = ldf_heap_space + MEMORY_SIZEOF(mem_heap) - 1;
+			ldf_heap_length = ldf_heap_end - ldf_heap_space;        
+			} > mem_heap
+
+#ifndef DRS7
+
+// ===== external 48-bit or 32bit SDRAM
+		seg_ext_pmco
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_ext_pmco) $LIBRARIES(seg_ext_pmco) )
+// External Memory 48-bit SDRAM Mapped to Bank 0 for 21161 EZ-Lite when JP1 Mem_X48 jumper is installed
+// packing for 48-bit external sdram doesn't require PACKING macro because of
+//                PACKING(6 B1 B2 B3 B4 B5 B6)
+			} >mem_ext_pmco
+
+#else
+		seg_ext_pmco
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_ext_pmco) $LIBRARIES(seg_ext_pmco) )
+// External Memory 32-bit SDRAM Mapped to Bank 0 for DRS7 board or 21161 EZ-lte when JP1 Mem_X48 is out
+// packing for 32-bit external sdram
+//                  PACKING(6 B1 B2 B3 B4 B0 B0 B0 B0 B5 B6 B0 B0) // external execution from 32-bit external SDRAM
+
+			} >mem_ext_pmco
+#endif
+		seg_extn_init 
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_extn_init) $LIBRARIES(seg_extn_init))
+			} > seg_extn		
+
+		seg_extn SHT_NOBITS
+			{
+			INPUT_SECTIONS( $OBJECTS(seg_extn) $LIBRARIES(seg_extn))
+			} > seg_extn		
+    	}
+	}

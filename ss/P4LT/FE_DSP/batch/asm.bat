@@ -1,0 +1,6 @@
+echo on
+set WORK_DIR=D:\ADSP\$P4LT
+if defined P4LT_BUILD_PATH set WORK_DIR=%P4LT_BUILD_PATH%
+:COMP_C
+easm21k.exe -21161 -I "%WORK_DIR%\FE_DSP\H" "%1"
+

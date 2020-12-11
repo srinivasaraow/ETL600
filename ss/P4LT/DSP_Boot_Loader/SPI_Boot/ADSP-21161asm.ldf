@@ -1,0 +1,14 @@
+// Loader Description File for building boot
+// loader kernel for the ADSP-21161
+// 02/11/02
+
+ARCHITECTURE(ADSP-21161)
+SEARCH_DIR( .\ )
+$OBJS = $COMMAND_LINE_OBJECTS;
+MAP(kernel.map)
+PROCESSOR P0 {
+        OUTPUT($COMMAND_LINE_OUTPUT_FILE)
+        MEMORY { seg_ldr {TYPE(PM RAM) START(0x40000) END(0x400FF) WIDTH(48)} }
+        SECTIONS { seg_ldr{INPUT_SECTIONS( $OBJS(seg_ldr))} >seg_ldr}
+}
+
