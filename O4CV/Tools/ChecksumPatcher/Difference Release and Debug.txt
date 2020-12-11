@@ -1,0 +1,5 @@
+In the debug version the crc is written to the address 0x002f0000.
+In the release version the crc is written to the address 0x000f0000.
+
+Use the release version if you want to create a binary loaderfile or an hmi fw update loaderfile.
+Then the applic must not have an offset, the offset will be added with the hex2bin tool.
