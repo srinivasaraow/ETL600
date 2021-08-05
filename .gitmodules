@@ -10,3 +10,9 @@
 [submodule "September/ETL600"]
 	path = September/ETL600
 	url = https://github.com/srinivasaraow/ETL600
+[submodule "november/submarines"]
+	path = november/submarines
+	url = https://github.com/cameronmcnz/submarines
+[submodule "november/ETL600"]
+	path = november/ETL600
+	url = https://github.com/srinivasaraow/ETL600
