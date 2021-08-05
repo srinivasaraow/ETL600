@@ -1,0 +1,6 @@
+[submodule "submarines"]
+	path = submarines
+	url = https://github.com/cameronmcnz/submarines.git
+[submodule "ETL600"]
+	path = ETL600
+	url = https://github.com/srinivasaraow/ETL600

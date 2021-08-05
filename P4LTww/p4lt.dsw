@@ -1,0 +1,117 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "FE_DSP"=".\FE_DSP\FE_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/FE_DSP", EAAAAAAA
+    .\fe_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Master_DSP"=".\Master_DSP\Master_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/Master_DSP", NBAAAAAA
+    .\master_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "NSD_DSP"=".\NSD_DSP\NSD_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/NSD_DSP", MAAAAAAA
+    .\nsd_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "NSK_DSP"=".\NSK_DSP\NSK_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/NSK_DSP", KBAAAAAA
+    .\nsk_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "OFDM_DSP"=".\OFDM_DSP\OFDM_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/OFDM_DSP", LBAAAAAA
+    .\ofdm_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "UC_DSP"=".\UC_DSP\UC_DSP.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT/UC_DSP", MBAAAAAA
+    .\uc_dsp
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/branches/Source MAS/P4LT", DAAAAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

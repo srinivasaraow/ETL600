@@ -1,0 +1,282 @@
+//-------------------------------------------------------------------------
+// $Workfile: NSK_DSP-21161.ldf $
+// Part of      : ETL600
+// Language     : C
+// Created by   : Hans Peter Rytz
+// Remarks      :  
+// Purpose      : 
+// Copyright    : ABB Switzerland Ltd., 2004
+//-------------------------------------------------------------------------
+//
+//-------------------------------------------------------------------------
+// $Log: /branches/Source R4/P4LT/NSK_DSP/architecture/NSK_DSP-21161.ldf $
+// 
+// 17    10-10-20 18:47 Chhamaa
+// Segment ext_fpga expanded for larger FPGA.
+// 
+// 15    22.09.08 13:45 Chhamaa
+// 
+// 14    08-05-07 14:43 Chtognu
+// Memory segment optimization
+// 
+// 13    08-04-03 9:43 Chtognu
+// Memory segment optimization, unused included library functions removed 
+// 
+// 12    08-03-07 16:52 Chsteic
+// '- #define DAPSK_DETE_MIN_POWER_RCV        0.1
+// - test Flags added
+// - new algorithm
+// - variables renamed
+// - logging of new variables
+// - changed memory map
+// 
+// 11    08-02-25 9:56 Chtognu
+// Merged changes from ad.equ.branch:
+// ad. Equalizer functionality incl. Logger, scrambler, new filter,
+// removed preamble detection, alarm, processing time optimization, global
+// interrupt disabled during DAPSK fir function, FE path expantion
+// 
+// 10    4.12.07 14:44 Chhamaa
+// Size of segments seg_pmco/seg_pmda increased/reduced.
+// 
+// 7     1.06.06 13:23 Chalgyg
+// Border between seg_pmco and seg_pmda shifted to gain more memory in
+// seg_pmco.
+// 
+// 4     26.10.05 11:34 Chtognu
+// seg_init reduced
+// 
+// 3     9.05.05 14:10 Chbrbus
+// Added DSP Checksum patcher
+// 
+// 2     17.02.05 14:09 Chtognu
+// stak and heap reduced
+// 
+// 1     19.01.05 15:34 Chchlee
+// 
+// 13    14.01.05 14:11 Chharyt
+// segment seg_dma adjusted
+// 
+// 12    30.09.04 10:58 Unp00632
+// 
+// 
+// 7     22.09.04 14:58 Buhl01
+// Segment seg_pmco increased; set_env.ob of library libc161.dlb now
+// always in segment pmco
+// 
+// 6     2.09.04 11:49 Rytz01
+// Segment seg_dma moved from Block0 to Block1 like on Master_DSP.
+// 
+// 5     26.08.04 10:58 Gnus01
+// 
+// 4     26.08.04 10:43 Gnus01
+// 
+// 3     26.08.04 9:46 Gnus01
+// 
+// 2     21.06.04 14:24 Gygax02
+// FPGA_Data array displaced.
+// 
+// 1     3.06.04 13:43 Gygax02
+// 
+// 1     Initial version
+//-------------------------------------------------------------------------
+
+
+ARCHITECTURE(ADSP-21161)
+
+//
+// ADSP-21161 Memory Map:
+//   ------------------------------------------------
+//   Internal memory  0x0000 0000 to 0x000f ffff
+//   ------------------------------------------------
+//                    0x0000 0000 to 0x0001 ffff  IOP Regs
+//           Block 0  0x0002 0000 to 0x0002 1fff  Long Word (64) Addresses
+//                    0x0002 2000 to 0x0002 7fff  (reserved)
+//           Block 1  0x0002 8000 to 0x0002 9fff  Long Word (64) Addresses
+//                    0x0002 a000 to 0x0003 ffff  (reserved)
+//           Block 0  0x0004 0000 to 0x0004 3fff  Normal Word (32/48) Addresses
+//                    0x0004 4000 to 0x0004 ffff  (reserved)
+//           Block 1  0x0005 0000 to 0x0005 3fff  Normal Word (32/48) Addresses
+//                    0x0005 4000 to 0x0007 ffff  (reserved)
+//           Block 0  0x0008 0000 to 0x0008 7fff  Short Word (16) Addresses
+//                    0x0008 8000 to 0x0009 ffff  (reserved)
+//           Block 1  0x000a 0000 to 0x000a 7fff  Short Word (16) Addresses
+//                    0x000a 8000 to 0x000f ffff  (reserved)
+//   ------------------------------------------------
+//   Multiproc memory 0x0010 0000 to 0x007f ffff
+//   ------------------------------------------------
+//                    0x0010 0000 to 0x0011 ffff  2116x ID=001 Internal memory
+//                    0x0012 0000 to 0x0013 ffff  2116x ID=010 Internal memory
+//                    0x0014 0000 to 0x0015 ffff  2116x ID=011 Internal memory
+//                    0x0016 0000 to 0x0017 ffff  2116x ID=100 Internal memory
+//                    0x0018 0000 to 0x0019 ffff  2116x ID=101 Internal memory
+//                    0x001a 0000 to 0x001b ffff  2116x ID=110 Internal memory
+//                    0x001c 0000 to 0x001f ffff  2116x ID=all Internal memory
+//   ------------------------------------------------
+//   External memory  0x0020 0000 to 0xffff ffff
+//   ------------------------------------------------
+//
+// This architecture file allocates:
+//         Internal 256 words of run-time header in memory block 0
+//                  256 words of initialization code in memory block 0
+//                   6K words of C code space in memory block 0
+//                   3K words of C PM data space in memory block 0
+//					 2K words of DMA space in memory block 0
+//					
+//                   8K words of C DM data space in memory block 1
+//                   4K words of C heap space in memory block 1
+//                   4K words of C stack space in memory block 1
+
+// This line must be adjusted for each DSP!!!
+SEARCH_DIR( $ADI_DSP\211xx\lib;"..\..\Libraries")
+
+$LIBRARIES = libc161.dlb, libio.dlb, libdsp160.dlb,libsdsp1.dlb, libsdsp2.dlb, libsdsp3.dlb; //libcpp.dlb, libcpprt.dlb,
+
+// Libraries from the command line are included in COMMAND_LINE_OBJECTS.
+//$OBJECTS = 161_hdr.doj, $COMMAND_LINE_OBJECTS;
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+
+
+MEMORY
+{
+	// Block0
+	seg_rth    { TYPE(PM RAM) START(0x00040000) END(0x0004009B) WIDTH(48) }
+	seg_init   { TYPE(PM RAM) START(0x0004009C) END(0x000400A4) WIDTH(48) }
+	seg_pmco   { TYPE(PM RAM) START(0x000400A5) END(0x0004230D) WIDTH(48) }
+	seg_pmda   { TYPE(PM RAM) START(0x00043496) END(0x00043FFF) WIDTH(32) }
+	
+	// Block1
+	seg_dma	   { TYPE(DM RAM) START(0x00050000) END(0x0005030F) WIDTH(32) }
+	seg_dmda   { TYPE(DM RAM) START(0x00050310) END(0x000539FF) WIDTH(32) }
+	seg_heap   { TYPE(DM RAM) START(0x00053A00) END(0x00053BFF) WIDTH(32) }
+	seg_stak   { TYPE(DM RAM) START(0x00053C00) END(0x00053FFF) WIDTH(32) }
+
+	// external SDRAM
+	ext_code   { TYPE(PM RAM) START(0x00200000) END(0x0027FFFF) WIDTH(48) }
+	ext_dmda   { TYPE(DM RAM) START(0x00290000) END(0x002FFFFF) WIDTH(32) }
+//	ext_config { TYPE(DM RAM) START(0x00xxxxxx) END(0x00xxxxxx) WIDTH(32) }
+	ext_fpga   { TYPE(DM RAM) START(0x00300000) END(0x0032FFFF) WIDTH(32) }
+}
+
+
+
+PROCESSOR p0
+{
+    LINK_AGAINST( $COMMAND_LINE_LINK_AGAINST)
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    {
+		// .text output section
+		seg_rth
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_rth) $LIBRARIES(seg_rth))
+		} >seg_rth
+
+		seg_init
+		{
+			ldf_seginit_space = .;
+			INPUT_SECTIONS( $OBJECTS(seg_init) $LIBRARIES(seg_init))
+		} >seg_init
+
+		seg_pmco
+		{
+//			INPUT_SECTIONS( $OBJECTS(seg_pmco) $LIBRARIES(seg_pmco))
+			INPUT_SECTIONS( $OBJECTS(seg_pmco) \
+							libc161.dlb [ set_env.doj (seg_pmco) ]  \
+							libc161.dlb [ sqrtf.doj (seg_pmco) ] \
+							libc161.dlb [ memcpy.doj (seg_pmco) ] \
+							libc161.dlb [ floorf.doj (seg_pmco) ] \
+							libc161.dlb [ sinf.doj (seg_pmco) ] \
+							libc161.dlb [ cosf.doj (seg_pmco) ] \
+							libc161.dlb [ fmodf.doj (seg_pmco) ] \
+							libc161.dlb [ int_sprt.doj (seg_pmco) ] \
+							libc161.dlb [ fmodf.doj (seg_pmco) ] \
+							libc161.dlb [ set_args.doj (seg_pmco) ] \
+							libc161.dlb [ float_divide.doj (seg_pmco) ] \
+							libc161.dlb [ min.doj (seg_pmco) ] \
+							libc161.dlb [ mth_sprt.doj (seg_pmco) ] \
+							libc161.dlb [ 060_proc.doj (seg_pmco) ] \
+							libc161.dlb [ errno.doj (seg_pmco) ] \
+							libc161.dlb [ exit.doj (seg_pmco) ] \
+							libc161.dlb [ set_c.doj (seg_pmco) ] \
+
+			          		libsdsp1.dlb [ vdot03.doj (seg_pmco) ] \
+							libsdsp1.dlb [ vdot09.doj (seg_pmco) ] \
+							// libsdsp1.dlb [ vdot10.doj (seg_pmco) ] 
+							libsdsp1.dlb [ vcopy01.doj (seg_pmco) ] \
+					
+							// libsdsp1.dlb [ vconj01.doj (seg_pmco) ]
+							libsdsp1.dlb [ vconj03.doj (seg_pmco) ] \
+
+							libsdsp3.dlb [ fir_f.doj (seg_pmco)   ] \
+
+							// libsdsp2.dlb [ vset01.doj (seg_pmco) ] 
+							// libsdsp2.dlb [ vset03.doj (seg_pmco) ] 
+							libsdsp2.dlb [ vset05.doj (seg_pmco) ] 
+							libsdsp2.dlb [ vsmul10.doj (seg_pmco) ] \
+							libsdsp2.dlb [ vsub07.doj (seg_pmco) ] \
+																
+
+							)
+//							$LIBRARIES(seg_pmco))
+//							$OBJECTS(seg_pmco) $LIBRARIES(seg_pmco))
+							
+		} >seg_pmco
+
+		seg_pmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_pmda) $LIBRARIES(seg_pmda))
+		} >seg_pmda
+
+		seg_dma
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dma)  $LIBRARIES(seg_dma))
+		} >seg_dma
+
+		seg_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dmda) $LIBRARIES(seg_dmda))
+		} > seg_dmda
+
+
+		stackseg
+		{
+
+			// allocate a stack for the application
+			ldf_stack_space = .;
+			ldf_stack_length = MEMORY_SIZEOF(seg_stak);
+		} > seg_stak
+
+		heap
+		{
+			// allocate a heap for the application
+			ldf_heap_space = .;
+			ldf_heap_length = MEMORY_SIZEOF(seg_heap);
+			ldf_heap_end = ldf_heap_space + ldf_heap_length - 1;       
+		} > seg_heap
+
+		ext_code
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_code) $LIBRARIES(seg_pmco))
+		} > ext_code
+
+		ext_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_dmda) $LIBRARIES(ext_dmda) $LIBRARIES(seg_dmda))
+		} > ext_dmda
+
+// for further use or other DSP's
+//		ext_config
+//		{
+//			INPUT_SECTIONS( $OBJECTS(ext_config) $LIBRARIES(ext_config))
+//		} > ext_config
+//
+		ext_fpga
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_fpga) $LIBRARIES(ext_fpga))
+		} > ext_fpga
+				
+    }
+}
+

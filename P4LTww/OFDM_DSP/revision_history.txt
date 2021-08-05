@@ -1,0 +1,1084 @@
+*******************************************************
+* Project ETL600							*
+*									*
+* Revision History						*
+*******************************************************
+
+Date	  |  Step	| resp|working(W) |	List of modifications
+	  |  		|     |or debug(D)|		
+-------------------------------------------------------
+04.05.04    1	 PL		W		with optim1 only
+		2	 PL		W		changed scaling of predistortion
+		3	 PL		W		activated optim2
+							(still without bit shifting)
+		4	 PL		W		Shaping Flag aufgeräumt -> Modem_init_basic
+			 PL				new comments in optim2
+		5      VGP		W           initialized and noninitialized
+                              	      external SDRAM segments
+		6	 PL		W		!Änderung der Quantisierungsschwelle bei QAM4 auf 1.5!
+							Beispiel mit Grenzfall (Wahldatenrate nahe bei max.Datenrate)
+		7	 PL		W		Implemeted first version of Optim Bit Shifting for TX and RX
+
+05.05.04	2	 PL/DLK	W		OFDM_Engine_RX delta_sigma_array
+		3	 PL		W		Restructure of Optimization Part
+							Split into optim1(),optim2(),optim3() in QAM_scheuler_RX etc.
+		4	 PL		W		changes in modem_init
+06.05.04	2	 PL/VGP	W		OFDM_engine_RX implemented two new functions
+							vsubmul_c and vfsmulvadd_c
+							Defined Save List of data rates, that doesn't require bit-stuffing
+		3	 VGP		W		Fehlerkorrektur: vset_D doesn't work for odd number of elements
+							this resulted in error of index, replaced by vset_E
+							Fehlerkorrektur in optim1
+		4	 PL		W		In OFDM_defs.h introduced thresholds for Optimization
+							Encapsulated debug-parts in if(digital_loop..)
+		6	 PL		W		Prepared for analog loop, awgn_simga=0, Fixed data rate, delta_bit global
+08. 05. 04	       VGP        W           Avoid dependency of ADSP-21161N cilicon revision for assembler commands like fn = fn - fn
+09. 05. 04		 DLK	      W		Correct initialization of TCM codec for QPSK flat modulation,
+			 DLK				Correct calculation of energy of QPSK carriers in case when Shaping_Flag == ON
+
+11.05.04	1	 DLK		W		Demo Version working with Channel Simulator in Analog Loop
+							Corrected Adaptation of RX-Filter in OFDM_engine_RX (arguments to new command)
+			 PL				Corrected Threshold of NB-Fisher Statistic
+12.05.04    1      		W
+		2	 PL		W		Changes in OFDM_RX_Engine (combining common part Eqlzr and RX-Filter adapt.)
+		3	 VGP		W		Integration of V.11 interface
+		4	 VGP/PL	W		Rename project in DSP2 to "TLC600_OFDM_Modem"
+		5      VGP		W		additional Project File updates
+		6	 VGP		W		V.11 interrupt handlers modification
+		5      VGP/PL	W		additional Project File updates
+		7	 VGP/PL	W		Rename project in DSP1 to "Frontend_OFDM"
+                   VGP/PL	D           Random Delta bit generation for V.11 online mode of operating
+13.05.04	1	 PL		W		Modified list of data rates for core clock division
+		2	 PL		W		Added Cycle counters and Error codes for RX-Preamble-Scheduler
+ 
+17.05.04	1	 PL		D		New globals in optim section for error handler
+		2	 PL		W		New Error codes for optim section
+		3	 PL		D		Bit Stuffing Scheme Evaluation 
+							Trials with Error.Count etc
+18.05.04	1	 PL		D		Tests Cycle Counter in optim2, observed error in RX-Bit_allocation
+										observed error in QAM4-MSE starting with QAM4-Block No 48
+		2	 PL		W		solved error in QAM4-MSE. Found time problem in optim1
+19.05.04	1	 		W		no changes
+		2	 PL		W		Combined spectral shift and SFC-Filter, perpared bandwidths
+		3	 PL/VGP/DLK D		started with Interpolation x2x4 (BW=4000) in SFC_TX
+		4	 PL		W		Considered Bit Stuffing and Service Bits in Optimization Procedure 
+							(Bit-Stuffing Bits and Service Bits must be considered , when calculating
+							required number of information bits)
+
+01.06.04	1	 PL/VGP	W		Preparation for Bit-Stuffing: exchanged order in bit field [delta_bits|inf_bits]
+		2	 PL/VGP	W		Appending and extracting Service Bits (!! Service Bits are random right now)
+		3	 PL/VGP	W		Added first version of Stuffing Counter in TX
+							
+		4	 PL		W		Insertion of Bit Stuffing Flag in Transmitter
+02.06.04	1	 PL		W		Reading of Bit Stuffing Flag in Receiver	
+		2	 PL		W		Processing Stuffing Bit in receiver, implemented rx-stuffing-counter.
+							Compare received stuffing flag with counter value,.. working
+		3	 		W		Considered Stuffing Flag in V11 Bit field composition / decomposition
+							First trial with bit-stuffing-data-rate 76800bit/s
+							!! Bit Stuffing Works !!
+		4	 PL		W		Moved Bit Stuffing Parts to QAM_processing_XX, cleaned up OFDM_engines
+03.06.04	1	 PL		W		bit stuffing is only performed in analog loop
+							digital loop working (CS only AWGN, more tests required)
+		2	 PL		W		Fixed error in Optim Section for very low data rates
+							Found error in vxor_i_EEE for len=1
+		3	 PL		W		now V11 is also working in digital loop with bit stuffing
+							! always check PCM and BER settings in OFDM_modem !
+04.06.04	1	 PL/DLK	(W)		PCm and Ber is switched off in analog loop
+							!! found problems in configurations other than 256/32 !!
+					Modem is only working in combination with channel simulator
+----PL---- went back to 13.05.04 and build again step by step ------------------------------
+----PL---- went back to 13.05.04 and build again step by step ------------------------------
+
+08.06.04 	4	 PL		W		tested with 256/32 working in analog direct loop
+							256/16 working but error when restart
+							128/16 working but error when restart
+							512/64 ! working only after restart, slip if emulator start
+							512/8  not working at all
+		5	 PL		W		tested with 256/32 in analog direct loop
+		a3	 PL		W		works with stuffing, tested with 256kbps and 204800kbps(stuffing)
+							256/32 working in analog direct loop
+							128/16 working but error when restart
+		a4     PL		W		integrated spectral shift in SFC
+							works with stuffing, tested with 256kbps and 204800kbps(stuffing)
+							256/32 working in analog direct loop
+							128/16 working but error when restart
+
+09.06.04	1	 PL		W		implemented error handler
+							tested N/L combinations (still errors, but better)
+14.06.04	1	 PL		W(DL)	Comments in OFDM_Spectrum for digital loop required
+							test with 128/8
+		2	 VGP		W		OFDM_restart: changed V11 interrupt
+15.06.04	2	 VGP		(W)(DL)	new xor function
+							Evaluation in digital loop with 512/16 not working!
+							error in optim2 bit allocation: value exeeds 14 bit, simply not possible,
+							because this situation is checked. compiler error? introduced globals
+Lot of Tests...no changes
+
+21.06.04	2	PL/DLK	W		prepared directory INTDEC and lot of header files
+							enlarged Tx_Array,Rx_Array; introduced Interp_Buf_TX,Interp_Buf_RX
+							introduced pointers IntDec_Filt_Coeff,IntDec_Filt_Delay
+		3	PL		W		included INTDEC_externs/globals/defs.h
+		4	PL		W		included Initialization of Int2_Filter
+							included Interpolation in SFC_TX for BW16, but only compile,not called
+							still working with BW32, tested 256/16 restart ok in all channels
+		5	PL		(W)		switch to FN16 2-tone-sinusoid ok, QAM4-spek bad filtered, but bandwidth ok
+							SFC-filter interpolation is working in principle
+22.06.04	0	PL		W		switched back to FN32, implemented switch for FN, prepared Intx4
+		1	PL/DLK	(W)DL		tested decimation in RX by strided copy
+							!! moved copy_s operations from modem to receiver, due to memory problems
+							so this is debug version
+							DL with BW=16kHz is running with MSE of -67dB !!
+23.06.04	1	PL/VGP/DLK		W(DL)		implemeted interpolation by 8 for FN=4kHz
+							DL with FN=4kHz is running with MSE of -71dB for N/L=512/64
+		2	PL/VGP/DLK		W(DL)		implemeted decimation by 2 for FN=16kHz
+							DL with FN=16kHz is running with MSE of -73dB for N/L=512/64
+							also tested DL with Frequency-Shift Df_Hz_TX=8000.0Hz
+		3	PL/VGP/DLK	W(DL)		implemeted decimation by 4 for FN=8kHz
+							DL with FN=8kHz is running with MSE of -74dB for N/L=512/64
+							also tested DL with Frequency-Shift Df_Hz_TX=8000.0Hz (-78dB)
+		4	PL/VGP/DLK	W(DL)		implemeted decimation by 8 for FN=4kHz
+							DL with FN=4kHz is running with MSE of -73dB for N/L=512/64
+							also tested DL with Frequency-Shift Df_Hz_TX=8000.0Hz (-74dB)
+							known works ahead: amplitudes of signal after interpolation (gain)
+25.06.04          VGP		W           C compiler v.7 requirements matching from tdm_bus_io.asm (saving of r3) 
+26.06.04          VGP		W           SFC to TDM integration (ofdm_modem.c, modem_init_basic.c, ofdm_globals.h,
+                              		ofdm_externs.h, tdm\ofdm_tdm_globals.h, tdm\ofdm_tdm_externs.h,
+		                              tdm\ofdm_tdm_init.c, tdm\ofdm_tdm_rec_isr.asm, tdm\ofdm_tdm_trm_isr.asm)
+28.06.04	3	PL/DLK	W		made a lot of tests with new BWs and different N/L
+							Corrected Error in Control variable for Frequency Offset compensation in
+							"OFDM_SFC_RX.c". Now Interpolation Factor is considered.
+							BW 32,16,8,4 working in AL with MSE=55dB
+							-> Fr_tracking , OFDM_Freq_estim_RX
+29.06.02	0			W		copy of 28.06.03 step3
+		1	PL/DLK	W		impleneted Interpolation by 3 for BW 12 and 24 kHz
+							BW 24 is working
+							[modem_init, SFC_XX, /int_dec, fr_tracking, OFDM_freq_estim]
+		2	PL		(W)		implemented BW12 , not yet working, bit errors
+30.06.04	1	PL		W		corrected error in OFDM_Freq_estim_RX, ber=10^-7, MSE=50dB, QAM4 ok
+		-------->BW 32,24,16,12,8,4 running in AL<------------
+		2	PL		W		new initialization for BW selection [modem_init]
+		3	PL		W		implemented new TX/RX filters and M_max/M_QAM4 initialization for
+							BW 28 and 20
+		-------->BW 32,28,24,20,26,12,8,4 running in AL with MSE: -50dB(24,20,12) and >-55dB(32,28,16,8,4)<-----
+
+06.07.04	1	PL		W		new position for TDM buffer copy in OFDM_modem.c, now more N/L combinations
+							are working
+		2	PL		W		introduced SNR_bin_XX and Bits_bin_XX, Data_Rate_max_XX for status data
+							[globals.h, externs.h, OFDM_opt_decide_rate, Optim1, Optim3]
+07.07.04	1	PL		W		corrected error in Modulation_init_QAM4 for BW 12000
+		2	PL		W		renamed skp variables to MSE_trend_QAMx
+							reorganized TX and RX filters into own directory "tx_rx_filters"
+							moved filter externs and globals to own header files
+							moved Rx-Filter Adaptation ON/OFF switch to QAM_scheduler
+		3	PL		W		found some problems in spectral shift, corrected initialization of 
+							control variable Freq_Offset and Freq_Offset_TX
+							problem of spectral shift at BW 12 and 24kHz due to mixing at 
+							sampling frequency other than 64kHz and subsequent interpolation with filter
+							signal is than not centered in subsequent interpolation filter !
+							Different implementation is required here !
+		4	PL		W		BW12: moved exp_gen to 64kHz domain: redesign of OFDM_SFC_TX and OFDM_SFC_RX
+		5	PL		W		cosmetic in OFDM_SFC_TX and OFDM_SFC_RX for 12 kHz
+08-13.07		PL				BW24: moved exp_gen to 64kHz domain 							
+13.07.04	1	PL		W		OFDM_receiver: solved error in digital loop buffer copy
+
+=== $P4LT =========================================================================================================================
+15.07.04	0	PL/VGP	W		Transferred project to P4LT platform
+							all required changes for digital loop including TDM bus
+
+		1	PL		W		repeated last changes in OFDM_SFC_XX and modem_init
+							tested BW12 with TX frequency shift: MSE independent of F-Shift, but low (51dB in DL)
+							further optimization required
+		2	PL		W		replaced call to OFDM_restart() in OFDM_2_tone_corr. by error_handler
+							Added Stuffing_Error_CONTROL, but switched it OFF
+16.7.-20.7.04
+	We were not able to set analog loop on P4LT into operation with newest OFDM version
+	Old version (see in steps 200704, step1_from_ABB is working in analog loop) in new version V0_01 occures
+	some sort of TDM synchronization problem
+
+	So we transferd software of P4LT OFDM_DSP to DRS7 paltform. Therefore we inserted some #defines in
+	tdm_bus_io.asm, opt_decide_rate.c, QAM_scheduler_RX.C, architecture, ldf-files
+	and VGP rewrited TDM operations in DRS7 FrontEnd DSP, to match with ABBs definitions.
+	Now analog loop is working on DRS7 platform, and we hope that we can port the OFDM_DSP software with small movements
+	to P4LT platform, when the problems there are solved.
+	Meanwhile we procced with DRS7-Platform
+
+	on DRS7 platform we observe some loss of performance in analog loop during M-QAM-data, reason is still mystic
+
+=== P4LT_DRS7 =========================================================================================================================
+
+21.7.04	1	PL		W		found error in optim3.c when very small data rates are set. 
+							corrected error (-CRC-TERM, delta_bit<0,..)
+		2	PL		D		try to find reason for -3dB lost in M-QAM-data
+							inserted V11 Start delay and random generated bits, if v11 is not started
+22.07.04	1	VGP		W		changes in V11 files, but problem still there
+							implemented switch to port from DRS7 to P4LT
+							/h/board.h
+=== $P4LT =========================================================================================================================
+22.07.04	1	PL/VGP	W		first working analog loop on P4LT
+							we observed one start with -67dB ! but unfortunately only once
+							we restarted board several times, but got only max -54dB and burst errors
+		2	VGP		W		change in Init_OFDM_DSP.asm to switch between P4LT_DRS7 and $P4LT
+		3	PL/VGP/DLK	W		68dB Version. tested BW32,N=256,L=32 in analog loop
+
+=== $P4LT =========================================================================================================================
+23.07.04	1	VGP		W		Synchronization of V11 I/O start up to beginning of OFDM symbol
+
+28.07.04	1	PL		W		first step of RS integration
+							consideration of RS redundancy in optimization procedure
+							changes in: QAM_processing_XX (rename of some variables)
+							 optim1,optim3,modem_init_basic,OFDM_externs/globals (massive changes)
+							RS is considered but results are overwriten for debug, tested in AL
+29.07.04	1	PL		W		added function "RS_Encoder_Init_cb.c" and "RS_Decoder_Init_cb.c" , used in optim1()
+							considered RS redundancy in optimization procedure
+							changes in optim1-3, OFDM_globals/externs, RS_globals/externs
+							RS is considered and results are used to enlarge TCM QAM constellation to house
+							RS redundancy. But RS execution is skipped, simply dummi bits are used as redundancy
+		2	PL/VGP	D		implemented RS Encoder (transmitter side only)
+
+02.08.04	1	PL/VGP	W		implemented RS on transmitter and receiver side. RS is working in princpiple, but
+							it seems that there is not enough time for processing.
+							RS can be switched off. Found strange effect in QAM4 block 51. Found NB in 4kHz. pending items!
+		2	PL/VGP	W		Implemented Time Measurement Result: RS execution time has to be reduced by factor 2
+							This might be possible
+		4	PL/VGP	(W)		implemented first step of frequency control: it doesn't harm, still -71dB
+
+13.08.04	1	PL		W		again annomlay in optim1(). values of bit distribution are > 14 , althoug this condition is checked ?!
+							fixed it by spillting formula implementation in several lines
+
+							Tests in combination with P4LT channel simulator. Working in principle, but bad
+							EPSM. EPSM shows oscillations
+
+		2	PL		(W)		tests with two modems:
+							corrected error in QAM4_data_preparation (protect Pilots if NB interferer on pilot position)
+							found error in M-QAM-Training: wrong initialization of TCM_encoder to produce reference signal
+							TCM_encoder is initialized with TX settings, but in this case it has to be initialized with RX settings
+							pending item!
+							observed crosstalk. e.g. Pilots are detected as NB interferer.
+							changes in OFDM_engine_RX/TX, QAM4_data_preparation
+
+16.08.04	1	PL		W		Implementierung automatische Auswahl des Pilots
+17.08.04	1	PL		W		1. Stufe: AGC (primäre Frequenz-Schätzung)
+							2. Stufe: nach Kanalschätzung: a) pil_ref=argmax(K(pil0),K(pil1))
+												 b) falls NB auf pil_ref, dann switch
+							3.Stufe: in Optim1 bei Bestimmung der Vorverzerrung: Bestimmung des referenzpiloten
+												aus (von der anderen Seite empfangenen) K_abs_TX
+							Tests mit Kanalsimulator: a) transparent, b) NB auf Pilot, c) NB + Notch + AWGN
+								a) und b) max -43dB bei BW=32, 512/64, R32000
+		2	PL/DLK	W		again found anomalie in optim1(). Implemented bug work around
+		
+
+
+
+pending items:
+- Generation of Reference Training Signal in M-QAM-Training.
+- Estimation of Clock Offset
+
+06.09.04	1	PL/VGP	W		two modem connection with carrier frequency division (Master-TX/Slave-RX:496kHz ; Slave-TX/Master-RX:528kHz)
+							(Attention: load LEFT resp. RIGHT for uC and FE)
+							!! implemented workaround for NB-Detection on Pilots!!
+		2	PL/VGP	(W)		First step of correcting error in M-QAM reference signal generation
+							new function: "Trellis_encoder_Ref" called in OFDM_engine_RX. open issue: shaping_TX correction
+		3	PL/VGP	(W)		implemented switch for NB_Detection algorithm: Modem_Config.mode_reg.NB_Detection
+
+		4	PL/VGP	W		solved last issue in shaping encoder. 
+							Now generation of M-QAM reference is working using two P4LT board connection
+
+		5	PL/VGP	D		New scheme of RS encoding integration 
+
+07.09.04	1	PL/VGP	D		RS Encoder/decoder memory allocation
+08.09.04	1	PL/VGP	D		RS Encoder/decoder inplace encoding/decoding with new memory allocation
+	 	2	VGP		D		RS Encoder/decoder adaptation for 16-bit word addressing mode
+09.09.04	1	PL/VGP	D/W		RS Encoder/decoder testing
+		2	VGP		D/W		Preservation of all registers used by RS Encoder/decoder, 
+							testing in digital loop on EVM 21161 EZLite
+10.09.04	1	VGP		D/W		Preservation of all registers used by RS Encoder/decoder, testing
+		2	VGP		W		Modem testing in analog loop with enabled RS (N=512, L=64)
+		3	VGP		W		V11 buffer adjustment, Modem testing in analog loop with enabled RS (N=512, L=64)
+11.09.04	1	VGP		D/W		RS Interleaver/De-interleaver. Modem testing in digital loop
+		2	VGP		D/W		RS Interleaver/De-interleaver. Modem testing in analog loop
+		3	VGP		D/W		TCM bit buffer addressing in QAM_Processing_TX() & in QAM_Processing_RX() is changed
+		4	VGP		D/W		TCM versus RS buffers adjustment in QAM_Processing_TX() & in QAM_Processing_RX()
+12.09.04	1	VGP		D/W		RS encoder/decoder with 16-bit addressing mode only
+13.09.04	1	VGP		D/W		Integration of new functions in to Microsoft Visual C environment
+		2	VGP		D/W		RS ON Modem testing in analog loop: 
+								BW32, R=256kbps, N=512 & L=8 V11 interface doesn't work, sync. loss
+								BW32, R=256kbps, N=512 & L=16, passed
+								BW32, R=256kbps, N=512 & L=32, V11 sync. loss
+								BW32, R=256kbps, N=512 & L=64, passed
+		5	PL		(W)		Initialization prepared for User Configuration, Reorganization of OFDM_modem startup
+							new files: Wait_for_Config.c, modified: OFDM_modem, Modem_init_basic
+							integrated $Log: /branches/Source MAS/P4LT/OFDM_DSP/revision_history.txt $ in all c-files of OFDM_DSP directory
+ * 
+ * 20    29.08.08 15:24 Chhamaa
+ * 
+ * 16    07-08-10 11:01 Chchlee
+ * 
+ * 14    6.09.06 17:07 Chchlee
+ * 
+ * 11    5.04.06 15:28 Chhamaa
+ * 
+ * 11    17.03.06 14:41 Chhamaa
+ * 
+ * 9     12.12.05 15:33 Chalgyg
+ * OFDM_DSP_V0_12 from 24.11.2005
+14.09.04	1	VGP		W		Enable hardware rounding during float to integer conversion
+		2	PL		W		Backup before Implementation of Configuration Interface
+
+		3	PL/Leeb	D		First steps of Configuration interface implementation
+16.09.04	1	PL/VGP	W		Second Step of Config Interface
+
+		2_PL_counters	D		moved frequency estimation to 2-tone 2
+							moved block counters (except mqam-training, due to problems)
+		4			D		fist version of OFDM-DSP Configuration is working
+
+17.09.04	0	PL		W		moved some code to new positions in OFDM_Modem and Wait_for_config
+							working (with internal configuration)
+		1	PL backup
+		3	PL		W		replaced 2-tone correlation by 2-tone detection due to non-compensated
+							frequency offset during mute sequence
+							Tests with channel simulator with/without frequency offset
+
+20.09.04	2	PL/VGP	W		Integration of VGPs version of TDM_Control_Interface (Receive Configuration)
+							tested with new Master etc. and ETL pilot in 32kHz BW in analog shortcut: working
+
+		3	PL/VGP	W		integration of OFDM life sign
+21.09.04	0	PL		W		backup with ABB version b
+		1	PL		W		upgrade to ABB version c - working (after setting OFDM_switch to 1 in FE)
+		2	PL		W		introduced NB_NOISE_THRESHOLD for NB-Detection. Only NBs that exceed this Threshold
+							will be detected (OFDM_Defs.h , OFDM_NB_detection) 
+		3	PL/VGP	W		update of OFDM life sign (reduced frequency of flashing)
+23.09.04	0	PL/VGP	W		added types to OFDM_CFG.H
+		1	PL		W		External Configuration (first version) Wait_for_config,Verify_Modem_config,List_of_data_rates
+
+24.09.04	1	PL		W		External Configuration (second version) modem takes external configuration and works
+							!! but sync loss on V11!!
+		2	PL		W		Added Spectral Shift in dependence of APLC signal bandwidth
+							to Configuration (Wait_for.. , Verify..)
+		3	PL		W		New Versions of MASTER/FE/UC and HMI (5 data rates support and RS bugfix)
+							adapted OFDM Configuration to new version
+		4	VGP		W		Integration of new DS4000 control interface
+25.09.04		PL		(W)		testing frequency control. Results: observed sudden movements of frequency (even without control!)
+till							if clock offset is measured and controled only during startup (one initial setting) then modem works well
+28.09.04	0					up to 65dB are observed. Slowly frequency drifts are harmless. Sudden frequency movements lead to EPSM bombs (sudden loss of 10dB or more)
+							If frequency control is running during data transmission, then it tries to correct this sudden frequency movements (which is impossible) and
+							we observe oscillating frequency drifts (left, right, left, right...) and as a result one EPSM bomb after another.
+							Delay of frequency control is unknown. First tests give the impression that it is quit long (after CO measurement we waited 80 symbols before LFM
+							equalizer setting. Only then is QAM4 more or less ok (starting with 50dB, degrading to 40dB)
+		1	PL		(W)		changed DS4000_convert function (to full step)
+		2	VGP		(W)		V11: replaced copy_to/from_V11_buffer.c by assembler versions
+
+29.09.04	1	PL		W		tests to frequency control. Correction of Error in OFDM_cfg_types.h, Preparation of new version for ABB with
+							initial clock offset correction
+OFDM_DSP_V0_03.dxe					tested with external configuration in Master and Slave. Tests of following settings
+							Bandwidth 32 kHz, (zero frequency position)
+							N/L	Rate	ReedSolomon	Result
+							256/32	256	OFF		passed
+							512/8	256	ON		passed
+							64/8	256	OFF		passed
+							512/8	144	OFF		passed
+							256/8	144	ON		passed
+							128/8	 96	ON		passed
+30.09.04		PL		D		tests with frequency tracking
+01.10.04
+
+04.10.04	0	PL		W		backup, tests with frequency control (control_code from field with two alternating values)
+		1	PL		W		parallel step: integration of ABBs version 0_03
+		2	PL		W		changes in OFDM.bat, building of OFDM_DSP_V0_03b
+OFDM_DSP_V0_03b.dxe
+
+11.10.04	1	PL		W		catched the case BW=0kHZ if OFDM Modem is disabled, an endless while loop
+							is entered im OFDM_Modem.c
+15.10.04	1	PL/VGP	W		new versions of Master,uC,FE-DSP (f)
+							!! change in FE-DSP: disable_NSK and disable_NSD !! (f_TLC)
+							new version of HMI (V4)
+							-> now we are able to update firmware by HMI and store prg in flash
+	
+							Short-Status Implementation:
+							new file: Master_message_Handler.c
+							changes in OFDM_Modem.c
+
+20.10.04	1	PL		W		Short Status Information completed all fields. Changes in
+							globals,extern.h, optim3, Master_message_handler.c, OFDM_modem.c
+							QAM_scheduler_RX.c, Preamble_scheduler_RX.c, Verify_modem_Config.c,
+							OFDM_opt_decide_rate.c, OFDM_cfg_types.h
+
+							Tested BW32kHz, N=512,L=8,R=256kbit/s Max_Power PEP:42
+							got in one trial EPSM of 66dB, in other trials EPSM of 55dB
+							!! observed anomaly, different behaviour with each start !!
+							in bad trials we observe higher noise level if PEP is more than 35
+
+OFDM_DSP_V0_04.dxe
+							
+21.10.04 - 1.11.04	PL	(W)		tests with bandwidth 16 kHz. Observed crosstalk that is folded into
+							receiver spec. Did a lot of measurements to track down the reason
+							Found anomaly in AD6620 filtering. It simply doesn't work.
+							Error in clock ratio of sampling rate and input data rate (A/B pin)
+
+							changes: error catcher in Modulation_init_M_QAM for TCM
+								   delay start of noise measurement until onw transmitter is silent
+								   in OFDM_Noise_Estimation.c
+							Prepared spectrum measurement in SFC_Filter_RX and skipping of decimation filter
+unreleased OFDM_DSP_V0_05a.dxe		for debug purpose
+
+09.11.04	0	PL	backup
+		1	PL				preamble_processing_TX.c : clear output signal in idle state
+							OFDM_SFC_RX.c : tests in BW16 with decimation by two (test_FIR)
+							modem_init_basic, OFDM_Spectrum_RX improvements
+
+10.11.04	1	PL/VGP	W		exchanged implementation of decimation filter /2 and /4, removed Test_FIR
+							BW16:N/L=512/8, R=64kbps, EPS(best)=53dB (degradation due to unsynchr. clock?)
+
+15.11.04	1	PL/VGP	W		exchanged implementation of all interpolation and decimation filter asm-files
+ 
+==== ABB version g: OFDM_DSP_V0_06.dxe (unreleased)
+22.11.04	5	PL		W		integrated new versions of Master, uC, FE (with new 32kHz Filter) and OFDM-DSP
+
+23.11.04	1	PL/VGP	W		updated cycle of lifesing, precalculation of Harris Window for spectral estimation
+
+
+24.11.04	1	PL		W		FE-DSP! changed vfloat factor from -24 to -21 , now gain measured in OFDM-DSP is 1
+							QAM_processing_RX.c: initialization of variable Decoder_3212_status=0
+							OFDM_SFC_RX.c: implemented #define for Frequency Offset Kompensation in SFC_Filter,
+							based on Measurement of Freq_Offset
+ 
+25.11.04	1	VGP		D		AD5321 OFDM frequency control
+		1	VGP		D		Correct AD5321 frequency control word SDRAM monitoring
+29.11.04	1	PL		W		First version of frequency control with AD5321 implemented in Modem
+30.11.04	1	PL		W		optimized length of 2-tone signal for clock offset estimation
+							tuning with pre-equalizer settings
+							tuning of adaptation coefficient of clock control
+							tests with lengts of linear regression
+							implemented QAM4 equalizer adaptation, initial eqlzr settings are preserved for M-QAM
+01.12.04	1	PL		W		cleaned up code and comments
+		2	PL		W		test: initial clock offset by 0.24ppm in ad5321_io.c to compensate systematic? error
+							 in first clock offset estimation
+		3	PL		W		implemented new procedure for first estimation of clock offset: In an initiale estimation
+							a start value for clock offset compensation is estimated. Afterwards the clock offset
+							control value is adjusted differential with a subsequent estimation result, all derived in 
+							during 2-Tone transmission/reception
+						new file: OFDM_Freq_LinReg_RX.c houses main part of linear regression and is called from OFDM_Freq_Estim_RX.c
+OFDM_DSP_V0_06 send to ABB
+02.12.04	1_DL	PL		W		found error in frequency shift of SFC_RX-filter. Corrected error. test in Digital Loop (-71dB BW16)
+		2	PL		W		tests in analog loop
+
+OFDM_DSP_V0_06 updated, send to ABB
+03.12.04		PL		W		different tests with frequency control
+							fist version of OFDM Long Status
+
+07.12.04	1	PL		W	OFDM_DSP_V0_06 checked in return version from ABB
+		2	PL		W		implemeted first version of OFDM Long Status in returned version
+		4_NL1	PL		W		fist step of NL-Optimization State Machine
+						!! new file !!: OFDM_Optim_NL.c
+							modified files: Verify_Modem_Config.c, QAM_scheduler_RX.c, 
+
+		...
+08.12.04	1_NL3 PL		W		NL_optimization State Machine with two new states on startup:
+							RX_Preamble_State=RX_DETECTION_MODE: TX_Preamble_State=TX_NL_Mode_Call:
+						!! new file !!: OFDM_Detection_Pilot_Mode.c
+							modified files: Modem_Init_basic, Preamble_processing_RX.c, Preamble_processing_TX.c
+							Preamble_scheduler_RX.c, Preamble_scheduler_TX.c
+							OFDM_globals/externs.h, OFDM_Defs.h, OFDM_CFG_Types.h
+09.12.04	1_NL4	PL		W		new states in State Machine: TX_QAM_DELAY_SUFFIX, TX_WAIT_FOR_RESTART, RX_WAIT_FOR_RESTART
+							Transmission of Suffix is delayed to avoid a reception before Optimization is finished. If
+							Suffix is detected prior to finish of Optimization an error and exit is produced(debug)
+							After reception/transmission of Suffix the states RX_WAIT_FOR_RESTART/TX_WAIT_FOR_RESTART
+							are entered. Here a wait loop checks if both conditions Suffix_is_detected and Suffix_is_transmitted
+							are true. Only then the restart is triggerd after a delay of 5 OFDM symbols
+		2_NL5 PL		W		some error correction. Now it seems to work in principle, more tests required
+
+13.12.04	1			W		New implementation: status information of "selected data rate" returns now to "unknow" as desired
+		2			W		measurements and tests of state machine scheduling (duration of states)
+							implemented some timing tests. changed state durations in OFDM_Defs.h
+							added initialization of Preeq.re/im
+14.12.04	1	PL		W		New functions: OFDM_optim_NL_getSIR(), OFDM_optim_NL_validateSIR()
+							changes in OFDM_LFM_processing, OFDM_Optim_NL, OFDM_QAM4_Data_Preparation
+							QAM_scheduler_TX, QAM_processing_TX, OFDM_Defs.h , OFDM_extern/globals
+		2	PL		W		activated all new functions in state machine. additional changes in
+							all QAM_scheduler and _processing files, Error_handler, Optim_NL
+
+16.12.04	1	PL/VGP	W		New RS3212-encoder/decoder for reduced amount of channel data in case of
+							NL-Optimization (Starttyp I). Only one OFDM-symbol is transmitted in Starttyp I
+							changes in: QAM_scheduler_TX/RX.c QAM_processing_TX/RX.c new states
+									OFDM_globals/externs.h, OFDM_Defs.h
+						!! new files !! ../h/QAM4_FEC/vcode3212.h ../c/QAM4_FEC/vdecode3212_3x32bw.C , ../c/QAM4_FEC/vencode3212_3x32bw.C
+		2	PL		W		NL-Optimization: Calculation of shorted versions of IR and Validation of L=8,16,32,64
+							logarithmic result in FS_score_08,FS_score_16,FS_score_32,FS_score_64
+
+17.12.04	1	PL		W		Introduced Enumerations for State Machine and Error handler for more comfortable debugging
+							Configuration of Modem: Now in addition TEST_Mode(Normal/Test_Mode),TO_Mode(Interruption Time Out) is considered
+							Implementation of Time Out: modified files: Modem_init_basic.c, Pilots_Preprocessing.c,
+									0.3s,  1.5s				OFDM_engine_RX.c, Fr_tracking.c
+							Implementation of TEST_Mode switch: modified files: Wait_for_config.c, Verify_Modem_config.c, OFDM_SFC_RX.c
+							Test Mode 0: NL_Optimization ON , FO_Compensation in SFC OFF
+							Test Mode 1: NL_Optimization OFF, FO_Compensation in SFC OFF
+							Test Mode 0: NL_Optimization ON , FO_Compensation in SFC ON
+							Test Mode 0: NL_Optimization OFF, FO_Compensation in SFC ON
+							NL-Optimization: the selected N and L is now taken from HMI Settings
+							additional changes in OFDM_cfg_types.h, OFDM_globals/externs.h, OFDM_defs.h
+
+20.12.04	1	PL		W		changes in OFDM_opt_decide_rate.c: if lowest data rate out of list was selected, the Data rate Index wasn't set
+							This error is fixed now.
+							Tests over channel simulator with echo channel models
+21.12.04	1	PL/DLK	W		Additional tests over channel simulator witch echo channel model. Modifications in NL-Optimization-Algorithm
+							additional tests.. Introduced final L selection.
+							Implemented Default Answer for LongStatus
+
+11.01.05	1	PL		W		Implemented real TimeOut for Restart in NL-Optimization-Mode, State RX_DETECTION_MODE if no pilot is detected
+							changes in OFDM_globals/externs.h, OFDM_Defs.h, Modem_init_basic.c, Preamble_scheduler_RX.c
+
+OFDM_DSP_V0_07
+12.01.05	0-3	PL		W		Recompiled ABBs version of OFDM_DSP_V0_07 and integrated new uC-DSP, OFDM-DSP, Master-DSP, FE-DSP
+							Necessary Changes: in FE-DSP "#define DISABLE_NSD" was set to enable OFDM!!
+							Implemented real TimeOut in recompiled version
+OFDM_DSP_V0_08	PL		W		LongStatus Debugging: Found some errors in Master_message_handler.c. Pointers weren't working as expected.
+							Now it is fixed and it seems, that correct LongStatus data is sent back to Master-DSP
+							Nevertheless it is not working with HMI. Now Master-DSP has to be checked, if a message is received via TDM
+							changes in /c/TDM/Master_message_handler.c
+13.01.05	1	PL		W		implemented new Master-DSP -> message_handler.c
+							Now LongStatus is working in principle!!!
+
+17.01.05	1	PL		W		Completed LongStatus with all IDs. Added special routine for integer values. Made revision of Error_handler
+							changes in Master_message_handler.c, Error_handler.c, OFDM_globals/externs.h
+		2	PL		W		Increased maximum length of LongStatus-Answer to 1024 words
+							changes in send_message.c Master_message_handler.c ofdm_tdm_control_defs.h  ofdm_tdm_externs.h ofdm_tdm_globals.h
+		3	PL		W		FallBack Fallforward Service Channel: first version is working in principle. Simple Tests succeeded.
+							changes in OFDM_Fall_BackForward.c QAM_processing_TX/RX.c Verify_Modem_Config.c h/OFDM_Defs/globals/externs
+							h/TDM/ofdm_tdm_control_defs/globals/externs.h
+							new file: ServiceBits.c
+
+18.01.05	1	PL		W		NL-Optimization: Implemented control point for L-validation in starttype II (list of modified files to asss here)
+24.01.05	1	VGP		W		modified ofdm_tdm_trm_isr.asm for OFDM_Alarm with data rate information for Prototype II
+
+27.01.05	3	PL/VGP	W		Modification in V11 read and write to V11 buffer. An error was found in copy_from/to enabeling
+							Delay in V11 buffer is reduced now also
+
+OFDM_DSP_V0_09
+
+29.01.05	2	VGP		W		Adaptive V11 interface parameters adjustment in order to minimize V11 interface delay 
+							Protection from unathorized reading/writing from/to V11 buffers before V11 starts.
+OFDM_DSP_V0_09A
+31.01.05		PL/VGP	W		Modification in V11 buffer size. Now Prototype II delay in V11 command is considered in the calculation
+							of required V11_buffer size. In this version the V11 interface delay is increased again to this command delay
+
+OFDM_DSP_V0_09B
+01.02.05		VGP		W		Adaptation of Modification in V11 buffer size to the given HW delays and OFDM modem data rate.
+
+07.02.05		PL		W		Modification in V11 buffer size adjustment. Resolved error in buffer size adjustment. 
+							This latest version is now independet of NSK control delay!!! All V11 operations are started in OFDM modem
+							only if clock signal is availabel (first call to interrupt routine sets FLAG and starts all copy's to and from buffer)
+							Delay is now smaller than one OFDM symbol. There is a chance to reduce this delay further by rd-pointer movement.
+							This has to be investigated
+OFDM_DSP_V0_09C
+08-09.02.05		PL/VGP	(W)		tests with V11 buffer.
+							Return version for ptty2 from ABB recompiled
+							changed in V11_init.c (removed if SLAVE..)
+							Tests with Adaptation of receiver filter !!
+10.02.05	0	PL		(test)	Testversion with corrected V11 and testswitch for receiver filter adaptation
+
+		1	PL		W		implementd OFDM_Alarm for pilotAlm and syncAlm. Main changes in Error_handler.c, OFDM_cfg_types.h
+							modem_init_basic.c, OFDM_globals/externs.h, OFDM_Detection_AGC.c, QAM_scheduler_RX.c
+
+		2	PL		W		New version of NSK-DSP!! Now there is no clock signal before OFDM-DSP allows it. 
+							Now all pointer positions of V11 are as expected!! for gods sake. I thought I was getting mad before
+11.02.05	4	PL/VGP	W		Again optimization of V11 delay. Now that all pointers work as expected, we were able to reanimate our
+							already optimized solution
+OFDM_DSP_V0_09G
+
+18.02.05	1	PL		W		added additional error catcher for optim3 in QAM_scheduler_RX.c
+
+21.02.05	3	PL		W		Tuning for reduced bandwidths in 4kHz and 8kHz
+23.02.05	1	PL		W		integrated new ABB-P4LT files. Tuning of 4kHz, 8kHz, added local SNR calculation to LOng Status for
+							all BWs < 16. Added Error handler for Master-Master Configuration and NL-Config wrong settings
+OFDM_DSP_V0_09H	
+25.02.05 						Return version recompiled
+28.02.05	1	PL/VGP	W		modification of V11 buffer for small data rates, increased buffer length, no pointer adjustment if
+							buffer length in the range of V11_packing
+01.03.05	1	PL		W		Introduced Switch for Measurements in OFDM_engine_RX. This Switch can be controlled by Long Status on the Fly!
+		2	PL		W		Introduced Switch to enable/disable Rx-Filter Adaptation with Long Status on the Fly
+							Some tests with RS. Moved some RS program parts into internal code memory again
+02.03.05	1	PL/VGP	(W)		Tests with Linker Elimination (doesnt work correctly, now again without elimination)
+							Tests of RS decoder: introduced known number of errors. Decoder can correct 4 errors per RS-Symbol as expected
+							Introduced Processing Time Measurement and Log-Array for Idle-Time and Modem-State
+		2	PL		W		Introduced Software Version Identification Number for Long Status
+OFDM_DSP_V0_09J (1020305)
+03.03.05	1	PL		W		Corrected BLER Information for Short Status (Bit definitions in OFDM_cfg_types.h)
+							found differences in compiler versions between VisualDSP and Batch-File
+		2	VGP		W		new batch file that activates prelinker and optimization
+04.03.05		PL				A lot of tests with Ptty1 Channel Simulator and Ptty1 Modem, Ptty2-CS and so on
+							It seems that Ptty2 is not working properly with Ptty1-CS. Further investigations are necessary
+							It seems that Ptty2 with Emulator connected has lower Performance compared to Flash Version
+
+OFDM_DSP_V0_09K (1040305)
+
+15.03.05	1	PL		W		found error in OFDM_opt_decide_rate.c: if FBFFwd and minimum data rate, corrected
+							Long Status: MSE_trend_xxx max length adjusted
+							Falback/Forward is activated not before n_blk_rx_data>200 (to avoid/delay Error_Abbruch)
+							reduced bandwidth sign with bit6
+16.03.05	1	PL		W		new CL files: OFDM_DSP_Types.h, OFDM_Types.h , Master_DSP_Main.c
+							modified: OFDM_CFG_Types.h
+							new CL files: NSK_DSP_V0_00.dxe, NSD_DSP_V0_00.dxe
+							removed again: reduced bandwidth sign with bit6
+		2	PL		W		Reduced Bandwidth by "switch (Config->leftPilotPresent)" in Verify_Modem_Config.c
+							Introduced additional special treatment for BW=11500Hz (12kHz)
+
+OFDM_DSP_V0_09M (1160305)
+
+17.03.05	1	PL		W		found error in size of reserved Channel_data field for BW28 N512. Changes in OFDM_Defs.h, OFDM_Modem.c
+OFDM_DSP_V0_09N (1170305)
+21.03.05	1	PL		W		found error in OFDM Configuration field "mode". Bit 6 was missing. Changes in OFDM_CFG_TYPES.h, OFDM_Modem.c
+OFDM_DSP_V0_09P (1210305)
+
+OFDM_DSP_V0_09P (1040405)	W		modifications in OFDM_NB_Detection.c OFDM_Modem.c Modem_Init_basic.c OFDM_QAM4_Data_Preparation.c OFDM_Engine_RX.c
+							OFDM_AWGN_NB_Estimation.c  OFDM_Defs.h (Max_Index... and NB_Detection Thresholds and procedure update)
+
+OFDM_DSP_V0_09P (1060405)	W		modifications in OFDM_NB_Detection.c OFDM_Modem.c
+
+20.04.05
+OFDM_DSP_V0_09Q (1200405)	W		LifeSign: Implemented WatchDog for LifeSign-Update. Lifesign_WatchDog must be refreshed in OFDM Main Cycle
+									(OFDM Symbol Clock). Lifesign_WatchDog is decremented continuosely in ofdm_tdm_trm_isr.asm. If
+									it gets zero, no LifeSign_Update is performed. Therefore it has to set to an inital value 
+									continuously in the main loop. I tested asm-routine by activating LED-Lifesigns in Master-DSP and
+									let Modem terminate in a while(1)-loop. In the new version, the Lifesign stops
+									(in the old it was still running and that was wrong)
+							modifications in: ofdm_tdm_trm_isr.asm OFDM_modem.c OFDM_globals/externs.h
+
+25.04.05
+OFDM_DSP_V0_09R (1250405)	W		modifications in: ofdm_tdm_trm_isr.asm OFDM_modem.c send_message.c
+
+26.04.05
+OFDM_DSP_V0_09RT (92604059)	DEBUG		A Debug version, that allows to modify Windowsize of Error_ABBRUCH criterion on the fly via LongStatus
+							see OFDM_Fall_backforward.c modifications
+29.04.05
+OFDM_DSP_V0_09S (1290405)	W		corrected error in optim1
+
+23.05.05
+OFDM_DSP_V0_09T	(1230505)	W		implemented Master-Master config warning -> OFDM_Alarm.configAlm. removed debug "exit" in optim1.c
+							tried to implement "ArrayFloatCheck()" in OFDM_modem.c but failed !!!
+
+01.06.05
+OFDM_DSP_V0_09U	(1010605)	W		implemented Float Check (NAN check) directly in TDM receive interrupt routine ofdm_tdm_rec_isr.asm
+							
+04.07.05	1	PL		W		resized error log file and inserted security gap for wrap around buffer
+
+							Time Interruption problem: Pre-Equalizer setting is controled if Level_Warning. Adaptation Coefficient
+							of Kalman-Filter is reset to 1.0 with Soft decission mechanism (if last Preeq-value and actual Preeq-value
+							difference exceeds threshold)
+
+							Field of Phase values for Linear regression in frequency control is reset (pointer is moved to start of field)
+							to start a new undamaged linear regression
+							(Frequency offset control in SFC-Filter is disabled)
+		3	PL		W		Measurements revealed, that first result of Linear Regression after Time Interruption is unusable.
+							This is due to the fact, that the startphase of the pilot is unknown. Therefore the result of first LR is
+							ignored and only the last pilot phase is stored for next LR.
+							This mechanism is implemented in Fr_tracking.c with if (Df_valid_result == 0)...
+							"Df_valid_result" is introduced in OFDM_globals/externs, Modem_init_basic.c and Pilot_preprocessing
+							(Frequency offset control in SFC-Filter is activated again)
+							
+							Initial value of AD5321 register is set to 0x7FF
+OFDM_DSP_V0_09V	(1040705)
+
+-14.07.05	PL					Implememted double RX-Filter Size for N=64. Lot of changes, see documentation. 
+							Resolved error in RX-Filter Adaptation (Pilot Scaling in remodulated signal)
+
+OFDM_DSP_V0_09X	(1140705)
+
+
+[OFDM_DSP_V0_09y	22-23.8.2005 trial version with BW8 on Fn=12kHz]
+
+30.08.05		(1300805)			Additional data for LongStatus implemented (Channel_TF, Eqlzr_backup, MSE_Spectral_density_sort)
+							Defined a list of LongStatus data, that can be downloaded during commissioning of the system. This
+							data contains helpful information to rebuild/simulate the channel and the modem settings
+							Modified files: OFDM_globals/externs.h, Modem_init_basic.c, OFDM_Defs.h, OFDM_LFM_Processing.c, 
+										OFDM_CFG_TYPES.h, Master_Message_Handler.c, OFDM_Engine_RX.c, OFDM.bat, OFDM_Modem.c
+							Increases (absolute) Threshold for NB detection to NB_NOISE_THRESHOLD  ->   0.00003f (-45dB)
+31.08.05		(1310805)			Fixed problem in Prefix/Suffix detection (error in masking of unused bits at tail of the 32bit words)
+
+01.09-06.09.05	
+OFDM_DSP_V0_09Y	(1060905)			Analysis of V11 Interface Operation. Modifications in timing of V11 Interface	
+							Modifications in all V11 files in directory /c/v11 /h/v11
+							Additional frequency shift for bandwidth 20kHz and 28kHz if ETL-pilot for N=64,128
+
+07.09.-12.09.05	(1120905)			Trial Version with extended Nyquist Frequency for BW 4kHz and BW 8kHz
+							Note: allowed N/L combinations: 64/8 and 128/16
+							In this version the use of extended Nyquist Frequency is permanent (not switchable)
+							This can be easily changed in the file Verify_modem_Config.c , see BW4_8_Mode
+
+14.09.05						Problem: for very small bin size (~<30 Hz) we get a low performance. Assumption: clock control
+OFDM_DSP_V0_09Z					resp. remaining frequency offset.
+							First step: longer M-QAM training sequence if bin size smaller 25 Hz
+15.09.05						Analysis of clock control for small bin size.
+							Improvements: continuous phase for linear regressions during preamble
+									correction of systematic error in first setting of AD5321 controlword
+									(due to mismatch between default setting (Gygax) and 0ppm control value (VGP))
+							6 times linear regression and clock control during preamble, the last linear regression is also
+							used to estimate and compensate frequency offset (in SFC_TX-FIlter)
+							Frequency offset compensation with high time constant also in Slave-Modem
+							Tests also with low N
+
+							Std_FN - High_FN is switchable
+
+							modification of BW7500(High_FN) Filter
+OFDM_DSP_V0_10	(1160905) 	
+	
+	Is this the end , my friend ????   ;-)   
+
+
+
+unreleased V0_10_ur	debug			Switch Std_FN - High_FN linked to HMI-Switch TimeOut Low/short-std-FN , High/long-HighFN
+							modifications in AD5321 control word, implemented Gygax-Measurement Code-ppm relation, change in offset
+							reduced number of linear regression during preamble
+							corrected error in Master_Message_handler (longStatus M_RX)
+							deactivated stuffing control, stuffing control only if level_error=0 CRC_error=0
+							test for early suffix fixed (same as main suffix detection)
+
+27.09.05
+30.09.05						Switch Std_FN - High_FN as defined
+							Switch TimeOut-Low / TimeOut-High as intended (for release version)
+OFDM_DSP_V0_11_ur (12709051)
+08.11-
+14.11.05	1	PL	W			Nachgelagerte Frequenzregelung, mit einer Variante der Regelkonstaten
+
+16.11.05		PL	W
+OFDM_DSP_V0_12	(1161105)			Feintuning der Regelkonstanten
+ 
+24.11.05		PL	W			Corrected error in Fisher statistic calculation (replaced regularization constant by seperate energy level check)
+OFDM_DSP_V0_12					[error found due to problems of receiver sensitivity], modified OFDM_Detection_AGC.c, OFDM_2Tone_Correlation.c
+										OFDM_Detection_Pilot_Mode.c
+
+1.11.05 - 20.12.05 PL	W			Analysis of delay, timing of receiver and transmitter and dependencies. Modification of TDM Interrupt service routines
+							Independent timing of transmitter and receiver with independet trigger sources. Modification of receiver block synchronization.
+							Implementation of new block synchronization in tdm 64kHz domain.
+							Known restrictions: Measurement of IDLE-Time is not working anymore (in previous version, transmitter and receiver were
+							executed one after another and the remaining (idle) time was measured. Now transmitter and receiver are called independently and
+							and with unknown (channel depending) time offset. Therefore the idle time is split in two parts. The old way of measuring
+							idle time cant work anymore)
+OFDM_DSP_V0_13
+
+21.12.05 - 5.1.06					Analysis of modem performance for BW4kHz/3.5kHz LowDelay(N=64) and HighDelay(N=128)
+Software ID 1040106 ->0_15ur			Preliminary performance measurements to verify improvement (if there is any ;-)
+							Adaptation of modem software (frequency shift in TX-Path) to new FE-DSP (mixing and IIR)	
+OFDM_DSP_V0_15ur					Analysis of TX and RX filter synthesis, 
+unreleases version for preliminary tests  New concept of interpolation from FN to 64kHz for BW 4kHz(3.5kHz) for N=64 and N=128
+							New OFDM-Filter-TX and RX with interpolation/decimation by 8
+							New SFC-Filter implementation for FN=4kHz and FN=6kHz. New SFC filter impulse responses
+							Before, all steps were prepared in Matlab V29 (in addition Preparation of L=7 in Matlab)
+	
+							Tests have to be made with new FE-DSP version.
+
+							to be tested:
+							BW 4kHz   HighDelay N=128 L=8
+							BW 3.5kHz HighDelay N=128 L=8
+							BW 4kHz   LowDelay N=64 L=8
+							BW 3.5kHz LowDelay N=64 L=8 (still has to be optimized, is working only with IIR-filter for 4kHz and if ETL-Pilot is switched off)
+
+6.1.06 - 18.1.06					Analysis of start-up behaviour of BWs>16kHz. 
+Software ID 11801061 ->0_16ur			Integration of new concept of IDLE-TIME measurement. Transmitter and Receiver processing time
+							is now estimated independently and the single results and the resulting idle time,a s well as transmitter and 
+							receiver state are stored in the array "time_trend",which is accessible by LongStatus.
+							Analysis of processing time revealed bottle neck during optimization of signal code construction, which was
+							modified for this reason.
+							(In 0_16ur IDLE_TIME measurement is switched off, it can be switched on by compiler #define)
+							
+							Special analysis of start-up behaviour of BW 24kHz. Due to interpolation/decimation with factor 3, the
+							estimated block offset on Nyquist frequency domain might be not an integer value on 64kHz domain.
+							This might be a reason for the bad startup behaviour of 24kHz. A solution to this problem was found in modification 
+							of the delay of the RX-Filter (modification of "Predd") (which is synthesised during LFM-processing) by 1 or 2 samples, to get a resuling block offset
+							which is dividable by 3.
+
+							Integrated Frequency Shift for BW7500 N64/16 (reson for no-go in 64/16)
+							test of new interpolation filter for BW8 FN8 (FFTx2,SFCx4)
+							
+							Shortening of M-QAM-Training to 50 OFDM symbols (instead of 100) just to test
+
+							New SFC-Interpolation Filter for BW8 FN8 (FN8_2_4_ce1)
+
+							Modification of TX-Filter in BW4 LowDelay (N/L=64/8)
+
+19.01.06 - 26.01.06
+Software ID 12601061 ->0_19ls_272		Tests with BW35, 128/8 and frequncy shift. ABB result: no improvement with higher frequency shift
+					    FN=4.8  Implementation of Low Delay Version with FN=4.8kHz !!
+							New Interpolation engine for x5-interpolation, written in assembler with 5 stage polyphase filter,
+							filter length 25 taps. Design of new x5-interpolation filters and x3 decimation filters for (FFTx8)SFCx5/3
+							interpolation from 4.8kHz to 64kHz.
+							Design of new tx/rx-filters for FN=4.8kHz and BW=4.0 and BW=3.5kHz.
+							Implementation of all necessary modem configuration steps for FN=4.8kHz.
+	double and single RX-Filter length	Implementation of special version for N=64 with single RX-Filter length (N-L+1)
+	DEBUG SWITCH: Time_out low and high  Switching between single and double RX-Filterlength for N=64 with Time_Out-Configuration switch.
+							Reorganisation of modem_init_basic.c due to special case N=64 with single length RX Filter.
+							Reduction of processing time by skipping spectral estimation of receiver input spectrum.
+
+							Note: BW3.5kHz and N/L=64/8 has to be tested with IIR 4khz Filter in FE-DSP (f_shift=272)
+
+
+27.01.06 - 10.02.06
+Software ID 11002061 ->0_22			Implemented new Nyquist Frequency FN=9.6kHz for LowDelay-Version.
+							Design of new tx/rx-filters for FN=9.6kHz and BW=8.0 and BW=7.5kHz.
+							Implementation of all necessary modem configuration steps for FN=9.6kHz.
+							Implemented new measurement procedures for "Badewanne"
+							L=7: Implemented all necessary modifications (2-ton sinusoid phase control,
+								LFM-processing with L_PROTO=8, if L==7, Phase-control in TX-and RX-Filter,
+							Unfortunately it is not yet working for FN=9.6kHz, a strange error occurs in interpolation x3
+							But 128/16 is already working and can be tested
+
+							!! For BW=8000 the FE-DSP frequency shift must be 4000Hz (no 5Hz Offset!!!)
+
+10.02.06 - 15.02.06
+Software ID 01502061 ->0_22l7			Finally found the error, why L=7 was not working, in fact it has nothing to do with L=7
+							It only occured accidently because block length at input of x3 interpolation stage was not
+							dividable by 8. There was an error in the backup of polyphase-filter delay line in the
+							assembler file. Now I found it and everything is working well. So I'm glad to present the new version.
+							;-)
+							
+
+01.03.06 TEST VERSION with Cosine-Frequency Sampling Filter for BW=3.5kHz LD , SOFTWARE_VERSION_ID  12302061 -> 0_24cos
+
+02.03.- 09.03.06	ID 10703061 ->0_25	Last optimization of number of carries for BW 3,5 4 7,5 8 High and Low delay
+							3.5: LD 38 unchanged , HD 102 (new, before 100)
+							4.0: LD 44 unchanged , HD 108 (new, before 106)
+							7.5: LD 86 unchanged , HD 108 (new, before 106)
+							8.0: LD 92 unchanged , HD 108 (unchanged)
+
+							First step of BW15.5 kHz Optimization: new SFC-Filter, new TX/RX-Filter
+
+TEST VERSION 0_26_fn4 test of bw3.5 fn=4 N/L=64/8
+!!proceed with 0_25!!
+
+-17.03.2006		ID  11603061 ->0_27	Optimization of BW15.5 kHz, freq-shift 100Hz, new RX/TX-Filter for N=128,256
+							Optimization of BW24, new SFC, new TX/RX-Filters for N=128 and N=256
+							Optimization of BW32, new TX/RX-Filters for N=128 and N=256
+							Final configuration for BWs <= 8kHz LowDelay and HighDelay
+							BW	LD/HD	N(L)			FN	 M
+							3.5	LD 	64(8,16)		4000	 48
+							3.5	HD	128(8,16,32)	4000  102
+							4.0	LD	64(8)			4800	 44
+							4.0	HD	128(8,16,32)	4000	108
+							7.5	LD	128(7,16)		9600	 86	with HMI setting 64(8,16)
+							7.5	HD	128(8,16,32)	8000	108
+							8.0	LD	128(7,16)		9600	 92	with HMI setting 64(8,16)
+							8.0	HD	128(8,16,32)	8000	108
+
+							Short status modification for 7.5 and 8.0 LD, don't tell the truth
+
+lets start rumble
+
+
+02.08.2006		ID  10208061 ->0_28 	        Attempt to fix MOD600 crash
+			
+1.6.2007		Initial dual pilot tone levels reduced by 3dB (constant A_2TONE)
+
+-----------------------------------------------------------------------------------------------------
+2008
+-----------------------------------------------------------------------------------------------------
+07.04.2008	PL	w	Integration of Phase Measurement with Flag2 and Flag1 
+				Flag is set in ofdm_tdm_isr and cleared in vcopy_in/out/buf, initialization in ofdm_init_dsp
+				Integration of first shot of phase control state machine and long status for delta_phase_offset
+
+08.04.2008	PL	w	digitale Messung der Phase und Ausgabe im LongStatus, Beobachtung der Phasenbewegung im Osci
+				korrespondiert, Manipulation der Clock-Offset-Messung (CO_delta +/-=1.0E-8) um Phase in eine
+				bestimmte Richtung zu schicken.
+				Alle Beobachtungen sind plausibel
+				!! Debug Phasenmanipulation
+10.04.2008	PL		Vorbereitung Tracking mit PhaseControl, Messung der wesentlichen Parameter im LS
+11.04.2008	PL		Vorbereitung Bandbreite 2kHz
+14.04.2008	PL		Inbetriebnahme Phasenregelung, erste Tests, Test über Nacht
+15.04.2008	PL	w	Auswertung des tests. Beobachtung der Stellgrößen und Phasenbewegung
+11504081 v31		Flashversion
+				Erste Tests BW2kHz. 
+		PL		Design neuer Interpolations/Decimationsfilter für 2kHz
+				Start Langzeittest
+17.04.2008	PL	w	Zwischenauswertung
+21.04.2008 	PL		Ende Langzeittest, Auswertung, Test der Bandbreite 2kHz, Test der neuen Interpolationsfilter
+				Variation der TX/RX-Filter, Implementierung der Wahl der Frequenzlage
+				Erweiterung des LongStatus für Phasenregelung, Verstärkungsfaktor über HMI, Begrenzung der regelgröße
+v32 12104082		-> ABB
+22.04.	PL	w	weitere Anpassungen für BW6kHz. Test 4 Tage Phasenregelung 4kHz N/L=128/8
+  -30.04			Test 6 Tage Phasenregelung BW32kHz N512/8	 
+30.04.2008	PL	w	Weitere Anpassungen für BW6kHz. Integration und Test für L=7 !!
+v34 13004081		Test BW6kHz bei R=40kbps bei 64/8; 128/7; 128/16; 256/8; 256/32
+				N=512 geht derzeit nicht wegen Speicher (hierzu ist Filter- und SFC-Interpolation anders zu gestalten) 
+				Test BW2kHz bei R=12kbps bei 64/8; 64/16; 128/8; 128/16, 128/32 (!! N<=128 !!)
+v35 			w	tests zur Phasenregelung im Rauschen, Robustheitssperren auf 200 gesetzt, Test mit SNR=22dB
+15.05.2008
+v35 			w	BW2 und 6: Implementierung der Frequenzverschiebung in Abstimmung mit FE-DSP
+
+bis 26.05.2008
+v36			w	Implementierung des Schleppzeigers für High-Floats
+				Untersuchung und Lösung der CRC-Problematik in Kanaldaten. Ursache war in Channel_Data.Settings[]
+				welches wegen nachfolgender RS(32,12)-Kodierung auf 12Bit begrenzt sein muss , die
+				uninitialisierten und unbenutzten Einträge für N/L_Selected, welche nach Power-Up mit Zufallsdaten belegt sind.
+				Falls hier die Bits 13-32 ungleich Null waren, dann liefert CRC (welcher alle 32Bit berücksichtigt) 
+				sendeseitig einen anderen Wert als Empfangsseitig, wo automatisch auf 12Bit begrenzt wird und	
+				die Bits 13-32 immer Null sind.
+				Nun wird das Feld Channel_Data.Settings[] nach der Beschreibung nochmal explizit auf 12Bit begrenzt, bevor
+				CRC gebildet wird.
+bis 29.5.2008	w	Feintuning für 6kHz:
+				N=128: Neues Filterdesign für TX/RX-Filter. Shift+40Hz aktiviert in FE-DSP und
+				OFDM-DSP, mit neuem Filter ist Spektrum aber trotzdem schmaler um ca. 200Hz am oberen Rand.
+				N=64: Neues Filterdesign für TX/RX-Filter. Anpassung der Anzahl der Subcarrier auf M=46	
+				Spektrum identisch zu N=128 Variante
+				N=256: Neues Filterdesign für TX/RX-Filter. Neue SFC-Filter, damit Kanalschätzung convex.
+				Filter sind so steil, dass Spektrum noch weiter an Pilot gerückt wurde, ohne dass der Pilot einen
+				Störeinfluss hat. Evtl. dadurch noch Verbreiterung des Spektrums möglich
+				N=512: Neue Implementierung der SFC-Struktur mit FFTx2, SFCx4/3x4. Test zunächst mit StandardFilter
+				Verschiebung Richtung Pilot möglich.
+02.06.2008 v_36 10206081 an ABB
+03.06.2008 - 09.06.2008	Tests mit Phasenregelung. Messung und Herleitung der Abhängigkeiten
+				 tµs=f(HUB*Nlrs) und Phasediff=f(HUB*Nlrs) und eps=f(HUB)
+				Test mit Verstärkungsfaktor 1 auf Basis der hergeleiteten Abhängigkeiten
+09.06.2008			BW6kHz. Optimierung für N=256 und N=512 (Anzahl der Teilkanäle, Frequenzlage, TX/RX-Filterdesign)
+				Spektrale Maske an N=128 angeglichen.
+10.06.2008			Messung der reinen Clockregelung (ohne Phasenregelung). Nach einigen Stunden tritt ein
+				Quantisierungseffekt auf. Die Ergebnisse der LR sind quantisiert. Dadurch auch die Stellgröße der Clockregelung
+				Die Varianz der Clockregelung nimmt zu und führt zu Phasenbewegung, welche in Folge von der
+				Phasenregelung nicht mehr ausgeglichen werden kann. Nach Analyse der LR konnte nachgewiesen werden,
+				das hohe Werte von ow0 und ow1 zu diesem Verhalten führen. Provokation durch unmittelbares Setzen von ow0 und ow1
+				auf hohe Werte. Abhilfe schafft die fortlaufende Normierung auf ow0, bzw. Parallelverschiebung der
+				beiden Geraden, so dass Y-Achsenabschnitt von Pilot0 auf Null gesetzt wird.
+16.06.2008			Neuer Ansatz der Phasenregelung: 
+				1) kontinuierliche Regelung (nicht Ablöseregelung)
+				2) Rückkopplung (nicht nur Steuerung, sondern Regelung)
+				3) PID-Regler. Der P-Anteil korrigiert einen "ruhenden" Phasenversatz. Der D-Anteil berücksichtigt,
+				dass die Stellgröße (Frequenz) die Ableitung der Phase ist. Ein D-Anteil berücksichtigt somit die Phasenänderung.
+				Diese wird dahingehend bewertet, ob eine Phasenbewegung in Richtung Referenzphase (RP) oder entgegengesetzt stattfindet.
+				Falls in Richtung RP, dann wird Bewegung gedämpft (zur Mitte hin gebremst), falls entgegen dann wird 
+				mehr Gas gegeben Richtung Mitte. 
+				Kurze vielversprechende Tests im Rauschen
+16.06.-24.06.2008		Langzeittest BW16,128/8,R=19200 im Kanal ohne Rauschen. Beobachtung des Einflusses auf EPSM.
+				Resultat: Phase sehr stabil (innerhalb 1µs). EPSM stabil ohne Einbrüche. Hoffungsvolles Resultat
+24.06.2008			Optimierung für BW=6kHz N=128. Anzahl der modulierten Träger um 2 erhöht. Dadurch wesentlich bessere QAM-Verteilung
+				(bei R=36kbps kein QAM4096 mehr nötig). TX/RX-Filter beibehalten. Analyse der "Badewanne". 
+				Verschiebung um 46Hz Richtung ETL-Pilot.
+				Performancemessung bei SNR_IB=32dB, SNR_KS=33.222dB. EPSM=30/31, DeltaSigma=4, BER=0 nach 10E8 Bits
+				
+				Aufräumen der Phasenregelung und neue Platzierung in Bereich "df_valid_result==1". Dadurch werden aktuelle Messungen der
+				Phase und der unmittlebare Vorgänger in die Regelkette der Clock gelegt.
+				!! Die Phasenregelung ist derzeit nur aktiv, falls "Mod600 Parameter 1 = 1.0"	!!
+				!! Sie setzt bereits nach 256LRs ein, später ist geplant 1/2h Wartezeit
+				LS debug-Felder: 60,63,65 und 64
+				Messung im Link über Kanalsimulator mit aktivierter Phasenregelung SNR_IB=32dB, R=36kbps, BW6 wie oben
+				..sieht gut aus bis jetzt
+v0_37 ID 12406081 an ABB				
+ 				!! Die Phasenregelung ist derzeit nur aktiv, falls "Mod600 Parameter 1 = 1.0" im Slave!! (Master dont care)
+				alle anderen Parameter sind derzeit ohne Bedeutung
+v0_37+			Fehlerkorrektur in Phasenregelung (erste Schätzung des D-Anteils war falsch, erkannt durch Simulation in Matlab)
+
+v0_38				Debug-Versionen: Untersuchungen zum Modem-Stucking nach NB im Kanal für 32kHz 64/8
+				und andere Bandbreiten. Debug-Switches mit LongStatus50. Breakpointfallen, Delay-State beim Start.
+				Delay in Master mit OFDM-Parameter 2 und im Slave mit OFDM-Parameter 3
+				RS-Dekoder ersetzt durch Dummy-Funktion, die nur die Inf-Bits auslöst.
+v_038dbg2			Version mit Breakpoints zur Untersuchung von BW4 128/8 Stucking (wahrscheinlich Protokollversatz)
+
+v_029 ABB Release		Version aufgebaut auf Release v0_27 und mit Updates von v0_37+ bzgl.Änderungen der Phasenregelung 
+				und Korrektur CRC-Fehler bei Kanaldatenübertragung übernommen. Alle Änderungen bzgl.
+				Bandbreiten 2kHz und 6kHz Änderungen wurden aussondiert und nicht übernommen.
+				Phasenregelung ist permanent an. MOD600-Parameter 1-4 sind ohne Bedeutung bzw. nicht integriert.
+				Vorgetestet bei BW4khz 128/8 24kbps ohne Rauschen und mit Rauschen bei ca. 31dB SNR
+				!! Die Beobachtung der Phasenposition auf dem Scope ist ermöglicht, da die SW die Testpunkte ansteuert
+16.07.2008
+v0_39		basiert auf 37+: Änderungen der Koeffizienten ALPHA_CO und ALPHA_PHASE in fr_tracking, spezielle Wahl des
+				Vorentzerrerkoeffizienten für FN==2000 auf 0.4, damit Start im Rauschen besser konvergiert.
+				Tests bei FN=2000, 128/8 ohne Rauschen und mit Rauschen SNR_IB=30dB. BER=3.0E-6, gute Konvergenz beim Start
+				Messungen des Phasen- und Clockverhaltens, Doku in EXCEL
+				Integration der Lösung für RS-Rechenzeit (zusätzlicher State für Ausführung RS bei gleichzeitiger Deaktivierung (Pause)
+				des OFDM_Engine_RX.
+17.07.2008
+v0_39D ID 11707081	MAS: RSfix+RestartDelay. Integration der Lösung Restart_Delay nach Sync-Alarm und Test bei 4kHz 128/8 mit Störung auf Pilot
+
+v0_39E ID 11707083	MAS: RSfix+NewPreamble
+
+v0_29D ID 11707082	Rel29: RSfix+RestartDelay
+
+v0_29E ID 11707084	Rel29: RSfix+NewPreamble
+	
+
+v_029F ID 12107081	Rel29: RSfix+RestartDelay+NewPreamble
+
+v_039F ID 12107083	MAS-Rel39: RSfix+RestartDelay+NewPreamble
+
+23.07.2008
+v_039G ID 12307083	MAS-Rel39G: =39F + Konfigurierbare FallBack/FallForward-Parameter
+				OFDM-DSP erhält die Parameter von Master-DSP als Bestandteil der Konfigurationsdaten
+				Reset des Maximum-Hold-Values über LS ermöglicht
+
+v0_39H ID 12407083	Update OFDM_Modem.c , QAM_processing_RX.c , \QAM4_FEC\Decode_CHD.C
+				Splitting des Channel_Data_Decoding in 3 OFDM_Symbole (anstelle 1)
+
+
+v0_39K ID 12008083	MAS-Rel39 mit unveränderten (default) Pilottonpositionen. Analyse der High-Floats. Debugging
+				Fix in Initialisierung von Arbeitsfeld Cmplx_Array und 1.Phase im Slave wenn Mute gesendet wird
+				in Preamble_Processing_TX.c
+
+
+  
+
+
+
+
+
+
+
+
+
+	
+								
+
+
+
+
+		
+
+ 
+
+
+
+
+							
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+		
+
+
+
+
+
+
+
+
+
+.
+		
+
+
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							

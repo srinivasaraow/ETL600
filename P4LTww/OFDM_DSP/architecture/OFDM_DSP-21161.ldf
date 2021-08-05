@@ -1,0 +1,201 @@
+//-------------------------------------------------------------------------
+// $Workfile: OFDM_DSP-21161.ldf $
+// Part of      : ETL600
+// Language     : C
+// Created by   : Hans Peter Rytz
+// Remarks      :  
+// Purpose      : 
+// Copyright    : ABB Switzerland Ltd., 2004
+//-------------------------------------------------------------------------
+//
+//-------------------------------------------------------------------------
+// $Log: /Source/P4LT Prototype 2/OFDM_DSP/architecture/OFDM_DSP-21161.ldf $
+// 
+// 1     19.01.05 15:36 Chchlee
+// 
+// 4     30.09.04 11:03 Unp00632
+// Cleaned SEARCH_DIR()
+// 
+// 3     29.09.04 18:17 Unp00632
+// 
+// 2     17.06.04 16:21 Gygax02
+// FPGA code segment changed from 0xA00000 to 0x200000
+// 
+// 1     18.05.04 10:52 Gygax02
+// 
+// 7     8.04.04 16:06 Rytz01
+// $OBJECTS = $COMMAND_LINE_OBJECTS;
+// changed
+// 
+// 6     7.04.04 14:52 Rytz01
+// Adjustment of the memory segments. More investigation is necessary.
+// 
+// 5     7.04.04 12:04 Rytz01
+// First adjustment of the memory segments. More investigation is
+// necessary.
+// 
+// 4     6.04.04 8:40 Rytz01
+// 
+// 3     6.04.04 8:40 Rytz01
+// 1     Initial version
+//-------------------------------------------------------------------------
+
+
+ARCHITECTURE(ADSP-21161)
+
+//
+// ADSP-21161 Memory Map:
+//   ------------------------------------------------
+//   Internal memory  0x0000 0000 to 0x000f ffff
+//   ------------------------------------------------
+//                    0x0000 0000 to 0x0001 ffff  IOP Regs
+//           Block 0  0x0002 0000 to 0x0002 1fff  Long Word (64) Addresses
+//                    0x0002 2000 to 0x0002 7fff  (reserved)
+//           Block 1  0x0002 8000 to 0x0002 9fff  Long Word (64) Addresses
+//                    0x0002 a000 to 0x0003 ffff  (reserved)
+//           Block 0  0x0004 0000 to 0x0004 3fff  Normal Word (32/48) Addresses
+//                    0x0004 4000 to 0x0004 ffff  (reserved)
+//           Block 1  0x0005 0000 to 0x0005 3fff  Normal Word (32/48) Addresses
+//                    0x0005 4000 to 0x0007 ffff  (reserved)
+//           Block 0  0x0008 0000 to 0x0008 7fff  Short Word (16) Addresses
+//                    0x0008 8000 to 0x0009 ffff  (reserved)
+//           Block 1  0x000a 0000 to 0x000a 7fff  Short Word (16) Addresses
+//                    0x000a 8000 to 0x000f ffff  (reserved)
+//   ------------------------------------------------
+//   Multiproc memory 0x0010 0000 to 0x007f ffff
+//   ------------------------------------------------
+//                    0x0010 0000 to 0x0011 ffff  2116x ID=001 Internal memory
+//                    0x0012 0000 to 0x0013 ffff  2116x ID=010 Internal memory
+//                    0x0014 0000 to 0x0015 ffff  2116x ID=011 Internal memory
+//                    0x0016 0000 to 0x0017 ffff  2116x ID=100 Internal memory
+//                    0x0018 0000 to 0x0019 ffff  2116x ID=101 Internal memory
+//                    0x001a 0000 to 0x001b ffff  2116x ID=110 Internal memory
+//                    0x001c 0000 to 0x001f ffff  2116x ID=all Internal memory
+//   ------------------------------------------------
+//   External memory  0x0020 0000 to 0xffff ffff
+//   ------------------------------------------------
+//
+// This architecture file allocates:
+//         Internal 256 words of run-time header in memory block 0
+//                  256 words of initialization code in memory block 0
+//                   6K words of C code space in memory block 0
+//                   3K words of C PM data space in memory block 0
+//					 2K words of DMA space in memory block 0
+//					
+//                   8K words of C DM data space in memory block 1
+//                   4K words of C heap space in memory block 1
+//                   4K words of C stack space in memory block 1
+
+// This line must be adjusted for each DSP!!!
+SEARCH_DIR( $ADI_DSP\211xx\lib;"..\..\Libraries")
+
+$LIBRARIES = libc161.dlb, libio.dlb, libdsp160.dlb, libcpp.dlb, libcpprt.dlb;
+
+// Libraries from the command line are included in COMMAND_LINE_OBJECTS.
+//$OBJECTS = 161_hdr.doj, $COMMAND_LINE_OBJECTS;
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+
+
+MEMORY
+{
+	// Block0
+	seg_rth  { TYPE(PM RAM) START(0x00040000) END(0x000400ff) WIDTH(48) }
+	seg_init { TYPE(PM RAM) START(0x00040100) END(0x000401ff) WIDTH(48) }
+	seg_pmco { TYPE(PM RAM) START(0x00040200) END(0x000419ff) WIDTH(48) }
+	seg_pmda { TYPE(PM RAM) START(0x00042700) END(0x000433ff) WIDTH(32) }
+	seg_dma	 { TYPE(DM RAM) START(0x00043400) END(0x00043fff) WIDTH(32) }
+
+	// Block1
+	seg_dmda { TYPE(DM RAM) START(0x00050000) END(0x00051fff) WIDTH(32) }
+	seg_heap { TYPE(DM RAM) START(0x00052000) END(0x00052fff) WIDTH(32) }
+	seg_stak { TYPE(DM RAM) START(0x00053000) END(0x00053fff) WIDTH(32) }
+
+	// external SDRAM
+	ext_code   { TYPE(PM RAM) START(0x00200000) END(0x0027ffff) WIDTH(48) }
+	ext_dmda   { TYPE(DM RAM) START(0x00290000) END(0x002fffff) WIDTH(32) }
+//	ext_config { TYPE(DM RAM) START(0x00xxxxxx) END(0x00xxxxxx) WIDTH(32) }
+	ext_fpga   { TYPE(DM RAM) START(0x00300000) END(0x0031ffff) WIDTH(32) }
+}
+
+
+
+PROCESSOR p0
+{
+    LINK_AGAINST( $COMMAND_LINE_LINK_AGAINST)
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    {
+		// .text output section
+		seg_rth
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_rth) $LIBRARIES(seg_rth))
+		} >seg_rth
+
+		seg_init
+		{
+			ldf_seginit_space = .;
+			INPUT_SECTIONS( $OBJECTS(seg_init) $LIBRARIES(seg_init))
+		} >seg_init
+
+		seg_pmco
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_pmco) $LIBRARIES(seg_pmco))
+		} >seg_pmco
+
+		seg_pmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_pmda) $LIBRARIES(seg_pmda))
+		} >seg_pmda
+
+		seg_dma
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dma)  $LIBRARIES(seg_dma))
+		} >seg_dma
+
+		seg_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(seg_dmda) $LIBRARIES(seg_dmda))
+		} > seg_dmda
+
+
+		stackseg
+		{
+
+			// allocate a stack for the application
+			ldf_stack_space = .;
+			ldf_stack_length = MEMORY_SIZEOF(seg_stak);
+		} > seg_stak
+
+		heap
+		{
+			// allocate a heap for the application
+			ldf_heap_space = .;
+			ldf_heap_length = MEMORY_SIZEOF(seg_heap);
+			ldf_heap_end = ldf_heap_space + ldf_heap_length - 1;       
+		} > seg_heap
+
+		ext_code
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_code) $LIBRARIES(seg_pmco))
+		} > ext_code
+
+		ext_dmda
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_dmda) $LIBRARIES(ext_dmda) $LIBRARIES(seg_dmda))
+		} > ext_dmda
+
+// for further use or other DSP's
+//		ext_config
+//		{
+//			INPUT_SECTIONS( $OBJECTS(ext_config) $LIBRARIES(ext_config))
+//		} > ext_config
+//
+		ext_fpga
+		{
+			INPUT_SECTIONS( $OBJECTS(ext_fpga) $LIBRARIES(ext_fpga))
+		} > ext_fpga
+				
+    }
+}
+
