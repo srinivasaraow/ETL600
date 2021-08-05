@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom bhv
+DEFAULT_FILE atom tb_v11_if_bhv.vhd

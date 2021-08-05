@@ -1,0 +1,6916 @@
+DocumentHdrVersion "1.1"
+Header (DocumentHdr
+version 2
+dmPackageRefs [
+]
+machine (Machine
+name "rx_transfer"
+children [
+(Machine
+name "rx_transfer"
+children [
+]
+)
+(Machine
+name "tx_transfer"
+children [
+]
+)
+]
+)
+properties [
+(HdrProperty
+class "HDS"
+name "DocView"
+value "dt_port_master_btransfer_rtl.vhd"
+)
+(HdrProperty
+class "HDS"
+name "DocViewState"
+value "1303915690"
+)
+]
+)
+version "19.1"
+appVersion "2010.2a (Build 7)"
+model (FlowChart
+VExpander (VariableExpander
+vvMap [
+(vvPair
+variable "HDLDir"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hdl_vm"
+)
+(vvPair
+variable "HDSDir"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm"
+)
+(vvPair
+variable "SideDataDesignDir"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer\\rtl.fc.info"
+)
+(vvPair
+variable "SideDataUserDir"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer\\rtl.fc.user"
+)
+(vvPair
+variable "SourceDir"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm"
+)
+(vvPair
+variable "appl"
+value "HDL Author"
+)
+(vvPair
+variable "arch_name"
+value "rtl"
+)
+(vvPair
+variable "config"
+value "%(unit)_%(view)_config"
+)
+(vvPair
+variable "d"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer"
+)
+(vvPair
+variable "d_logical"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer"
+)
+(vvPair
+variable "date"
+value "27.05.2011"
+)
+(vvPair
+variable "day"
+value "Fr"
+)
+(vvPair
+variable "day_long"
+value "Freitag"
+)
+(vvPair
+variable "dd"
+value "27"
+)
+(vvPair
+variable "entity_name"
+value "dt_port_master_btransfer"
+)
+(vvPair
+variable "ext"
+value "<TBD>"
+)
+(vvPair
+variable "f"
+value "rtl.fc"
+)
+(vvPair
+variable "f_logical"
+value "rtl.fc"
+)
+(vvPair
+variable "f_noext"
+value "rtl"
+)
+(vvPair
+variable "group"
+value "UNKNOWN"
+)
+(vvPair
+variable "host"
+value "ZRHN0892"
+)
+(vvPair
+variable "language"
+value "VHDL"
+)
+(vvPair
+variable "library"
+value "NSK600_lib"
+)
+(vvPair
+variable "library_downstream_ISEPARInvoke"
+value "$HDS_PROJECT_DIR/NSK600_lib/ise"
+)
+(vvPair
+variable "library_downstream_ImpactInvoke"
+value "$HDS_PROJECT_DIR/NSK600_lib/ise"
+)
+(vvPair
+variable "library_downstream_ModelSimCompiler"
+value "$HDS_PROJECT_DIR/NSK600_lib/work/"
+)
+(vvPair
+variable "library_downstream_PrecisionSynthesisDataPrep"
+value "$HDS_PROJECT_DIR/NSK600_lib/implementation"
+)
+(vvPair
+variable "library_downstream_XSTDataPrep"
+value "$HDS_PROJECT_DIR/NSK600_lib/ise"
+)
+(vvPair
+variable "mm"
+value "05"
+)
+(vvPair
+variable "module_name"
+value "dt_port_master_btransfer"
+)
+(vvPair
+variable "month"
+value "Mai"
+)
+(vvPair
+variable "month_long"
+value "Mai"
+)
+(vvPair
+variable "p"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer\\rtl.fc"
+)
+(vvPair
+variable "p_logical"
+value "C:\\Projects\\local_FPGA_databases\\ETL600\\FPGA\\NSK_FPGA\\NSK600_lib\\hds_vm\\dt_port_master_btransfer\\rtl.fc"
+)
+(vvPair
+variable "package_name"
+value "<Undefined Variable>"
+)
+(vvPair
+variable "project_name"
+value "NSK600"
+)
+(vvPair
+variable "series"
+value "HDL Designer Series"
+)
+(vvPair
+variable "task_DesignCompilerPath"
+value "<TBD>"
+)
+(vvPair
+variable "task_LeonardoPath"
+value "<TBD>"
+)
+(vvPair
+variable "task_ModelSimPath"
+value "C:\\modeltech_pe_6.5b\\win32pe"
+)
+(vvPair
+variable "task_NC-SimPath"
+value "<TBD>"
+)
+(vvPair
+variable "task_PrecisionRTLPath"
+value "C:\\Program Files\\Mentor Graphics\\Precision_Synthesis 2010a_Update2.254\\Mgc_home\\bin"
+)
+(vvPair
+variable "task_QuestaSimPath"
+value "<TBD>"
+)
+(vvPair
+variable "task_VCSPath"
+value "<TBD>"
+)
+(vvPair
+variable "this_ext"
+value "fc"
+)
+(vvPair
+variable "this_file"
+value "rtl"
+)
+(vvPair
+variable "this_file_logical"
+value "rtl"
+)
+(vvPair
+variable "time"
+value "11:06:17"
+)
+(vvPair
+variable "unit"
+value "dt_port_master_btransfer"
+)
+(vvPair
+variable "user"
+value "dsg"
+)
+(vvPair
+variable "version"
+value "2010.2a (Build 7)"
+)
+(vvPair
+variable "view"
+value "rtl"
+)
+(vvPair
+variable "year"
+value "2011"
+)
+(vvPair
+variable "yy"
+value "11"
+)
+]
+)
+optionalChildren [
+*1 (ConcurrentFC
+uid 1,0
+topDiagram (FlowDiagram
+LanguageMgr "None"
+uid 2,0
+optionalChildren [
+*2 (StartPoint
+uid 27,0
+shape (RoundedRectangle
+uid 28,0
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "7000,10000,13000,12000"
+radius 400
+)
+label (Text
+uid 29,0
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "8550,10400,11450,11600"
+st "Start"
+ju 0
+blo "10000,11400"
+)
+outConnect (FlowConnect
+uid 30,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 31,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,11500,10500,12500"
+)
+direction 1
+position 1
+)
+)
+*3 (DecisionBox
+uid 32,0
+shape (Diamond
+uid 33,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "5000,16000,15000,20000"
+)
+name (TextAssociate
+uid 34,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 35,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "4900,15000,6100,16000"
+st "d0"
+blo "4900,15800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 36,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 37,0
+va (VaSet
+)
+xt "7000,17500,13000,18500"
+st " (reset_n = '0') "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 38,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "10900,20900,11800,21900"
+st "T"
+blo "10900,21700"
+)
+falseLabel (Text
+uid 39,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "15900,16100,16800,17100"
+st "F"
+blo "15900,16900"
+)
+inConnect (FlowConnect
+uid 40,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 41,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,15500,10500,16500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 42,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 43,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,19500,10500,20500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 44,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 45,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "14500,17500,15500,18500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*4 (ActionBox
+uid 48,0
+shape (Rectangle
+uid 49,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "1700,24000,18300,36000"
+)
+name (TextAssociate
+uid 50,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 51,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "1700,22950,2900,23950"
+st "a0"
+blo "1700,23750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 52,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 53,0
+va (VaSet
+)
+xt "2200,24500,17800,35500"
+st "rx_byte_missing  <= '0';
+sample_rx_reg    <= (others => '1');
+rx_passive       <= '1';
+rx_searching     <= '1';
+rx_bit_counter   <= (others => '0');
+rx_clock_counter <= (others => '0');
+rx_shift_reg     <= (others => '0');
+rx_value         <= (others => '0');
+put_rx_value     <= '0';
+rx_search_timeout_cnt <= (others => '0');
+timeout_cnt_high    <= (others => '0');
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 54,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 55,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,23500,10500,24500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 56,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 57,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,35500,10500,36500"
+)
+direction 1
+position 1
+)
+)
+*5 (DecisionBox
+uid 60,0
+shape (Diamond
+uid 61,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "26000,21000,36000,25000"
+)
+name (TextAssociate
+uid 62,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 63,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "25900,20000,27100,21000"
+st "d1"
+blo "25900,20800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 64,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 65,0
+va (VaSet
+)
+xt "25900,22500,36100,23500"
+st " (CLK'event and CLK = '1')"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 66,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,25900,32800,26900"
+st "T"
+blo "31900,26700"
+)
+falseLabel (Text
+uid 67,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "36900,21100,37800,22100"
+st "F"
+blo "36900,21900"
+)
+inConnect (FlowConnect
+uid 68,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 69,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,20500,31500,21500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 70,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 71,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,24500,31500,25500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 72,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 73,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "35500,22500,36500,23500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*6 (ActionBox
+uid 76,0
+shape (Rectangle
+uid 77,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "20500,30000,41500,36000"
+)
+name (TextAssociate
+uid 78,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 79,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "20500,28950,21700,29950"
+st "a1"
+blo "20500,29750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 80,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 81,0
+va (VaSet
+)
+xt "21000,30500,41000,35500"
+st "--default: 
+rx_byte_missing <= '0';
+put_rx_value    <= '0';
+--pin input register:
+sample_rx_reg <= sample_rx_reg(1 downto 0) & rx_bit;
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 82,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 83,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,29500,31500,30500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 84,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 85,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,35500,31500,36500"
+)
+direction 1
+position 1
+)
+)
+*7 (DecisionBox
+uid 88,0
+shape (Diamond
+uid 89,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "26000,40000,36000,44000"
+)
+name (TextAssociate
+uid 90,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 91,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "25900,39000,27100,40000"
+st "d2"
+blo "25900,39800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 92,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 93,0
+va (VaSet
+)
+xt "27800,41500,34200,42500"
+st " rx_passive = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 94,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,44900,32800,45900"
+st "T"
+blo "31900,45700"
+)
+falseLabel (Text
+uid 95,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "36900,40100,37800,41100"
+st "F"
+blo "36900,40900"
+)
+inConnect (FlowConnect
+uid 96,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 97,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,39500,31500,40500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 98,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 99,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,43500,31500,44500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 100,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 101,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "35500,41500,36500,42500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*8 (DecisionBox
+uid 104,0
+shape (Diamond
+uid 105,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "26000,49000,36000,53000"
+)
+name (TextAssociate
+uid 106,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 107,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "25900,48000,27100,49000"
+st "d3"
+blo "25900,48800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 108,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 109,0
+va (VaSet
+)
+xt "26900,50500,35100,51500"
+st " start_btransfer = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 110,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,53900,32800,54900"
+st "T"
+blo "31900,54700"
+)
+falseLabel (Text
+uid 111,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "36900,49100,37800,50100"
+st "F"
+blo "36900,49900"
+)
+inConnect (FlowConnect
+uid 112,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 113,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,48500,31500,49500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 114,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 115,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,52500,31500,53500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 116,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 117,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "35500,50500,36500,51500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*9 (ActionBox
+uid 120,0
+shape (Rectangle
+uid 121,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "22700,57000,39300,61000"
+)
+name (TextAssociate
+uid 122,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 123,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "22700,55950,23900,56950"
+st "a2"
+blo "22700,56750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 124,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 125,0
+va (VaSet
+)
+xt "23200,57500,38800,60500"
+st "rx_passive   <= '0';
+rx_searching <= '1';
+rx_search_timeout_cnt <= (others => '0');
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 126,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 127,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,56500,31500,57500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 128,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 129,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,60500,31500,61500"
+)
+direction 1
+position 1
+)
+)
+*10 (DecisionBox
+uid 148,0
+shape (Diamond
+uid 149,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "53000,45000,63000,49000"
+)
+name (TextAssociate
+uid 150,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 151,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "52900,44000,54100,45000"
+st "d4"
+blo "52900,44800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 152,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 153,0
+va (VaSet
+)
+xt "54150,46500,61850,47500"
+st " rx_searching = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 154,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "58900,49900,59800,50900"
+st "T"
+blo "58900,50700"
+)
+falseLabel (Text
+uid 155,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "63900,45100,64800,46100"
+st "F"
+blo "63900,45900"
+)
+inConnect (FlowConnect
+uid 156,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 157,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,44500,58500,45500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 158,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 159,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,48500,58500,49500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 160,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 161,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "62500,46500,63500,47500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*11 (DecisionBox
+uid 164,0
+shape (Diamond
+uid 165,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "53000,54000,63000,58000"
+)
+name (TextAssociate
+uid 166,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 167,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "52900,53000,54100,54000"
+st "d5"
+blo "52900,53800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 168,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 169,0
+va (VaSet
+)
+xt "51100,55500,64900,56500"
+st " rx_search_timeout_cnt = \"11110000\" "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 170,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "58900,58900,59800,59900"
+st "T"
+blo "58900,59700"
+)
+falseLabel (Text
+uid 171,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "63900,54100,64800,55100"
+st "F"
+blo "63900,54900"
+)
+inConnect (FlowConnect
+uid 172,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 173,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,53500,58500,54500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 174,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 175,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,57500,58500,58500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 176,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 177,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "62500,55500,63500,56500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*12 (ActionBox
+uid 180,0
+shape (Rectangle
+uid 181,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "50400,63000,65600,69000"
+)
+name (TextAssociate
+uid 182,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 183,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "50400,61950,51600,62950"
+st "a3"
+blo "50400,62750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 184,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 185,0
+va (VaSet
+)
+xt "50900,63500,65100,68500"
+st "rx_byte_missing <= '1';
+rx_passive      <= '1';
+rx_searching    <= '0';
+rx_value        <= (others => '1'); --AIS
+put_rx_value    <= '1';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 186,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 187,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,62500,58500,63500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 188,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 189,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,68500,58500,69500"
+)
+direction 1
+position 1
+)
+)
+*13 (ActionBox
+uid 192,0
+shape (Rectangle
+uid 193,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "67750,59000,88250,61000"
+)
+name (TextAssociate
+uid 194,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 195,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "67750,57950,68950,58950"
+st "a4"
+blo "67750,58750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 196,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 197,0
+va (VaSet
+)
+xt "68250,59500,87750,60500"
+st "rx_search_timeout_cnt <= rx_search_timeout_cnt + 1;"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 198,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 199,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "77500,58500,78500,59500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 200,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 201,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "77500,60500,78500,61500"
+)
+direction 1
+position 1
+)
+)
+*14 (DecisionBox
+uid 220,0
+shape (Diamond
+uid 221,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "53000,77000,63000,81000"
+)
+name (TextAssociate
+uid 222,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 223,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "52900,76000,54100,77000"
+st "d6"
+blo "52900,76800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 224,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 225,0
+va (VaSet
+)
+xt "54100,78500,61900,79500"
+st " rx_bit_f_edge = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 226,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "58900,81900,59800,82900"
+st "T"
+blo "58900,82700"
+)
+falseLabel (Text
+uid 227,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "63900,77100,64800,78100"
+st "F"
+blo "63900,77900"
+)
+inConnect (FlowConnect
+uid 228,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 229,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,76500,58500,77500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 230,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 231,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,80500,58500,81500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 232,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 233,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "62500,78500,63500,79500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*15 (ActionBox
+uid 236,0
+shape (Rectangle
+uid 237,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "42650,85000,73350,91000"
+)
+name (TextAssociate
+uid 238,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 239,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "42650,83950,43850,84950"
+st "a5"
+blo "42650,84750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 240,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 241,0
+va (VaSet
+)
+xt "43150,85500,72850,90500"
+st "--found start bit:
+rx_searching  <= '0';
+rx_bit_counter   <= (others => '0');
+rx_clock_counter <= (others => '0');
+timeout_cnt_high <= \"0011\" & std_logic_vector(rx_search_timeout_cnt(7 downto 4));
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 242,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 243,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,84500,58500,85500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 244,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 245,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "57500,90500,58500,91500"
+)
+direction 1
+position 1
+)
+)
+*16 (ActionBox
+uid 264,0
+shape (Rectangle
+uid 265,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "96650,50000,113350,52000"
+)
+name (TextAssociate
+uid 266,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 267,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "96650,48950,97850,49950"
+st "a6"
+blo "96650,49750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 268,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 269,0
+va (VaSet
+)
+xt "97150,50500,112850,51500"
+st "rx_clock_counter <= rx_clock_counter + 1;"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 270,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 271,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,49500,105500,50500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 272,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 273,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,51500,105500,52500"
+)
+direction 1
+position 1
+)
+)
+*17 (DecisionBox
+uid 276,0
+shape (Diamond
+uid 277,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "100000,56000,110000,60000"
+)
+name (TextAssociate
+uid 278,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 279,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "99900,55000,101100,56000"
+st "d7"
+blo "99900,55800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 280,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 281,0
+va (VaSet
+)
+xt "100550,57500,109450,58500"
+st " rx_clock_counter = 24 "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 282,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "105900,60900,106800,61900"
+st "T"
+blo "105900,61700"
+)
+falseLabel (Text
+uid 283,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "110900,56100,111800,57100"
+st "F"
+blo "110900,56900"
+)
+inConnect (FlowConnect
+uid 284,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 285,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,55500,105500,56500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 286,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 287,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,59500,105500,60500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 288,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 289,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "109500,57500,110500,58500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*18 (ActionBox
+uid 292,0
+shape (Rectangle
+uid 293,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "92600,64000,117400,68000"
+)
+name (TextAssociate
+uid 294,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 295,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "92600,62950,93800,63950"
+st "a7"
+blo "92600,63750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 296,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 297,0
+va (VaSet
+)
+xt "93100,64500,116900,67500"
+st "--middle of the bit periode
+        --sample rx:
+        rx_shift_reg <= sample_rx_reg(2) & rx_shift_reg(7 downto 1);
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 298,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 299,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,63500,105500,64500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 300,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 301,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "104500,67500,105500,68500"
+)
+direction 1
+position 1
+)
+)
+*19 (DecisionBox
+uid 304,0
+shape (Diamond
+uid 305,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "123000,61000,133000,65000"
+)
+name (TextAssociate
+uid 306,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 307,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "122900,60000,124100,61000"
+st "d8"
+blo "122900,60800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 308,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 309,0
+va (VaSet
+)
+xt "123650,62500,132350,63500"
+st " rx_clock_counter = 48"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 310,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "128900,65900,129800,66900"
+st "T"
+blo "128900,66700"
+)
+falseLabel (Text
+uid 311,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "133900,61100,134800,62100"
+st "F"
+blo "133900,61900"
+)
+inConnect (FlowConnect
+uid 312,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 313,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,60500,128500,61500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 314,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 315,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,64500,128500,65500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 316,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 317,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "132500,62500,133500,63500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*20 (ActionBox
+uid 320,0
+shape (Rectangle
+uid 321,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "119750,70000,136250,74000"
+)
+name (TextAssociate
+uid 322,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 323,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "119750,68950,120950,69950"
+st "a8"
+blo "119750,69750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 324,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 325,0
+va (VaSet
+)
+xt "120250,70500,135750,73500"
+st "--end of the bit periode
+        rx_bit_counter <= rx_bit_counter + 1;
+        rx_clock_counter <= (others => '0');
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 326,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 327,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,69500,128500,70500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 328,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 329,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,73500,128500,74500"
+)
+direction 1
+position 1
+)
+)
+*21 (DecisionBox
+uid 332,0
+shape (Diamond
+uid 333,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "123000,78000,133000,82000"
+)
+name (TextAssociate
+uid 334,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 335,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "122900,77000,124100,78000"
+st "d9"
+blo "122900,77800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 336,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 337,0
+va (VaSet
+)
+xt "124200,79500,131800,80500"
+st " rx_bit_counter = 8 "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 338,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "128900,82900,129800,83900"
+st "T"
+blo "128900,83700"
+)
+falseLabel (Text
+uid 339,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "133900,78100,134800,79100"
+st "F"
+blo "133900,78900"
+)
+inConnect (FlowConnect
+uid 340,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 341,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,77500,128500,78500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 342,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 343,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,81500,128500,82500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 344,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 345,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "132500,79500,133500,80500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*22 (ActionBox
+uid 348,0
+shape (Rectangle
+uid 349,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "122350,86500,133650,91500"
+)
+name (TextAssociate
+uid 350,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 351,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "122350,85450,123550,86450"
+st "a9"
+blo "122350,86250"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 352,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 353,0
+va (VaSet
+)
+xt "122850,87000,133150,91000"
+st "rx_value     <= rx_shift_reg;
+put_rx_value <= '1';
+rx_passive   <= '1';
+rx_searching <= '0';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 354,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 355,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,86000,128500,87000"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 356,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 357,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "127500,91000,128500,92000"
+)
+direction 1
+position 1
+)
+)
+*23 (EndPoint
+uid 448,0
+shape (RoundedRectangle
+uid 449,0
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "7000,122000,13000,124000"
+radius 400
+)
+label (Text
+uid 450,0
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "8750,122400,11250,123600"
+st "End"
+ju 0
+blo "10000,123400"
+)
+inConnect (FlowConnect
+uid 451,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 452,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,121500,10500,122500"
+)
+direction 0
+)
+)
+*24 (Property
+uid 883,0
+pclass "HDS"
+pname "DocView"
+pvalue "dt_port_master_btransfer_rtl.vhd"
+ptn "String"
+)
+*25 (Property
+uid 884,0
+pclass "HDS"
+pname "DocViewState"
+pvalue "1303915690"
+ptn "String"
+)
+*26 (Flow
+uid 46,0
+shape (OrthoPolyLine
+uid 47,0
+va (VaSet
+vasetType 3
+)
+xt "10000,12000,10000,16000"
+pts [
+"10000,12000"
+"10000,16000"
+]
+arrow 1
+)
+start &2
+end &3
+)
+*27 (Flow
+uid 58,0
+shape (OrthoPolyLine
+uid 59,0
+va (VaSet
+vasetType 3
+)
+xt "10000,20000,10000,24000"
+pts [
+"10000,20000"
+"10000,24000"
+]
+arrow 1
+)
+start &3
+end &4
+)
+*28 (Flow
+uid 74,0
+shape (OrthoPolyLine
+uid 75,0
+va (VaSet
+vasetType 3
+)
+xt "15000,18000,31000,21000"
+pts [
+"15000,18000"
+"31000,18000"
+"31000,21000"
+]
+arrow 1
+)
+start &3
+end &5
+)
+*29 (Flow
+uid 86,0
+shape (OrthoPolyLine
+uid 87,0
+va (VaSet
+vasetType 3
+)
+xt "31000,25000,31000,30000"
+pts [
+"31000,25000"
+"31000,30000"
+]
+arrow 1
+)
+start &5
+end &6
+)
+*30 (Flow
+uid 102,0
+shape (OrthoPolyLine
+uid 103,0
+va (VaSet
+vasetType 3
+)
+xt "31000,36000,31000,40000"
+pts [
+"31000,36000"
+"31000,40000"
+]
+arrow 1
+)
+start &6
+end &7
+)
+*31 (Flow
+uid 118,0
+shape (OrthoPolyLine
+uid 119,0
+va (VaSet
+vasetType 3
+)
+xt "31000,44000,31000,49000"
+pts [
+"31000,44000"
+"31000,49000"
+]
+arrow 1
+)
+start &7
+end &8
+)
+*32 (Flow
+uid 130,0
+shape (OrthoPolyLine
+uid 131,0
+va (VaSet
+vasetType 3
+)
+xt "31000,53000,31000,57000"
+pts [
+"31000,53000"
+"31000,57000"
+]
+arrow 1
+)
+start &8
+end &9
+)
+*33 (Flow
+uid 142,0
+optionalChildren [
+*34 (FlowJoin
+uid 144,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 145,0
+va (VaSet
+vasetType 1
+)
+xt "30700,119700,31300,120300"
+radius 300
+)
+)
+*35 (FlowJoin
+uid 465,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 466,0
+va (VaSet
+vasetType 1
+)
+xt "30700,119700,31300,120300"
+radius 300
+)
+)
+*36 (FlowJoin
+uid 467,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 468,0
+va (VaSet
+vasetType 1
+)
+xt "30700,119700,31300,120300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 143,0
+va (VaSet
+vasetType 3
+)
+xt "10000,61000,31000,120000"
+pts [
+"31000,61000"
+"31000,120000"
+"10000,120000"
+]
+arrow 1
+)
+start &9
+end *37 (FlowJoin
+uid 469,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 470,0
+va (VaSet
+vasetType 1
+)
+xt "9700,119700,10300,120300"
+radius 300
+)
+)
+)
+*38 (Flow
+uid 146,0
+shape (OrthoPolyLine
+uid 147,0
+va (VaSet
+vasetType 3
+)
+xt "31000,51000,41000,120000"
+pts [
+"36000,51000"
+"41000,51000"
+"41000,120000"
+"31000,120000"
+]
+arrow 1
+)
+start &8
+end &34
+)
+*39 (Flow
+uid 162,0
+shape (OrthoPolyLine
+uid 163,0
+va (VaSet
+vasetType 3
+)
+xt "36000,42000,58000,45000"
+pts [
+"36000,42000"
+"58000,42000"
+"58000,45000"
+]
+arrow 1
+)
+start &7
+end &10
+)
+*40 (Flow
+uid 178,0
+shape (OrthoPolyLine
+uid 179,0
+va (VaSet
+vasetType 3
+)
+xt "58000,49000,58000,54000"
+pts [
+"58000,49000"
+"58000,54000"
+]
+arrow 1
+)
+start &10
+end &11
+)
+*41 (Flow
+uid 190,0
+shape (OrthoPolyLine
+uid 191,0
+va (VaSet
+vasetType 3
+)
+xt "58000,58000,58000,63000"
+pts [
+"58000,58000"
+"58000,63000"
+]
+arrow 1
+)
+start &11
+end &12
+)
+*42 (Flow
+uid 202,0
+shape (OrthoPolyLine
+uid 203,0
+va (VaSet
+vasetType 3
+)
+xt "63000,56000,78000,59000"
+pts [
+"63000,56000"
+"78000,56000"
+"78000,59000"
+]
+arrow 1
+)
+start &11
+end &13
+)
+*43 (Flow
+uid 214,0
+optionalChildren [
+*44 (FlowJoin
+uid 216,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 217,0
+va (VaSet
+vasetType 1
+)
+xt "57700,74700,58300,75300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 215,0
+va (VaSet
+vasetType 3
+)
+xt "58000,69000,58000,77000"
+pts [
+"58000,69000"
+"58000,77000"
+]
+arrow 1
+)
+start &12
+end &14
+)
+*45 (Flow
+uid 218,0
+shape (OrthoPolyLine
+uid 219,0
+va (VaSet
+vasetType 3
+)
+xt "58000,61000,78000,75000"
+pts [
+"78000,61000"
+"78000,75000"
+"58000,75000"
+]
+arrow 1
+)
+start &13
+end &44
+)
+*46 (Flow
+uid 246,0
+shape (OrthoPolyLine
+uid 247,0
+va (VaSet
+vasetType 3
+)
+xt "58000,81000,58000,85000"
+pts [
+"58000,81000"
+"58000,85000"
+]
+arrow 1
+)
+start &14
+end &15
+)
+*47 (Flow
+uid 258,0
+optionalChildren [
+*48 (FlowJoin
+uid 260,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 261,0
+va (VaSet
+vasetType 1
+)
+xt "57700,119700,58300,120300"
+radius 300
+)
+)
+*49 (FlowJoin
+uid 463,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 464,0
+va (VaSet
+vasetType 1
+)
+xt "57700,119700,58300,120300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 259,0
+va (VaSet
+vasetType 3
+)
+xt "31000,91000,58000,120000"
+pts [
+"58000,91000"
+"58000,120000"
+"31000,120000"
+]
+arrow 1
+)
+start &15
+end &35
+)
+*50 (Flow
+uid 262,0
+shape (OrthoPolyLine
+uid 263,0
+va (VaSet
+vasetType 3
+)
+xt "58000,79000,75000,120000"
+pts [
+"63000,79000"
+"75000,79000"
+"75000,120000"
+"58000,120000"
+]
+arrow 1
+)
+start &14
+end &48
+)
+*51 (Flow
+uid 274,0
+shape (OrthoPolyLine
+uid 275,0
+va (VaSet
+vasetType 3
+)
+xt "63000,47000,105000,50000"
+pts [
+"63000,47000"
+"105000,47000"
+"105000,50000"
+]
+arrow 1
+)
+start &10
+end &16
+)
+*52 (Flow
+uid 290,0
+shape (OrthoPolyLine
+uid 291,0
+va (VaSet
+vasetType 3
+)
+xt "105000,52000,105000,56000"
+pts [
+"105000,52000"
+"105000,56000"
+]
+arrow 1
+)
+start &16
+end &17
+)
+*53 (Flow
+uid 302,0
+shape (OrthoPolyLine
+uid 303,0
+va (VaSet
+vasetType 3
+)
+xt "105000,60000,105000,64000"
+pts [
+"105000,60000"
+"105000,64000"
+]
+arrow 1
+)
+start &17
+end &18
+)
+*54 (Flow
+uid 318,0
+shape (OrthoPolyLine
+uid 319,0
+va (VaSet
+vasetType 3
+)
+xt "110000,58000,128000,61000"
+pts [
+"110000,58000"
+"128000,58000"
+"128000,61000"
+]
+arrow 1
+)
+start &17
+end &19
+)
+*55 (Flow
+uid 330,0
+shape (OrthoPolyLine
+uid 331,0
+va (VaSet
+vasetType 3
+)
+xt "128000,65000,128000,70000"
+pts [
+"128000,65000"
+"128000,70000"
+]
+arrow 1
+)
+start &19
+end &20
+)
+*56 (Flow
+uid 346,0
+shape (OrthoPolyLine
+uid 347,0
+va (VaSet
+vasetType 3
+)
+xt "128000,74000,128000,78000"
+pts [
+"128000,74000"
+"128000,78000"
+]
+arrow 1
+)
+start &20
+end &21
+)
+*57 (Flow
+uid 358,0
+shape (OrthoPolyLine
+uid 359,0
+va (VaSet
+vasetType 3
+)
+xt "128000,82000,128000,86500"
+pts [
+"128000,82000"
+"128000,86500"
+]
+arrow 1
+)
+start &21
+end &22
+)
+*58 (Flow
+uid 370,0
+optionalChildren [
+*59 (FlowJoin
+uid 372,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 373,0
+va (VaSet
+vasetType 1
+)
+xt "127700,119700,128300,120300"
+radius 300
+)
+)
+*60 (FlowJoin
+uid 459,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 460,0
+va (VaSet
+vasetType 1
+)
+xt "127700,119700,128300,120300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 371,0
+va (VaSet
+vasetType 3
+)
+xt "105000,91500,128000,120000"
+pts [
+"128000,91500"
+"128000,120000"
+"105000,120000"
+]
+arrow 1
+)
+start &22
+end *61 (FlowJoin
+uid 461,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 462,0
+va (VaSet
+vasetType 1
+)
+xt "104700,119700,105300,120300"
+radius 300
+)
+)
+)
+*62 (Flow
+uid 374,0
+shape (OrthoPolyLine
+uid 375,0
+va (VaSet
+vasetType 3
+)
+xt "128000,80000,136000,120000"
+pts [
+"133000,80000"
+"136000,80000"
+"136000,120000"
+"128000,120000"
+]
+arrow 1
+)
+start &21
+end &59
+)
+*63 (Flow
+uid 386,0
+optionalChildren [
+&61
+]
+shape (OrthoPolyLine
+uid 387,0
+va (VaSet
+vasetType 3
+)
+xt "58000,68000,105000,120000"
+pts [
+"105000,68000"
+"105000,120000"
+"58000,120000"
+]
+arrow 1
+)
+start &18
+end &49
+)
+*64 (Flow
+uid 394,0
+shape (OrthoPolyLine
+uid 395,0
+va (VaSet
+vasetType 3
+)
+xt "128000,63000,140000,120000"
+pts [
+"133000,63000"
+"140000,63000"
+"140000,120000"
+"128000,120000"
+]
+arrow 1
+)
+start &19
+end &60
+)
+*65 (Flow
+uid 438,0
+optionalChildren [
+&37
+]
+shape (OrthoPolyLine
+uid 439,0
+va (VaSet
+vasetType 3
+)
+xt "10000,36000,10000,122000"
+pts [
+"10000,36000"
+"10000,122000"
+]
+arrow 1
+)
+start &4
+end &23
+)
+*66 (Flow
+uid 446,0
+shape (OrthoPolyLine
+uid 447,0
+va (VaSet
+vasetType 3
+)
+xt "31000,23000,142000,120000"
+pts [
+"36000,23000"
+"142000,23000"
+"142000,120000"
+"31000,120000"
+]
+arrow 1
+)
+start &5
+end &36
+)
+]
+bg "65535,65535,65535"
+grid (Grid
+origin "0,0"
+isVisible 0
+isActive 1
+xSpacing 1000
+xySpacing 1000
+xShown 1
+yShown 1
+color "26368,26368,26368"
+)
+packageList *67 (PackageList
+uid 15,0
+stg "VerticalLayoutStrategy"
+textVec [
+*68 (Text
+uid 16,0
+va (VaSet
+font "arial,8,1"
+)
+xt "-20950,3500,-15550,4500"
+st "Package List"
+blo "-20950,4300"
+)
+*69 (MLText
+uid 17,0
+va (VaSet
+)
+xt "-20950,4500,-10050,7500"
+tm "FcPackageListTextMgr"
+)
+]
+)
+compDirBlock (MlTextGroup
+uid 18,0
+stg "VerticalLayoutStrategy"
+textVec [
+*70 (Text
+uid 19,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-3700,4000,4400,5000"
+st "Compiler Directives"
+blo "-3700,4800"
+)
+*71 (Text
+uid 20,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-3700,5000,5900,6000"
+st "Pre-module directives:"
+blo "-3700,5800"
+)
+*72 (MLText
+uid 21,0
+va (VaSet
+isHidden 1
+)
+xt "-3700,6000,3800,8000"
+st "`resetall
+`timescale 1ns/10ps"
+tm "FcCompilerDirectivesTextMgr"
+)
+*73 (Text
+uid 22,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-3700,8000,6400,9000"
+st "Post-module directives:"
+blo "-3700,8800"
+)
+*74 (MLText
+uid 23,0
+va (VaSet
+isHidden 1
+)
+xt "-3700,4000,-3700,4000"
+tm "FcCompilerDirectivesTextMgr"
+)
+*75 (Text
+uid 24,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-3700,9000,6200,10000"
+st "End-module directives:"
+blo "-3700,9800"
+)
+*76 (MLText
+uid 25,0
+va (VaSet
+isHidden 1
+)
+xt "-3700,10000,-3700,10000"
+tm "FcCompilerDirectivesTextMgr"
+)
+]
+associable 1
+)
+windowSize "0,0,1015,690"
+viewArea "0,0,0,0"
+cachedDiagramExtent "0,0,0,0"
+pageBreakOrigin "0,0"
+isTopLevel 1
+defaultCommentText (CommentText
+shape (Rectangle
+layer 0
+va (VaSet
+vasetType 1
+fg "65280,65280,46080"
+lineColor "0,0,32768"
+)
+xt "0,0,15000,5000"
+)
+text (MLText
+va (VaSet
+fg "0,0,32768"
+)
+xt "200,200,2000,1200"
+st "
+Text
+"
+tm "CommentText"
+wrapOption 3
+visibleHeight 4600
+visibleWidth 14600
+)
+)
+defaultRequirementText (RequirementText
+shape (ZoomableIcon
+layer 0
+va (VaSet
+vasetType 1
+fg "59904,39936,65280"
+lineColor "0,0,32768"
+)
+xt "0,0,1500,1750"
+iconName "reqTracerRequirement.bmp"
+iconMaskName "reqTracerRequirement.msk"
+)
+autoResize 1
+text (MLText
+va (VaSet
+fg "0,0,32768"
+font "arial,8,0"
+)
+xt "500,2150,1400,3150"
+st "
+Text
+"
+tm "RequirementText"
+wrapOption 3
+visibleHeight 1350
+visibleWidth 1100
+)
+)
+defaultPanel (Panel
+shape (RectFrame
+va (VaSet
+vasetType 1
+fg "65535,65535,65535"
+lineColor "32768,0,0"
+lineWidth 3
+)
+xt "0,0,20000,20000"
+)
+title (TextAssociate
+ps "TopLeftStrategy"
+text (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "1000,1000,3800,2000"
+st "Panel0"
+blo "1000,1800"
+tm "PanelText"
+)
+)
+)
+archDeclarativeBlock *77 (BiTextGroup
+uid 3,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 4,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-23700,10000,-13200,11000"
+st "Architecture Declarations"
+blo "-23700,10800"
+)
+second (MLText
+uid 5,0
+va (VaSet
+)
+xt "-23700,11000,-2600,28000"
+st "
+signal tx_clk_counter         : unsigned(5 downto 0);
+signal tx_bit_counter         : unsigned(4 downto 0);
+signal tx_transfer_ongoing    : std_logic;
+signal tx_bit                 : std_logic;
+signal tx_first_bit           : std_logic;
+signal tx_shift_reg           : std_logic_vector(7 downto 0);
+signal sample_rx_reg          : std_logic_vector(2 downto 0);
+signal rx_bit_f_edge          : std_logic;
+signal rx_bit                 : std_logic;
+signal rx_shift_reg           : std_logic_vector(7 downto 0);
+signal rx_passive             : std_logic;
+signal rx_searching           : std_logic;
+signal rx_clock_counter       : unsigned(5 downto 0);
+signal rx_bit_counter         : unsigned(3 downto 0);
+signal rx_search_timeout_cnt  : unsigned(7 downto 0);
+
+"
+tm "FcArchDeclTextMgr"
+)
+associable 1
+)
+archConcurrentStatementBlock *78 (BiTextGroup
+uid 6,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 7,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-23700,32000,-13800,33000"
+st "Concurrent Statements"
+blo "-23700,32800"
+)
+second (MLText
+uid 8,0
+va (VaSet
+)
+xt "-23700,33000,-300,41000"
+st "
+
+--pin input: 
+master_output <= tx_bit;
+rx_bit        <= master_input;
+--detect falling edge on input signal:
+rx_bit_f_edge <= '1' when sample_rx_reg(2 downto 1) = \"10\" else
+                '0';
+"
+tm "FcArchConcStmtTextMgr"
+)
+associable 1
+)
+processDeclarativeBlock *79 (BiTextGroup
+uid 9,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 10,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-23700,51000,-14800,52000"
+st "Process Declarations"
+blo "-23700,51800"
+)
+second (MLText
+uid 11,0
+va (VaSet
+)
+xt "-23700,52000,-23700,52000"
+tm "FcProcDeclTextMgr"
+)
+associable 1
+)
+sensitivityListBlock *80 (BiTextGroup
+uid 12,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 13,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-23700,45000,-17500,46000"
+st "Sensitivity List"
+blo "-23700,45800"
+)
+second (MLText
+uid 14,0
+va (VaSet
+)
+xt "-23700,46000,-19100,47000"
+st "reset_n, clk"
+tm "FcSensListTextMgr"
+)
+)
+)
+genChar (FcGenChar
+uid 26,0
+machineMode 1
+resetActions ""
+resetMode 1
+resetName ""
+resetCondition ""
+vlogResetSensitivity ""
+resetPolarity 0
+clockPolarity 0
+clockSigName ""
+clockCondition ""
+verilogProcessStatementType 0
+verilogBlockType 0
+instrumentForAnimation 0
+insertSetResetPragma 0
+setresetPragma 0
+)
+name "rx_transfer"
+)
+*81 (ConcurrentFC
+uid 471,0
+topDiagram (FlowDiagram
+LanguageMgr "None"
+uid 472,0
+optionalChildren [
+*82 (StartPoint
+uid 497,0
+shape (RoundedRectangle
+uid 498,0
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "7000,10000,13000,12000"
+radius 400
+)
+label (Text
+uid 499,0
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "8550,10400,11450,11600"
+st "Start"
+ju 0
+blo "10000,11400"
+)
+outConnect (FlowConnect
+uid 500,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 501,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,11500,10500,12500"
+)
+direction 1
+position 1
+)
+)
+*83 (DecisionBox
+uid 502,0
+shape (Diamond
+uid 503,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "5000,16000,15000,20000"
+)
+name (TextAssociate
+uid 504,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 505,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "4900,15000,6100,16000"
+st "d0"
+blo "4900,15800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 506,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 507,0
+va (VaSet
+)
+xt "7000,17500,13000,18500"
+st " (reset_n = '0') "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 508,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "10900,20900,11800,21900"
+st "T"
+blo "10900,21700"
+)
+falseLabel (Text
+uid 509,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "15900,16100,16800,17100"
+st "F"
+blo "15900,16900"
+)
+inConnect (FlowConnect
+uid 510,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 511,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,15500,10500,16500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 512,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 513,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,19500,10500,20500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 514,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 515,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "14500,17500,15500,18500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*84 (ActionBox
+uid 518,0
+shape (Rectangle
+uid 519,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "2800,24000,17200,32000"
+)
+name (TextAssociate
+uid 520,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 521,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "2800,22950,4000,23950"
+st "a0"
+blo "2800,23750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 522,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 523,0
+va (VaSet
+)
+xt "3300,24500,16700,31500"
+st "tx_transfer_ongoing <= '0';
+tx_clk_counter      <= (others => '0');
+tx_bit_counter      <= (others => '0');
+tx_shift_reg        <= (others => '0');
+tx_bit              <= '1';
+tx_first_bit        <= '0';
+btransfer_done      <= '0';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 524,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 525,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,23500,10500,24500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 526,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 527,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,31500,10500,32500"
+)
+direction 1
+position 1
+)
+)
+*85 (DecisionBox
+uid 530,0
+shape (Diamond
+uid 531,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "21000,21000,31000,25000"
+)
+name (TextAssociate
+uid 532,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 533,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "20900,20000,22100,21000"
+st "d1"
+blo "20900,20800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 534,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 535,0
+va (VaSet
+)
+xt "20900,22500,31100,23500"
+st " (CLK'event and CLK = '1')"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 536,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "26900,25900,27800,26900"
+st "T"
+blo "26900,26700"
+)
+falseLabel (Text
+uid 537,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,21100,32800,22100"
+st "F"
+blo "31900,21900"
+)
+inConnect (FlowConnect
+uid 538,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 539,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,20500,26500,21500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 540,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 541,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,24500,26500,25500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 542,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 543,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,22500,31500,23500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*86 (ActionBox
+uid 546,0
+shape (Rectangle
+uid 547,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "21200,29500,30800,32500"
+)
+name (TextAssociate
+uid 548,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 549,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "21200,28450,22400,29450"
+st "a1"
+blo "21200,29250"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 550,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 551,0
+va (VaSet
+)
+xt "21700,30000,30300,32000"
+st "--default: 
+btransfer_done <= '0';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 552,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 553,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,29000,26500,30000"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 554,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 555,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,32000,26500,33000"
+)
+direction 1
+position 1
+)
+)
+*87 (DecisionBox
+uid 558,0
+shape (Diamond
+uid 559,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "21000,37000,31000,41000"
+)
+name (TextAssociate
+uid 560,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 561,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "20900,36000,22100,37000"
+st "d2"
+blo "20900,36800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 562,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 563,0
+va (VaSet
+)
+xt "21000,38500,31000,39500"
+st " tx_transfer_ongoing = '0' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 564,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "26900,41900,27800,42900"
+st "T"
+blo "26900,42700"
+)
+falseLabel (Text
+uid 565,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,37100,32800,38100"
+st "F"
+blo "31900,37900"
+)
+inConnect (FlowConnect
+uid 566,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 567,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,36500,26500,37500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 568,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 569,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,40500,26500,41500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 570,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 571,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,38500,31500,39500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*88 (DecisionBox
+uid 574,0
+shape (Diamond
+uid 575,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "21000,46000,31000,50000"
+)
+name (TextAssociate
+uid 576,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 577,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "20900,45000,22100,46000"
+st "d3"
+blo "20900,45800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 578,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 579,0
+va (VaSet
+)
+xt "21900,47500,30100,48500"
+st " start_btransfer = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 580,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "26900,50900,27800,51900"
+st "T"
+blo "26900,51700"
+)
+falseLabel (Text
+uid 581,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "31900,46100,32800,47100"
+st "F"
+blo "31900,46900"
+)
+inConnect (FlowConnect
+uid 582,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 583,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,45500,26500,46500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 584,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 585,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,49500,26500,50500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 586,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 587,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "30500,47500,31500,48500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*89 (ActionBox
+uid 590,0
+shape (Rectangle
+uid 591,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "18800,54000,33200,60000"
+)
+name (TextAssociate
+uid 592,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 593,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "18800,52950,20000,53950"
+st "a2"
+blo "18800,53750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 594,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 595,0
+va (VaSet
+)
+xt "19300,54500,32700,59500"
+st "tx_clk_counter      <= (others => '0');
+tx_bit_counter      <= (others => '0');
+tx_transfer_ongoing <= '1';
+tx_bit              <= '0';  --start bit!
+tx_first_bit        <= '1';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 596,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 597,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,53500,26500,54500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 598,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 599,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "25500,59500,26500,60500"
+)
+direction 1
+position 1
+)
+)
+*90 (ActionBox
+uid 618,0
+shape (Rectangle
+uid 619,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "42750,42000,57250,44000"
+)
+name (TextAssociate
+uid 620,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 621,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "42750,40950,43950,41950"
+st "a3"
+blo "42750,41750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 622,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 623,0
+va (VaSet
+)
+xt "43250,42500,56750,43500"
+st "tx_clk_counter <= tx_clk_counter + 1;"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 624,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 625,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,41500,50500,42500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 626,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 627,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,43500,50500,44500"
+)
+direction 1
+position 1
+)
+)
+*91 (DecisionBox
+uid 630,0
+shape (Diamond
+uid 631,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "45000,48000,55000,52000"
+)
+name (TextAssociate
+uid 632,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 633,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "44900,47000,46100,48000"
+st "d4"
+blo "44900,47800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 634,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 635,0
+va (VaSet
+)
+xt "46000,49500,54000,50500"
+st " tx_clk_counter = 24 "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 636,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "50900,52900,51800,53900"
+st "T"
+blo "50900,53700"
+)
+falseLabel (Text
+uid 637,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "55900,48100,56800,49100"
+st "F"
+blo "55900,48900"
+)
+inConnect (FlowConnect
+uid 638,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 639,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,47500,50500,48500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 640,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 641,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,51500,50500,52500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 642,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 643,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "54500,49500,55500,50500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*92 (DecisionBox
+uid 646,0
+shape (Diamond
+uid 647,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "45000,57000,55000,61000"
+)
+name (TextAssociate
+uid 648,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 649,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "44900,56000,46100,57000"
+st "d5"
+blo "44900,56800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 650,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 651,0
+va (VaSet
+)
+xt "46650,58500,53350,59500"
+st " tx_first_bit = '1' "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 652,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "50900,61900,51800,62900"
+st "T"
+blo "50900,62700"
+)
+falseLabel (Text
+uid 653,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "55900,57100,56800,58100"
+st "F"
+blo "55900,57900"
+)
+inConnect (FlowConnect
+uid 654,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 655,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,56500,50500,57500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 656,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 657,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,60500,50500,61500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 658,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 659,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "54500,58500,55500,59500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*93 (ActionBox
+uid 662,0
+shape (Rectangle
+uid 663,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "37350,65500,62650,68500"
+)
+name (TextAssociate
+uid 664,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 665,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "37350,64450,38550,65450"
+st "a4"
+blo "37350,65250"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 666,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 667,0
+va (VaSet
+)
+xt "37850,66000,62150,68000"
+st "tx_shift_reg  <= tx_value;  --there are 24 clock cycles to prepare data
+tx_first_bit  <= '0';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 668,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 669,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,65000,50500,66000"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 670,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 671,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "49500,68000,50500,69000"
+)
+direction 1
+position 1
+)
+)
+*94 (DecisionBox
+uid 690,0
+shape (Diamond
+uid 691,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "71000,53000,81000,57000"
+)
+name (TextAssociate
+uid 692,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 693,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "70900,52000,72100,53000"
+st "d6"
+blo "70900,52800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 694,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 695,0
+va (VaSet
+)
+xt "72100,54500,79900,55500"
+st " tx_clk_counter = 48"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 696,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "76900,57900,77800,58900"
+st "T"
+blo "76900,58700"
+)
+falseLabel (Text
+uid 697,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "81900,53100,82800,54100"
+st "F"
+blo "81900,53900"
+)
+inConnect (FlowConnect
+uid 698,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 699,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,52500,76500,53500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 700,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 701,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,56500,76500,57500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 702,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 703,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "80500,54500,81500,55500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*95 (ActionBox
+uid 706,0
+shape (Rectangle
+uid 707,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "67100,61500,84900,66500"
+)
+name (TextAssociate
+uid 708,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 709,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "67100,60450,68300,61450"
+st "a5"
+blo "67100,61250"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 710,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 711,0
+va (VaSet
+)
+xt "67600,62000,84400,66000"
+st "tx_clk_counter <= (others => '0');
+tx_bit_counter <= tx_bit_counter + 1;
+--insert high level for bits after the stop bit
+tx_shift_reg <= '1' & tx_shift_reg(7 downto 1);
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 712,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 713,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,61000,76500,62000"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 714,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 715,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,66000,76500,67000"
+)
+direction 1
+position 1
+)
+)
+*96 (DecisionBox
+uid 718,0
+shape (Diamond
+uid 719,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "71000,71000,81000,75000"
+)
+name (TextAssociate
+uid 720,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 721,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "70900,70000,72100,71000"
+st "d7"
+blo "70900,70800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 722,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 723,0
+va (VaSet
+)
+xt "72250,72500,79750,73500"
+st " tx_bit_counter = 8 "
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 724,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "76900,75900,77800,76900"
+st "T"
+blo "76900,76700"
+)
+falseLabel (Text
+uid 725,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "81900,71100,82800,72100"
+st "F"
+blo "81900,71900"
+)
+inConnect (FlowConnect
+uid 726,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 727,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,70500,76500,71500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 728,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 729,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,74500,76500,75500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 730,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 731,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "80500,72500,81500,73500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*97 (ActionBox
+uid 734,0
+shape (Rectangle
+uid 735,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "70900,79000,81100,81000"
+)
+name (TextAssociate
+uid 736,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 737,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "70900,77950,72100,78950"
+st "a6"
+blo "70900,78750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 738,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 739,0
+va (VaSet
+)
+xt "71400,79500,80600,80500"
+st "tx_bit   <= '1'; --stop bit!"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 740,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 741,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,78500,76500,79500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 742,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 743,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "75500,80500,76500,81500"
+)
+direction 1
+position 1
+)
+)
+*98 (DecisionBox
+uid 746,0
+shape (Diamond
+uid 747,0
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "88000,76000,98000,80000"
+)
+name (TextAssociate
+uid 748,0
+ps "EdgeToEdgeStrategy"
+text (Text
+uid 749,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "87900,75000,89100,76000"
+st "d8"
+blo "87900,75800"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+uid 750,0
+ps "EdgeToEdgeStrategy"
+text (MLText
+uid 751,0
+va (VaSet
+)
+xt "89150,77500,96850,78500"
+st " tx_bit_counter = 14"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+uid 752,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "93900,80900,94800,81900"
+st "T"
+blo "93900,81700"
+)
+falseLabel (Text
+uid 753,0
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "98900,76100,99800,77100"
+st "F"
+blo "98900,76900"
+)
+inConnect (FlowConnect
+uid 754,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 755,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "92500,75500,93500,76500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+uid 756,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 757,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "92500,79500,93500,80500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+uid 758,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 759,0
+ro 90
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "97500,77500,98500,78500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+*99 (ActionBox
+uid 762,0
+shape (Rectangle
+uid 763,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "83700,85000,102300,89000"
+)
+name (TextAssociate
+uid 764,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 765,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "83700,83950,84900,84950"
+st "a7"
+blo "83700,84750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 766,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 767,0
+va (VaSet
+)
+xt "84200,85500,101800,88500"
+st "--additional time to handle the delay of the slaves
+        tx_transfer_ongoing <= '0';
+        btransfer_done      <= '1';
+"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 768,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 769,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "92500,84500,93500,85500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 770,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 771,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "92500,88500,93500,89500"
+)
+direction 1
+position 1
+)
+)
+*100 (ActionBox
+uid 774,0
+shape (Rectangle
+uid 775,0
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "104650,81000,127350,83000"
+)
+name (TextAssociate
+uid 776,0
+ps "CenterOffsetStrategy"
+text (Text
+uid 777,0
+va (VaSet
+fg "0,32768,49152"
+)
+xt "104650,79950,105850,80950"
+st "a8"
+blo "104650,80750"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+uid 778,0
+ps "CenterOffsetStrategy"
+text (MLText
+uid 779,0
+va (VaSet
+)
+xt "105150,81500,126850,82500"
+st "tx_bit <= tx_shift_reg(0); --after bit 8, high level is shifted out"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+uid 780,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 781,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "115500,80500,116500,81500"
+)
+direction 0
+)
+outConnect (FlowConnect
+uid 782,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 783,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "115500,82500,116500,83500"
+)
+direction 1
+position 1
+)
+)
+*101 (EndPoint
+uid 862,0
+shape (RoundedRectangle
+uid 863,0
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "7000,120000,13000,122000"
+radius 400
+)
+label (Text
+uid 864,0
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "8750,120400,11250,121600"
+st "End"
+ju 0
+blo "10000,121400"
+)
+inConnect (FlowConnect
+uid 865,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 866,0
+ro 180
+va (VaSet
+vasetType 1
+isHidden 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,119500,10500,120500"
+)
+direction 0
+)
+)
+*102 (Flow
+uid 516,0
+shape (OrthoPolyLine
+uid 517,0
+va (VaSet
+vasetType 3
+)
+xt "10000,12000,10000,16000"
+pts [
+"10000,12000"
+"10000,16000"
+]
+arrow 1
+)
+start &82
+end &83
+)
+*103 (Flow
+uid 528,0
+shape (OrthoPolyLine
+uid 529,0
+va (VaSet
+vasetType 3
+)
+xt "10000,20000,10000,24000"
+pts [
+"10000,20000"
+"10000,24000"
+]
+arrow 1
+)
+start &83
+end &84
+)
+*104 (Flow
+uid 544,0
+shape (OrthoPolyLine
+uid 545,0
+va (VaSet
+vasetType 3
+)
+xt "15000,18000,26000,21000"
+pts [
+"15000,18000"
+"26000,18000"
+"26000,21000"
+]
+arrow 1
+)
+start &83
+end &85
+)
+*105 (Flow
+uid 556,0
+shape (OrthoPolyLine
+uid 557,0
+va (VaSet
+vasetType 3
+)
+xt "26000,25000,26000,29500"
+pts [
+"26000,25000"
+"26000,29500"
+]
+arrow 1
+)
+start &85
+end &86
+)
+*106 (Flow
+uid 572,0
+shape (OrthoPolyLine
+uid 573,0
+va (VaSet
+vasetType 3
+)
+xt "26000,32500,26000,37000"
+pts [
+"26000,32500"
+"26000,37000"
+]
+arrow 1
+)
+start &86
+end &87
+)
+*107 (Flow
+uid 588,0
+shape (OrthoPolyLine
+uid 589,0
+va (VaSet
+vasetType 3
+)
+xt "26000,41000,26000,46000"
+pts [
+"26000,41000"
+"26000,46000"
+]
+arrow 1
+)
+start &87
+end &88
+)
+*108 (Flow
+uid 600,0
+shape (OrthoPolyLine
+uid 601,0
+va (VaSet
+vasetType 3
+)
+xt "26000,50000,26000,54000"
+pts [
+"26000,50000"
+"26000,54000"
+]
+arrow 1
+)
+start &88
+end &89
+)
+*109 (Flow
+uid 612,0
+optionalChildren [
+*110 (FlowJoin
+uid 614,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 615,0
+va (VaSet
+vasetType 1
+)
+xt "25700,117700,26300,118300"
+radius 300
+)
+)
+*111 (FlowJoin
+uid 877,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 878,0
+va (VaSet
+vasetType 1
+)
+xt "25700,117700,26300,118300"
+radius 300
+)
+)
+*112 (FlowJoin
+uid 879,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 880,0
+va (VaSet
+vasetType 1
+)
+xt "25700,117700,26300,118300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 613,0
+va (VaSet
+vasetType 3
+)
+xt "10000,60000,26000,118000"
+pts [
+"26000,60000"
+"26000,118000"
+"10000,118000"
+]
+arrow 1
+)
+start &89
+end *113 (FlowJoin
+uid 881,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 882,0
+va (VaSet
+vasetType 1
+)
+xt "9700,117700,10300,118300"
+radius 300
+)
+)
+)
+*114 (Flow
+uid 616,0
+shape (OrthoPolyLine
+uid 617,0
+va (VaSet
+vasetType 3
+)
+xt "26000,48000,35000,118000"
+pts [
+"31000,48000"
+"35000,48000"
+"35000,118000"
+"26000,118000"
+]
+arrow 1
+)
+start &88
+end &110
+)
+*115 (Flow
+uid 628,0
+shape (OrthoPolyLine
+uid 629,0
+va (VaSet
+vasetType 3
+)
+xt "31000,39000,50000,42000"
+pts [
+"31000,39000"
+"50000,39000"
+"50000,42000"
+]
+arrow 1
+)
+start &87
+end &90
+)
+*116 (Flow
+uid 644,0
+shape (OrthoPolyLine
+uid 645,0
+va (VaSet
+vasetType 3
+)
+xt "50000,44000,50000,48000"
+pts [
+"50000,44000"
+"50000,48000"
+]
+arrow 1
+)
+start &90
+end &91
+)
+*117 (Flow
+uid 660,0
+shape (OrthoPolyLine
+uid 661,0
+va (VaSet
+vasetType 3
+)
+xt "50000,52000,50000,57000"
+pts [
+"50000,52000"
+"50000,57000"
+]
+arrow 1
+)
+start &91
+end &92
+)
+*118 (Flow
+uid 672,0
+shape (OrthoPolyLine
+uid 673,0
+va (VaSet
+vasetType 3
+)
+xt "50000,61000,50000,65500"
+pts [
+"50000,61000"
+"50000,65500"
+]
+arrow 1
+)
+start &92
+end &93
+)
+*119 (Flow
+uid 684,0
+optionalChildren [
+*120 (FlowJoin
+uid 686,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 687,0
+va (VaSet
+vasetType 1
+)
+xt "49700,117700,50300,118300"
+radius 300
+)
+)
+*121 (FlowJoin
+uid 875,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 876,0
+va (VaSet
+vasetType 1
+)
+xt "49700,117700,50300,118300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 685,0
+va (VaSet
+vasetType 3
+)
+xt "26000,68500,50000,118000"
+pts [
+"50000,68500"
+"50000,118000"
+"26000,118000"
+]
+arrow 1
+)
+start &93
+end &111
+)
+*122 (Flow
+uid 688,0
+shape (OrthoPolyLine
+uid 689,0
+va (VaSet
+vasetType 3
+)
+xt "50000,59000,65000,118000"
+pts [
+"55000,59000"
+"65000,59000"
+"65000,118000"
+"50000,118000"
+]
+arrow 1
+)
+start &92
+end &120
+)
+*123 (Flow
+uid 704,0
+shape (OrthoPolyLine
+uid 705,0
+va (VaSet
+vasetType 3
+)
+xt "55000,50000,76000,53000"
+pts [
+"55000,50000"
+"76000,50000"
+"76000,53000"
+]
+arrow 1
+)
+start &91
+end &94
+)
+*124 (Flow
+uid 716,0
+shape (OrthoPolyLine
+uid 717,0
+va (VaSet
+vasetType 3
+)
+xt "76000,57000,76000,61500"
+pts [
+"76000,57000"
+"76000,61500"
+]
+arrow 1
+)
+start &94
+end &95
+)
+*125 (Flow
+uid 732,0
+shape (OrthoPolyLine
+uid 733,0
+va (VaSet
+vasetType 3
+)
+xt "76000,66500,76000,71000"
+pts [
+"76000,66500"
+"76000,71000"
+]
+arrow 1
+)
+start &95
+end &96
+)
+*126 (Flow
+uid 744,0
+shape (OrthoPolyLine
+uid 745,0
+va (VaSet
+vasetType 3
+)
+xt "76000,75000,76000,79000"
+pts [
+"76000,75000"
+"76000,79000"
+]
+arrow 1
+)
+start &96
+end &97
+)
+*127 (Flow
+uid 760,0
+shape (OrthoPolyLine
+uid 761,0
+va (VaSet
+vasetType 3
+)
+xt "81000,73000,93000,76000"
+pts [
+"81000,73000"
+"93000,73000"
+"93000,76000"
+]
+arrow 1
+)
+start &96
+end &98
+)
+*128 (Flow
+uid 772,0
+shape (OrthoPolyLine
+uid 773,0
+va (VaSet
+vasetType 3
+)
+xt "93000,80000,93000,85000"
+pts [
+"93000,80000"
+"93000,85000"
+]
+arrow 1
+)
+start &98
+end &99
+)
+*129 (Flow
+uid 784,0
+shape (OrthoPolyLine
+uid 785,0
+va (VaSet
+vasetType 3
+)
+xt "98000,78000,116000,81000"
+pts [
+"98000,78000"
+"116000,78000"
+"116000,81000"
+]
+arrow 1
+)
+start &98
+end &100
+)
+*130 (Flow
+uid 796,0
+optionalChildren [
+*131 (FlowJoin
+uid 798,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 799,0
+va (VaSet
+vasetType 1
+)
+xt "75700,117700,76300,118300"
+radius 300
+)
+)
+*132 (FlowJoin
+uid 873,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 874,0
+va (VaSet
+vasetType 1
+)
+xt "75700,117700,76300,118300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 797,0
+va (VaSet
+vasetType 3
+)
+xt "50000,81000,76000,118000"
+pts [
+"76000,81000"
+"76000,118000"
+"50000,118000"
+]
+arrow 1
+)
+start &97
+end &121
+)
+*133 (Flow
+uid 800,0
+optionalChildren [
+*134 (FlowJoin
+uid 802,0
+ps "OnFlowStrategy"
+shape (Circle
+uid 803,0
+va (VaSet
+vasetType 1
+)
+xt "92700,117700,93300,118300"
+radius 300
+)
+)
+]
+shape (OrthoPolyLine
+uid 801,0
+va (VaSet
+vasetType 3
+)
+xt "76000,89000,93000,118000"
+pts [
+"93000,89000"
+"93000,118000"
+"76000,118000"
+]
+arrow 1
+)
+start &99
+end &131
+)
+*135 (Flow
+uid 804,0
+shape (OrthoPolyLine
+uid 805,0
+va (VaSet
+vasetType 3
+)
+xt "93000,83000,116000,118000"
+pts [
+"116000,83000"
+"116000,118000"
+"93000,118000"
+]
+arrow 1
+)
+start &100
+end &134
+)
+*136 (Flow
+uid 824,0
+shape (OrthoPolyLine
+uid 825,0
+va (VaSet
+vasetType 3
+)
+xt "76000,55000,132000,118000"
+pts [
+"81000,55000"
+"132000,55000"
+"132000,118000"
+"76000,118000"
+]
+arrow 1
+)
+start &94
+end &132
+)
+*137 (Flow
+uid 852,0
+optionalChildren [
+&113
+]
+shape (OrthoPolyLine
+uid 853,0
+va (VaSet
+vasetType 3
+)
+xt "10000,32000,10000,120000"
+pts [
+"10000,32000"
+"10000,120000"
+]
+arrow 1
+)
+start &84
+end &101
+)
+*138 (Flow
+uid 860,0
+shape (OrthoPolyLine
+uid 861,0
+va (VaSet
+vasetType 3
+)
+xt "26000,23000,134000,118000"
+pts [
+"31000,23000"
+"134000,23000"
+"134000,118000"
+"26000,118000"
+]
+arrow 1
+)
+start &85
+end &112
+)
+]
+bg "65535,65535,65535"
+grid (Grid
+origin "0,0"
+isVisible 0
+isActive 1
+xSpacing 1000
+xySpacing 1000
+xShown 1
+yShown 1
+color "26368,26368,26368"
+)
+packageList *139 (PackageList
+uid 485,0
+stg "VerticalLayoutStrategy"
+textVec [
+*140 (Text
+uid 486,0
+va (VaSet
+font "arial,8,1"
+)
+xt "-19850,3500,-14450,4500"
+st "Package List"
+blo "-19850,4300"
+)
+*141 (MLText
+uid 487,0
+va (VaSet
+)
+xt "-19850,4500,-8950,7500"
+tm "FcPackageListTextMgr"
+)
+]
+)
+compDirBlock (MlTextGroup
+uid 488,0
+stg "VerticalLayoutStrategy"
+textVec [
+*142 (Text
+uid 489,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-2600,4000,5500,5000"
+st "Compiler Directives"
+blo "-2600,4800"
+)
+*143 (Text
+uid 490,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-2600,5000,7000,6000"
+st "Pre-module directives:"
+blo "-2600,5800"
+)
+*144 (MLText
+uid 491,0
+va (VaSet
+isHidden 1
+)
+xt "-2600,6000,4900,8000"
+st "`resetall
+`timescale 1ns/10ps"
+tm "FcCompilerDirectivesTextMgr"
+)
+*145 (Text
+uid 492,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-2600,8000,7500,9000"
+st "Post-module directives:"
+blo "-2600,8800"
+)
+*146 (MLText
+uid 493,0
+va (VaSet
+isHidden 1
+)
+xt "-2600,4000,-2600,4000"
+tm "FcCompilerDirectivesTextMgr"
+)
+*147 (Text
+uid 494,0
+va (VaSet
+isHidden 1
+font "Arial,8,1"
+)
+xt "-2600,9000,7300,10000"
+st "End-module directives:"
+blo "-2600,9800"
+)
+*148 (MLText
+uid 495,0
+va (VaSet
+isHidden 1
+)
+xt "-2600,10000,-2600,10000"
+tm "FcCompilerDirectivesTextMgr"
+)
+]
+associable 1
+)
+windowSize "0,0,1015,690"
+viewArea "0,0,0,0"
+cachedDiagramExtent "0,0,0,0"
+pageBreakOrigin "0,0"
+isTopLevel 1
+defaultCommentText (CommentText
+shape (Rectangle
+layer 0
+va (VaSet
+vasetType 1
+fg "65280,65280,46080"
+lineColor "0,0,32768"
+)
+xt "0,0,15000,5000"
+)
+text (MLText
+va (VaSet
+fg "0,0,32768"
+)
+xt "200,200,2000,1200"
+st "
+Text
+"
+tm "CommentText"
+wrapOption 3
+visibleHeight 4600
+visibleWidth 14600
+)
+)
+defaultRequirementText (RequirementText
+shape (ZoomableIcon
+layer 0
+va (VaSet
+vasetType 1
+fg "59904,39936,65280"
+lineColor "0,0,32768"
+)
+xt "0,0,1500,1750"
+iconName "reqTracerRequirement.bmp"
+iconMaskName "reqTracerRequirement.msk"
+)
+autoResize 1
+text (MLText
+va (VaSet
+fg "0,0,32768"
+font "arial,8,0"
+)
+xt "500,2150,1400,3150"
+st "
+Text
+"
+tm "RequirementText"
+wrapOption 3
+visibleHeight 1350
+visibleWidth 1100
+)
+)
+defaultPanel (Panel
+shape (RectFrame
+va (VaSet
+vasetType 1
+fg "65535,65535,65535"
+lineColor "32768,0,0"
+lineWidth 3
+)
+xt "0,0,20000,20000"
+)
+title (TextAssociate
+ps "TopLeftStrategy"
+text (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "1000,1000,3800,2000"
+st "Panel0"
+blo "1000,1800"
+tm "PanelText"
+)
+)
+)
+archDeclarativeBlock *149 (BiTextGroup
+uid 473,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 474,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-22600,10000,-12100,11000"
+st "Architecture Declarations"
+blo "-22600,10800"
+)
+second (MLText
+uid 475,0
+va (VaSet
+)
+xt "-22600,11000,-1500,28000"
+st "
+signal tx_clk_counter         : unsigned(5 downto 0);
+signal tx_bit_counter         : unsigned(4 downto 0);
+signal tx_transfer_ongoing    : std_logic;
+signal tx_bit                 : std_logic;
+signal tx_first_bit           : std_logic;
+signal tx_shift_reg           : std_logic_vector(7 downto 0);
+signal sample_rx_reg          : std_logic_vector(2 downto 0);
+signal rx_bit_f_edge          : std_logic;
+signal rx_bit                 : std_logic;
+signal rx_shift_reg           : std_logic_vector(7 downto 0);
+signal rx_passive             : std_logic;
+signal rx_searching           : std_logic;
+signal rx_clock_counter       : unsigned(5 downto 0);
+signal rx_bit_counter         : unsigned(3 downto 0);
+signal rx_search_timeout_cnt  : unsigned(7 downto 0);
+
+"
+tm "FcArchDeclTextMgr"
+)
+associable 1
+)
+archConcurrentStatementBlock *150 (BiTextGroup
+uid 476,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 477,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-22600,32000,-12700,33000"
+st "Concurrent Statements"
+blo "-22600,32800"
+)
+second (MLText
+uid 478,0
+va (VaSet
+)
+xt "-22600,33000,800,41000"
+st "
+
+--pin input: 
+master_output <= tx_bit;
+rx_bit        <= master_input;
+--detect falling edge on input signal:
+rx_bit_f_edge <= '1' when sample_rx_reg(2 downto 1) = \"10\" else
+                '0';
+"
+tm "FcArchConcStmtTextMgr"
+)
+associable 1
+)
+processDeclarativeBlock *151 (BiTextGroup
+uid 479,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 480,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-22600,51000,-13700,52000"
+st "Process Declarations"
+blo "-22600,51800"
+)
+second (MLText
+uid 481,0
+va (VaSet
+)
+xt "-22600,52000,-22600,52000"
+tm "FcProcDeclTextMgr"
+)
+associable 1
+)
+sensitivityListBlock *152 (BiTextGroup
+uid 482,0
+stg "VerticalLayoutStrategy"
+first (Text
+uid 483,0
+va (VaSet
+font "Arial,8,1"
+)
+xt "-22600,45000,-16400,46000"
+st "Sensitivity List"
+blo "-22600,45800"
+)
+second (MLText
+uid 484,0
+va (VaSet
+)
+xt "-22600,46000,-18000,47000"
+st "reset_n, clk"
+tm "FcSensListTextMgr"
+)
+)
+)
+genChar (FcGenChar
+uid 496,0
+machineMode 1
+resetActions ""
+resetMode 1
+resetName ""
+resetCondition ""
+vlogResetSensitivity ""
+resetPolarity 0
+clockPolarity 0
+clockSigName ""
+clockCondition ""
+verilogProcessStatementType 0
+verilogBlockType 0
+instrumentForAnimation 0
+insertSetResetPragma 0
+setresetPragma 0
+)
+name "tx_transfer"
+)
+]
+lastUid 884,0
+LanguageMgr "VhdlLangMgr"
+commonDM (CommonDM
+ldm (LogicalDM
+emptyRow *153 (LEmptyRow
+)
+optionalChildren [
+*154 (RefLabelRowHdr
+)
+*155 (TitleRowHdr
+)
+*156 (FilterRowHdr
+)
+*157 (RefLabelColHdr
+tm "RefLabelColHdrMgr"
+)
+*158 (RowExpandColHdr
+tm "RowExpandColHdrMgr"
+)
+*159 (GroupColHdr
+tm "GroupColHdrMgr"
+)
+*160 (NameColHdr
+tm "FcNameColHdrMgr"
+)
+*161 (ModeColHdr
+tm "FcModeColHdrMgr"
+)
+*162 (TypeColHdr
+tm "FcTypeColHdrMgr"
+)
+*163 (BoundsColHdr
+tm "FcBoundsColHdrMgr"
+)
+*164 (InitColHdr
+tm "FcInitColHdrMgr"
+)
+*165 (EolColHdr
+tm "FcEolColHdrMgr"
+)
+]
+)
+pdm (PhysicalDM
+displayShortBounds 1
+editShortBounds 1
+optionalChildren [
+*166 (Sheet
+sheetRow (SheetRow
+headerVa (MVa
+cellColor "49152,49152,49152"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+cellVa (MVa
+cellColor "65535,65535,65535"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+groupVa (MVa
+cellColor "39936,56832,65280"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+emptyMRCItem *167 (MRCItem
+litem &153
+pos 3
+dimension 20
+)
+optionalChildren [
+*168 (MRCItem
+litem &154
+pos 0
+dimension 20
+)
+*169 (MRCItem
+litem &155
+pos 1
+dimension 23
+)
+*170 (MRCItem
+litem &156
+pos 2
+hidden 1
+dimension 20
+)
+]
+)
+sheetCol (SheetCol
+propVa (MVa
+cellColor "0,49152,49152"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+textAngle 90
+)
+optionalChildren [
+*171 (MRCItem
+litem &157
+pos 0
+dimension 20
+)
+*172 (MRCItem
+litem &159
+pos 1
+dimension 50
+)
+*173 (MRCItem
+litem &160
+pos 2
+dimension 100
+)
+*174 (MRCItem
+litem &161
+pos 3
+dimension 50
+)
+*175 (MRCItem
+litem &162
+pos 4
+dimension 100
+)
+*176 (MRCItem
+litem &163
+pos 5
+dimension 100
+)
+*177 (MRCItem
+litem &164
+pos 6
+dimension 50
+)
+*178 (MRCItem
+litem &165
+pos 7
+dimension 80
+)
+]
+)
+fixedCol 4
+fixedRow 2
+name "Ports"
+vaOverrides [
+]
+)
+]
+)
+)
+cdmCfc &1
+genericsCommonDM (CommonDM
+ldm (LogicalDM
+emptyRow *179 (LEmptyRow
+)
+optionalChildren [
+*180 (RefLabelRowHdr
+)
+*181 (TitleRowHdr
+)
+*182 (FilterRowHdr
+)
+*183 (RefLabelColHdr
+tm "RefLabelColHdrMgr"
+)
+*184 (RowExpandColHdr
+tm "RowExpandColHdrMgr"
+)
+*185 (GroupColHdr
+tm "GroupColHdrMgr"
+)
+*186 (NameColHdr
+tm "GenericNameColHdrMgr"
+)
+*187 (TypeColHdr
+tm "GenericTypeColHdrMgr"
+)
+*188 (InitColHdr
+tm "GenericValueColHdrMgr"
+)
+*189 (PragmaColHdr
+tm "GenericPragmaColHdrMgr"
+)
+*190 (EolColHdr
+tm "GenericEolColHdrMgr"
+)
+]
+)
+pdm (PhysicalDM
+displayShortBounds 1
+editShortBounds 1
+optionalChildren [
+*191 (Sheet
+sheetRow (SheetRow
+headerVa (MVa
+cellColor "49152,49152,49152"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+cellVa (MVa
+cellColor "65535,65535,65535"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+groupVa (MVa
+cellColor "39936,56832,65280"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+)
+emptyMRCItem *192 (MRCItem
+litem &179
+pos 3
+dimension 20
+)
+optionalChildren [
+*193 (MRCItem
+litem &180
+pos 0
+dimension 20
+)
+*194 (MRCItem
+litem &181
+pos 1
+dimension 23
+)
+*195 (MRCItem
+litem &182
+pos 2
+hidden 1
+dimension 20
+)
+]
+)
+sheetCol (SheetCol
+propVa (MVa
+cellColor "0,49152,49152"
+fontColor "0,0,0"
+font "Tahoma,10,0"
+textAngle 90
+)
+optionalChildren [
+*196 (MRCItem
+litem &183
+pos 0
+dimension 20
+)
+*197 (MRCItem
+litem &185
+pos 1
+dimension 50
+)
+*198 (MRCItem
+litem &186
+pos 2
+dimension 100
+)
+*199 (MRCItem
+litem &187
+pos 3
+dimension 100
+)
+*200 (MRCItem
+litem &188
+pos 4
+dimension 50
+)
+*201 (MRCItem
+litem &189
+pos 5
+dimension 50
+)
+*202 (MRCItem
+litem &190
+pos 6
+dimension 80
+)
+]
+)
+fixedCol 3
+fixedRow 2
+name "Ports"
+vaOverrides [
+]
+)
+]
+)
+type 1
+)
+defaultActionBox (ActionBox
+shape (Rectangle
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+lineColor "0,32768,49152"
+lineWidth 2
+)
+xt "0,0,12000,4000"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "-100,-1000,1100,0"
+st "a0"
+blo "-100,-200"
+tm "FcNodeNameMgr"
+)
+)
+actions (TextAssociate
+ps "CenterOffsetStrategy"
+text (MLText
+va (VaSet
+)
+xt "4500,1500,7500,2500"
+st "actions;"
+tm "FcActions"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "5500,-500,6500,500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "5500,3500,6500,4500"
+)
+direction 1
+position 1
+)
+)
+defaultCompositeActionBox (CompositeActionBox
+shape (DoubleRectangle
+va (VaSet
+vasetType 1
+fg "29952,39936,65280"
+lineWidth 2
+)
+xt "0,0,12000,4000"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+font "Arial,10,1"
+)
+xt "5100,1400,6900,2600"
+st "a0"
+ju 0
+blo "6000,2400"
+tm "FcNodeNameMgr"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "5500,-500,6500,500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "5500,3500,6500,4500"
+)
+direction 1
+position 1
+)
+childDiagram &0
+)
+defaultDecisionBox (DecisionBox
+shape (Diamond
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "0,0,10000,4000"
+)
+name (TextAssociate
+ps "EdgeToEdgeStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "-100,-1000,1100,0"
+st "d0"
+blo "-100,-200"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+ps "EdgeToEdgeStrategy"
+text (MLText
+va (VaSet
+)
+xt "3300,1500,6700,2500"
+st "condition"
+tm "FcConditionMgr"
+)
+)
+trueLabel (Text
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "5900,4900,6800,5900"
+st "T"
+blo "5900,5700"
+)
+falseLabel (Text
+va (VaSet
+fg "32768,0,0"
+font "Arial,8,1"
+)
+xt "10900,100,11800,1100"
+st "F"
+blo "10900,900"
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "4500,-500,5500,500"
+)
+direction 0
+)
+trueConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "4500,3500,5500,4500"
+)
+direction 1
+position 1
+)
+falseConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 90
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "9500,1500,10500,2500"
+)
+direction 1
+position 3
+)
+elsif 1
+)
+defaultWaitBox (WaitBox
+shape (Octagon
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+)
+xt "0,0,2000,2000"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "0,-1050,1300,-50"
+st "w0"
+blo "0,-250"
+tm "FcNodeNameMgr"
+)
+)
+condition (TextAssociate
+ps "CenterOffsetStrategy"
+text (MLText
+va (VaSet
+)
+xt "2250,500,4150,1500"
+st "wait;"
+tm "FcWaitMgr"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "500,-500,1500,500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "500,1500,1500,2500"
+)
+direction 1
+position 1
+)
+)
+defaultStartPoint (StartPoint
+shape (RoundedRectangle
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "0,0,6000,2000"
+radius 400
+)
+label (Text
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "1550,400,4450,1600"
+st "Start"
+ju 0
+blo "3000,1400"
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,1500,3500,2500"
+)
+direction 1
+position 1
+)
+)
+defaultEndPoint (EndPoint
+shape (RoundedRectangle
+va (VaSet
+vasetType 1
+fg "49152,0,49152"
+lineWidth 2
+)
+xt "0,0,6000,2000"
+radius 400
+)
+label (Text
+va (VaSet
+fg "65535,65535,65535"
+font "Arial,10,1"
+)
+xt "1750,400,4250,1600"
+st "End"
+ju 0
+blo "3000,1400"
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,-500,3500,500"
+)
+direction 0
+)
+)
+defaultStartLoop (StartLoop
+shape (Ellipse
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+lineColor "0,32896,0"
+lineWidth 2
+)
+xt "0,0,6000,2000"
+)
+label (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "1800,500,4200,1500"
+st "Loop"
+ju 0
+blo "3000,1300"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "0,-1050,1000,-50"
+st "l0"
+blo "0,-250"
+tm "FcNodeNameMgr"
+)
+)
+loopControlAssoc (TextAssociate
+ps "CenterOffsetStrategy"
+text (MLText
+va (VaSet
+)
+xt "3000,1000,3000,1000"
+tm "FcLoopTextMgr"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,-500,3500,500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,1500,3500,2500"
+)
+direction 1
+position 1
+)
+loopConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 90
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "-500,500,500,1500"
+)
+direction 0
+position 2
+)
+)
+defaultEndLoop (EndLoop
+shape (Ellipse
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+lineColor "0,32896,0"
+lineWidth 2
+)
+xt "0,0,6000,2000"
+)
+label (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "950,500,5050,1500"
+st "End Loop"
+ju 0
+blo "3000,1300"
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,-500,3500,500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "2500,1500,3500,2500"
+)
+direction 1
+position 1
+)
+loopConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 270
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "-500,500,500,1500"
+)
+direction 1
+position 2
+)
+)
+defaultStartCase (StartCase
+shape (Pentagon
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "0,0,28000,4000"
+)
+label (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "12900,1500,15100,2500"
+st "Case"
+ju 0
+blo "14000,2300"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "0,-1050,1200,-50"
+st "c0"
+blo "0,-250"
+tm "FcCaseNameMgr"
+)
+)
+caseExpression (TextAssociate
+ps "CenterOffsetStrategy"
+text (MLText
+va (VaSet
+)
+xt "11800,2600,16200,3600"
+st "expression"
+ju 0
+tm "FcCaseExpressionMgr"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "13500,-500,14500,500"
+)
+direction 0
+)
+endCase *203 (EndCase
+ps "CenterOffsetStrategy"
+shape (Pentagon
+va (VaSet
+vasetType 1
+fg "65535,65535,37120"
+lineWidth 2
+)
+xt "10000,24000,18000,28000"
+)
+label (Text
+va (VaSet
+font "Arial,8,1"
+)
+xt "12050,25500,15950,26500"
+st "End Case"
+ju 0
+blo "14000,26300"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (Text
+va (VaSet
+fg "0,32768,49152"
+)
+xt "10000,22950,11200,23950"
+st "c0"
+blo "10000,23750"
+tm "FcCaseNameMgr"
+)
+)
+inConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "13500,23500,14500,24500"
+)
+direction 0
+)
+outConnect (FlowConnect
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+lineColor "65535,0,0"
+fillStyle 12
+)
+xt "13500,27500,14500,28500"
+)
+direction 1
+position 1
+)
+)
+verilogCaseMode 0
+)
+defaultCasePort (CasePort
+ps "OnEdgeStrategy"
+shape (Triangle
+ro 180
+va (VaSet
+vasetType 1
+fg "65535,0,0"
+fillStyle 12
+)
+xt "0,0,1000,1000"
+)
+name (TextAssociate
+ps "CenterOffsetStrategy"
+text (MLText
+va (VaSet
+font "Arial,8,1"
+)
+xt "1000,500,3800,1500"
+st "value0"
+tm "FcCasePortNameMgr"
+)
+)
+)
+defaultFlow (Flow
+shape (OrthoPolyLine
+va (VaSet
+vasetType 3
+)
+pts [
+"0,0"
+"0,0"
+]
+arrow 1
+)
+ss 0
+es 0
+)
+defaultFlowJoin (FlowJoin
+ps "OnFlowStrategy"
+shape (Circle
+va (VaSet
+vasetType 1
+)
+xt "-300,-300,300,300"
+radius 300
+)
+)
+)

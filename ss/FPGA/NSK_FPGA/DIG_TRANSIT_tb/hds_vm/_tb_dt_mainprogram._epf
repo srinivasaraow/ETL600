@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom behave
+DEFAULT_FILE atom tb_dt_mainprogram_behave.vhd

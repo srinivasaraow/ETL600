@@ -1,0 +1,2 @@
+DEFAULT_FILE atom dt_fill_2dt_behave.vhd
+DEFAULT_ARCHITECTURE atom behave

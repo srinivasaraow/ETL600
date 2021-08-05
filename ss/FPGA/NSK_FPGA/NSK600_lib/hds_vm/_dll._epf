@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom structural
+DEFAULT_FILE atom dll.vhd

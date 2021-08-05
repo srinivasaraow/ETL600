@@ -1,0 +1,2 @@
+DEFAULT_FILE atom ethernet_port/struct.bd
+DEFAULT_ARCHITECTURE atom struct

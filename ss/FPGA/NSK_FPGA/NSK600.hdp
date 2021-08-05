@@ -1,0 +1,46 @@
+[ModelSim]
+DIG_TRANSIT_tb = $HDS_PROJECT_DIR/DIG_TRANSIT_tb/work
+NSK600_lib = $HDS_PROJECT_DIR/NSK600_lib/work/
+NSK600_tb = $HDS_PROJECT_DIR/NSK600_tb/work/
+O4CV_tb = $HDS_PROJECT_DIR/O4CV_tb/work
+unisim = C:/Projects/local_FPGA_databases/Vendor_lib_for_etl/unisim
+[Precision]
+NSK600_lib = $HDS_PROJECT_DIR/NSK600_lib/implementation
+[XilinxISE]
+NSK600_lib = $HDS_PROJECT_DIR/NSK600_lib/ise
+unisim = C:/Projects/local_FPGA_databases/Vendor_lib_for_etl/XilinxCoreLib
+[hdl]
+DIG_TRANSIT_tb = $HDS_PROJECT_DIR/DIG_TRANSIT_tb/hdl
+NSK600_lib = $HDS_PROJECT_DIR/NSK600_lib/hdl
+NSK600_tb = $HDS_PROJECT_DIR/NSK600_tb/hdl
+O4CV_tb = $HDS_PROJECT_DIR/O4CV_tb/hdl
+unisim = C:/Mentor/hds2004_1/hdl_libs/unisim/unisim/hdl
+[hdl_vm]
+DIG_TRANSIT_tb = $/FPGA/NSK_FPGA/DIG_TRANSIT_tb/hdl_vm
+NSK600_lib = $/FPGA/NSK_FPGA/NSK600_lib/hdl_vm
+NSK600_tb = $/FPGA/NSK_FPGA/NSK600_tb/hdl_vm
+O4CV_tb = $/FPGA/NSK_FPGA/O4CV_tb/hdl_vm
+[hds]
+DIG_TRANSIT_tb = $HDS_PROJECT_DIR/DIG_TRANSIT_tb/hds
+NSK600_lib = $HDS_PROJECT_DIR/NSK600_lib/hds
+NSK600_tb = $HDS_PROJECT_DIR/NSK600_tb/hds
+O4CV_tb = $HDS_PROJECT_DIR/O4CV_tb/hds
+unisim = C:/Mentor/hds2004_1/hdl_libs/unisim/unisim/hds
+[hds_settings]
+default_library = NSK600_lib
+design_root = unisim.DCM_BASE()unisim_VITAL.vhd
+version = 2
+[hds_vm]
+DIG_TRANSIT_tb = $/FPGA/NSK_FPGA/DIG_TRANSIT_tb/hds_vm
+NSK600_lib = $/FPGA/NSK_FPGA/NSK600_lib/hds_vm
+NSK600_tb = $/FPGA/NSK_FPGA/NSK600_tb/hds_vm
+O4CV_tb = $/FPGA/NSK_FPGA/O4CV_tb/hds_vm
+[library_files_inclusion]
+[library_type]
+DIG_TRANSIT_tb = regular
+NSK600_lib = regular
+NSK600_tb = regular
+O4CV_tb = regular
+unisim = downstream_only
+[shared]
+others = $HDS_TEAM_HOME/shared.hdp

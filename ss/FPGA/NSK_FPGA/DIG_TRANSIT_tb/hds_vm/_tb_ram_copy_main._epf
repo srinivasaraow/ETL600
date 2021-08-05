@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom behave
+DEFAULT_FILE atom tb_ram_copy_main_behave.vhd

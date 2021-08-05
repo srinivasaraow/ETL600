@@ -1,0 +1,2 @@
+DEFAULT_FILE atom tb_AF_src_model_behave.vhd
+DEFAULT_ARCHITECTURE atom behave

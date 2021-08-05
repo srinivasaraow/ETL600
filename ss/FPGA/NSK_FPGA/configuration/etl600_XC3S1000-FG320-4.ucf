@@ -1,0 +1,282 @@
+################################################################################
+#
+#
+# Use this file only with the device listed below.  Any other
+# combination is invalid.
+#
+#
+################################################################################
+# Define Device, Package, And Speed Grade
+################################################################################
+#
+#CONFIG PART = XC2S200-PQ208-5;
+#CONFIG PART = XC2S400E-FT256-6;
+CONFIG PART = XC3S1000-FG320-4;
+#
+################################################################################
+# Avoid Configuration Pins For Master Serial
+################################################################################
+#
+#CONFIG PROHIBIT = "B16" ; # DIN
+#
+################################################################################
+# Placement Constraints For Less Important Things
+################################################################################
+#
+# **** DEVICE TIMEOUT A **** (F, G, F, G)
+#INST "PCI_CORE/PCI_LC/MASTER/FRAME/FRAME7"               XBLKNM = "DTO_A1"     ;
+#INST "i8_DFD_i8_2_RTL"                        LOC = "DLL1" ;
+#
+################################################################################
+# Clock Buffer Placement
+################################################################################
+#
+#INST "i8_DFD_i8_2_RTL" CLKDV_DIVIDE=1.5;
+#
+#INST "i8_DFD_i8_3_RTL"                          LOC = "GCLKBUF1" ;
+#INST "i8_DFD_i8_4_RTL"                          LOC = "GCLKBUF0" ;
+#INST "i8_DFD_i8_5_RTL"                          LOC = "GCLKBUF2" ;
+
+INST "i1_dll_dll" DESKEW_ADJUST=SOURCE_SYNCHRONOUS; # VS. SYSTEM_SYNCHRONOUS
+INST "i1_dll_dll" DLL_FREQUENCY_MODE=LOW;
+#INST "i1_dll_dll" DUTY_CYCLE_CORRECTION=TRUE;
+#INST "i1_dll_dll" CLK_FEEDBACK=1X
+#
+################################################################################
+# Timing Constraints and Multi Cycle Pathes
+################################################################################
+#
+#NET : *control?* : TIG ; # Timing Ignore
+#NET : *status?*  : TIG ;
+
+NET "clk" PERIOD = 30ns;
+
+NET "clk" TNM_NET = clk1_grp;
+#NET "clk2" TNM_NET = clk2_grp;
+#TIMESPEC "TS_clk2" = PERIOD "clk2_grp" 15 ns INPUT_JITTER 1;
+#INST sport_intneg TNM = sport_intneg;
+#TIMEGRP FF_RISING = RISING clk_grp;
+#TIMEGRP FF_FALLING = FALLING clk_grp;
+#TIMEGRP sport_intneg OFFSET IN = 1 VALID 3 BEFORE clk TIMEGRP FF_RISING;
+
+#NET "clk65" PERIOD = 7ns;
+#NET "clk" TNM_NET = "clk1_grp";
+#NET "clk180" TNM_NET = clk2_grp;
+#TIMESPEC TS_clk1 = PERIOD : clk1_grp : 30;
+#TIMESPEC TS_clk2 = PERIOD : clk2_grp : 30;
+#TIMESPEC TS_ck1_2_ck2 = FROM : clk1_grp : TO : clk2_grp : 15;
+#TIMESPEC TS_ck2_2_ck1 = FROM : clk2_grp : TO : clk1_grp : 15;
+
+#NET "MAN_CS" OFFSET = IN 15 ns BEFORE "DCC_CLK";
+#NET "MAN_R_W" OFFSET = IN 15 ns BEFORE "DCC_CLK";
+#NET "MG_D(*" OFFSET = IN 20 ns BEFORE "DCC_CLK";
+#NET "MG_D(*" OFFSET = OUT 20 ns AFTER "DCC_CLK";
+
+#TIMEGRP RFFS = RISING FFS ("*");
+#TIMEGRP FFFS = FALLING FFS ("*");
+#TIMESPEC TSF2F = FROM : FFS : TO FFS : 20 ns;    #any edge to the same edge ff
+#TIMESPEC TSR2F = FROM : RFFS : TO FFFS : 10 ns;  #rising edge to falling edge ff
+#TIMESPEC TSF2R = FROM : FFFS : TO RFFS : 10 ns;  #falling edge to rising edge ff
+
+################################################################################
+# Pinout
+################################################################################
+#
+
+# General System
+NET "clk32" LOC = p10 | IOSTANDARD = LVCMOS33;
+NET "fpga_reset_n" LOC = v4 | IOSTANDARD = LVCMOS33;
+#NET "sport_interrupt" LOC = v17 | IOSTANDARD = LVCMOS33; 
+# NET "dsp_flag0" LOC = t4 ; 
+
+# NSK DSP IF
+NET "cs_n" LOC = v2 | IOSTANDARD = LVCMOS33; 
+NET "wr_n" LOC = v3 | IOSTANDARD = LVCMOS33; 
+NET "rd_n" LOC = u4 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(0)" LOC = t12 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(1)" LOC = r12 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(2)" LOC = n11 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(3)" LOC = p11 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(4)" LOC = u9 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(5)" LOC = v9 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(6)" LOC = r7 | IOSTANDARD = LVCMOS33; 
+NET "nsk_data(7)" LOC = t7 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(0)" LOC = u5 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(1)" LOC = r6 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(2)" LOC = v8 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(3)" LOC = r8 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(4)" LOC = t8 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(5)" LOC = n8 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(6)" LOC = v7 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(7)" LOC = u6 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(8)" LOC = v5 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(9)" LOC = t5 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(10)" LOC = p8 | IOSTANDARD = LVCMOS33; 
+NET "nsk_adr(11)" LOC = r5 | IOSTANDARD = LVCMOS33; 
+
+# V24_IF  PORT1
+NET "rxd1" LOC = a12 | IOSTANDARD = LVCMOS33; 
+NET "cts1" LOC = a14 | IOSTANDARD = LVCMOS33; 
+NET "dcd1" LOC = b10 | IOSTANDARD = LVCMOS33; 
+NET "rxc1" LOC = a10 | IOSTANDARD = LVCMOS33;
+NET "txd1" LOC = b13 | IOSTANDARD = LVCMOS33 | PULLUP; 
+NET "rts1" LOC = a11 | IOSTANDARD = LVCMOS33 | PULLUP; 
+
+# V24_IF  PORT2
+NET "rxd2" LOC = a8 | IOSTANDARD = LVCMOS33; 
+NET "cts2" LOC = b9 | IOSTANDARD = LVCMOS33; 
+NET "dcd2" LOC = b5 | IOSTANDARD = LVCMOS33; 
+NET "rxc2" LOC = b6 | IOSTANDARD = LVCMOS33;
+NET "txd2" LOC = a9 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "rts2" LOC = a7 | IOSTANDARD = LVCMOS33 | PULLUP;
+
+# V24_IF  PORT3
+NET "rxd3" LOC = b18 | IOSTANDARD = LVCMOS33; 
+NET "cts3" LOC = c17 | IOSTANDARD = LVCMOS33; 
+NET "dcd3" LOC = c18 | IOSTANDARD = LVCMOS33; 
+NET "rxc3" LOC = d17 | IOSTANDARD = LVCMOS33;
+NET "txd3" LOC = d18 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "rts3" LOC = e18 | IOSTANDARD = LVCMOS33 | PULLUP;
+
+# V24_IF  PORT4
+NET "rxd4" LOC = f17 | IOSTANDARD = LVCMOS33; 
+NET "cts4" LOC = g18 | IOSTANDARD = LVCMOS33; 
+NET "dcd4" LOC = h17 | IOSTANDARD = LVCMOS33; 
+NET "rxc4" LOC = h18 | IOSTANDARD = LVCMOS33;
+NET "txd4" LOC = j17 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "rts4" LOC = j18 | IOSTANDARD = LVCMOS33 | PULLUP;
+
+# V24_IF  PORT5
+NET "rxd5" LOC = e1 | IOSTANDARD = LVCMOS33; 
+NET "cts5" LOC = d3 | IOSTANDARD = LVCMOS33; 
+NET "dcd5" LOC = e2 | IOSTANDARD = LVCMOS33; 
+NET "rxc5" LOC = e3 | IOSTANDARD = LVCMOS33;
+NET "txd5" LOC = e4 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "rts5" LOC = f4 | IOSTANDARD = LVCMOS33 | PULLUP;
+
+# V24_IF  PORT6
+NET "rxd6" LOC = g1 | IOSTANDARD = LVCMOS33; 
+NET "cts6" LOC = g3 | IOSTANDARD = LVCMOS33; 
+NET "dcd6" LOC = h1 | IOSTANDARD = LVCMOS33; 
+NET "rxc6" LOC = h2 | IOSTANDARD = LVCMOS33;
+NET "txd6" LOC = j1 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "rts6" LOC = j2 | IOSTANDARD = LVCMOS33 | PULLUP;
+
+# V11_IF  PORT1
+NET "t1" LOC = a4 | IOSTANDARD = LVCMOS33 | PULLDOWN; 
+NET "r1" LOC = b3 | IOSTANDARD = LVCMOS33; 
+NET "s1" LOC = a2 | IOSTANDARD = LVCMOS33; 
+NET "i1" LOC = a3 | IOSTANDARD = LVCMOS33;
+NET "c1" LOC = a5 | IOSTANDARD = LVCMOS33 | PULLDOWN; 
+
+# V11_IF  PORT2
+NET "t2" LOC = b1 | IOSTANDARD = LVCMOS33 | PULLDOWN; 
+NET "r2" LOC = c1 | IOSTANDARD = LVCMOS33; 
+NET "s2" LOC = c2 | IOSTANDARD = LVCMOS33; 
+NET "i2" LOC = d1 | IOSTANDARD = LVCMOS33;
+NET "c2" LOC = d2 | IOSTANDARD = LVCMOS33 | PULLDOWN; 
+
+# OFDM DSP PORT
+NET "sport0_sclk" LOC = p1 | IOSTANDARD = LVCMOS33; 
+NET "sport0_d"    LOC = p2 | IOSTANDARD = LVCMOS33; 
+NET "sport2_sclk" LOC = r1 | IOSTANDARD = LVCMOS33; 
+NET "sport2_d"    LOC = r2 | IOSTANDARD = LVCMOS33;
+NET "con"         LOC = u1 | IOSTANDARD = LVCMOS33; 
+NET "ind"         LOC = t1 | IOSTANDARD = LVCMOS33;
+
+# G.703 PORT
+NET "los"  LOC = m1 | IOSTANDARD = LVCMOS33;
+NET "tx_n" LOC = l2 | IOSTANDARD = LVCMOS33;
+NET "tx_p" LOC = l1 | IOSTANDARD = LVCMOS33;
+NET "rx_n" LOC = k2 | IOSTANDARD = LVCMOS33;
+NET "rx_p" LOC = k1 | IOSTANDARD = LVCMOS33;
+
+# LAN PORT 
+NET "netarm_porta(0)" LOC = u18 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(1)" LOC = t18 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(2)" LOC = t17 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(3)" LOC = t16 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(4)" LOC = r18 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(5)" LOC = r17 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(6)" LOC = p18 | IOSTANDARD = LVCMOS33;
+NET "netarm_porta(7)" LOC = p17 | IOSTANDARD = LVCMOS33;
+
+# Pulse Generator
+NET "otr" LOC = g5 | IOSTANDARD = LVCMOS33;
+NET "otr_long" LOC = h5 | IOSTANDARD = LVCMOS33;
+
+# LEDs
+NET "leds(0)" LOC = k13 | IOSTANDARD = LVCMOS33; #LED on P4LT
+NET "leds(1)" LOC = k14 | IOSTANDARD = LVCMOS33; #LED on P4LT 
+NET "leds(2)" LOC = l13 | IOSTANDARD = LVCMOS33; #LED on JTAG adapter 
+NET "leds(3)" LOC = l14 | IOSTANDARD = LVCMOS33; #LED on JTAG adapter
+NET "leds(4)" LOC = l15 | IOSTANDARD = LVCMOS33; #LED on JTAG adapter
+
+# TESTPADS
+NET "tpads_out(0)" LOC = p16 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(1)" LOC = r16 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(2)" LOC = p15 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(3)" LOC = n15 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(4)" LOC = m14 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(5)" LOC = n14 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(6)" LOC = m15 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(7)" LOC = m16 | IOSTANDARD = LVCMOS33;
+NET "tpads_in(0)" LOC = m18 | IOSTANDARD = LVCMOS33 | PULLDOWN;
+NET "tpads_in(1)" LOC = n17 | IOSTANDARD = LVCMOS33 | PULLDOWN;
+#NET "tpads_in(2)" LOC = l16 | IOSTANDARD = LVCMOS33;
+NET "tpads_out(7)" LOC = l16 | IOSTANDARD = LVCMOS33; #shall be a '1' for setting bits (reset_n)
+NET "tpads_in(3)" LOC = l17 | IOSTANDARD = LVCMOS33 | PULLDOWN;
+
+# TDM BUS
+NET "tdm_fs" LOC = v17 | IOSTANDARD = LVCMOS33;
+NET "tdm_wr_n" LOC = r13 | IOSTANDARD = LVCMOS33;
+NET "tdm_txd" LOC = p12 | IOSTANDARD = LVCMOS33;
+NET "tdm_rxd" LOC = p13 | IOSTANDARD = LVCMOS33;
+
+#
+################################################################################
+# BLOCK-RAM INIT STRINGS
+################################################################################
+#
+#INST "i2_DFD/i2_1_RTL/i_dcc_addr_lookup_bram_i_bram_1" INIT_00 = 0000000000000000000000000000000000000000000000000000000000000000;
+
+#INST "i1_dll_dll" xyz
+
+#INST "i_bram_fifo_ram" INIT_00 = FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+#INST "i8_1_ofdm*i_bram_fifo" INIT_00 = FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+
+#INST "i2_v24ports_i2_1_v24_i_rxfifo_i_bram_fifo" INIT_00..0F = FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+#INST "i2_v24ports_i2_1_v24_i_rxfifo_i_bram_fifo" INIT_10 = ACACACACACACACACACACACACACACACACACACACACACACACACACACACACACACACAC;
+
+#
+#INST "*i_dcc_addr_lookup_bram_i_bram_1" INIT_00..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+#INST "*i_dcc_addr_lookup_bram_i_bram_2" INIT_00..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+#INST "*i_dcc_addr_lookup_bram_i_bram_3" INIT_00..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+
+#INST "*i4_DFD*i_bram_mapconfig" INIT_00 = 0D511A0111C44A031AA89C01238BCC0335511C026AA89C04D5511C0803511881;
+#INST "*i4_DFD*i_bram_mapconfig" INIT_01 = 0248B88702A8988603511881047148830551188506A8990108E249030AA89905;
+#INST "*i4_DFD*i_bram_mapconfig" INIT_02 = 00800810008BC81300A8980001000840011AC823020008800238C8430248B889;
+#INST "*i4_DFD*i_bram_mapconfig" INIT_03 = 00000800000808000010080000200800004008100048B8000051180000622800;
+#INST "*i4_DFD*i_bram_mapconfig" INIT_04..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+#
+#INST "*i5_DFD*i_bram_mapconfig" INIT_00 = 0D511A0111C44A031AA89C01238BCC0335511C026AA89C04D5511C0803511881;
+#INST "*i5_DFD*i_bram_mapconfig" INIT_01 = 0248B88702A8988603511881047148830551188506A8990108E249030AA89905;
+#INST "*i5_DFD*i_bram_mapconfig" INIT_02 = 00800810008BC81300A8980001000840011AC823020008800238C8430248B889;
+#INST "*i5_DFD*i_bram_mapconfig" INIT_03 = 00000800000808000010080000200800004008100048B8000051180000622800;
+#INST "*i5_DFD*i_bram_mapconfig" INIT_04..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+#
+#INST "*i6_DFD*i_bram_mapconfig" INIT_00 = 0D511A0111C44A031AA89C01238BCC0335511C026AA89C04D5511C0803511881;
+#INST "*i6_DFD*i_bram_mapconfig" INIT_01 = 0248B88702A8988603511881047148830551188506A8990108E249030AA89905;
+#INST "*i6_DFD*i_bram_mapconfig" INIT_02 = 00800810008BC81300A8980001000840011AC823020008800238C8430248B889;
+#INST "*i6_DFD*i_bram_mapconfig" INIT_03 = 00000800000808000010080000200800004008100048B8000051180000622800;
+#INST "*i6_DFD*i_bram_mapconfig" INIT_04..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+#
+#INST "*i7_DFD*i_bram_mapconfig" INIT_00 = 0D511A0111C44A031AA89C01238BCC0335511C026AA89C04D5511C0803511881;
+#INST "*i7_DFD*i_bram_mapconfig" INIT_01 = 0248B88702A8988603511881047148830551188506A8990108E249030AA89905;
+#INST "*i7_DFD*i_bram_mapconfig" INIT_02 = 00800810008BC81300A8980001000840011AC823020008800238C8430248B889;
+#INST "*i7_DFD*i_bram_mapconfig" INIT_03 = 00000800000808000010080000200800004008100048B8000051180000622800;
+#INST "*i7_DFD*i_bram_mapconfig" INIT_04..0F = 0000000000000000000000000000000000000000000000000000000000000000;
+##
+################################################################################
+# End
+################################################################################

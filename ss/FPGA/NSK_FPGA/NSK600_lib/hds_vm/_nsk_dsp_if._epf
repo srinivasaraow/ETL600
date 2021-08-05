@@ -1,0 +1,2 @@
+DEFAULT_FILE atom nsk_dsp_if/fsm.sm
+DEFAULT_ARCHITECTURE atom fsm

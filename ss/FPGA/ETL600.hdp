@@ -1,0 +1,30 @@
+[Concat]
+NSK600_lib = c:/Project_ETL600/hds_projects/NSK600/NSK600_lib/concat
+[ModelSim]
+NSK600_lib = c:/Project_ETL600/hds_projects/NSK600/NSK600_lib/work/
+NSK600_tb = c:/Project_ETL600/hds_projects/NSK600/NSK600_tb/work/
+unisim = c:/Programme/Modelsim/unisim
+[Precision]
+NSK600_lib = c:/Project_ETL600/hds_projects/NSK600/NSK600_lib/implementation/
+[hdl]
+NSK600_lib = c:/Project_ETL600/hds_projects/NSK600/NSK600_lib/hdl
+NSK600_tb = c:/Project_ETL600/hds_projects/NSK600/NSK600_tb/hdl
+[hdl_vm]
+NSK600_lib = $/FPGA/NSK_FPGA/NSK600_lib/hdl_vm
+NSK600_tb = $/FPGA/NSK_FPGA/NSK600_tb/hdl_vm
+[hds]
+NSK600_lib = c:/Project_ETL600/hds_projects/NSK600/NSK600_lib/hds
+NSK600_tb = c:/Project_ETL600/hds_projects/NSK600/NSK600_tb/hds
+[hds_settings]
+default_library = NSK600_lib
+design_root = NSK600_lib.nsk600_top()nsk600_top/symbol.sb
+version = 1
+[hds_vm]
+NSK600_lib = $/FPGA/NSK_FPGA/NSK600_lib/hds_vm
+NSK600_tb = $/FPGA/NSK_FPGA/NSK600_tb/hds_vm
+[library_type]
+NSK600_lib = regular
+NSK600_tb = regular
+unisim = downstream_only
+[shared]
+others = $HDS_TEAM_HOME/shared.hdp
